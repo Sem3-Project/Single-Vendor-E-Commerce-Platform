@@ -21,12 +21,23 @@
     </tr>
     <tr>
     <td>
-        <label for="sub_category1">Sub Category:</label><br><br>
-        <input type="text" id="sub_category1" name="sub_category1"><br><br>
+        <label for="color">Color:</label><br><br>
+        <!-- <input type="text" id="sub_category1" name="sub_category1"><br><br> -->
+        <input type="checkbox" name="color" value="Red"> Red<br><br>
+        <input type="checkbox" name="color" value="Black"> Black <br><br>
+        <input type="checkbox" name="color" value="White"> White <br><br>
+        <input type="checkbox" name="color" value="Blue"> Blue<br><br>
+        <input type="checkbox" name="color" value="other"> Other <br><br>
+
+
     </td>
     <td>
-        <label for="sub_category2">Sub Category:</label><br><br>
-        <input type="text" id="sub_category2" name="sub_category2"><br><br>
+        <label for="country">Manufactured country:</label><br><br>
+        <!-- <input type="text" id="sub_category2" name="sub_category2"><br><br> -->
+        <input type="checkbox" name="country" value="China"> China <br><br>
+        <input type="checkbox" name="country" value="USA"> USA <br><br>
+        <input type="checkbox" name="country" value="SriLanka"> Sri Lanka<br><br>
+        <input type="checkbox" name="country" value="other"> Other <br><br>
     </td>
     </tr>
 </table>

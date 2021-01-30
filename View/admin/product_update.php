@@ -4,13 +4,24 @@
 <html lang="en">
 <meta charset="utf-8">
 <title>Update the Product</title>
+<link rel ="stylesheet" type="text/css" href="../../public/CSS/Product_update.css">
 </head>
 
 <body>
 <div class= container>
     <h1>Update the product</h1>
+
+    <label for="image">Product Image:</label><br><br>
+    <div class="drop-zone drop-zone--over">
+    
+    <span class="drop-zone__prompt">Drop file here or click to upload</span>
+    <!-- <div class="drop-zone__thumb" data-label="myfile.txt"></div> -->
+    <input type='file' name="myfile" class="drop-zone__input">
+
+    </div>
+    <script src="../../public/js/Product_update.js"></script>
+
     <table>
-    <!-- <img src="https://images.search.yahoo.com/search/images;_ylt=Awr9ImrnLBVg8akAMIBXNyoA;_ylu=Y29sbwNncTEEcG9zAzEEdnRpZANBMDYxNV8xBHNlYwNzYw--?p=headphone+image&fr=mcafee&th=102.5&tw=102.5&imgurl=https%3A%2F%2Fae01.alicdn.com%2Fkf%2FHTB1YlKISpXXXXa_XXXXq6xXFXXXY%2FOriginal-Kotion-EACH-G2000-Computer-Stereo-Gaming-Headphones-Deep-Bass-Game-Earphone-Headset-with-Mic-LED.jpg&rurl=https%3A%2F%2Fwww.aliexpress.com%2Fitem%2FOriginal-Kotion-EACH-G2000-Computer-Stereo-Gaming-Headphones-Deep-Bass-Game-Earphone-Headset-with-Mic-LED%2F32669950071.html&size=117KB&name=Original+Kotion+EACH+G2000+Computer+Stereo+Gaming+Headphones+Deep+Bass+Game+Earphone+Headset+...&oid=1&h=1000&w=1000&turl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.OmHnpLY4CB1LUgMoGFLW8wHaHa%26amp%3Bpid%3DApi%26rs%3D1%26c%3D1%26qlt%3D95%26w%3D102%26h%3D102&tt=Original+Kotion+EACH+G2000+Computer+Stereo+Gaming+Headphones+Deep+Bass+Game+Earphone+Headset+...&sigr=h1QdCLkGC4t2&sigit=uoaqNmb8cNZb&sigi=xXPPMcg0INEM&sign=iTQdTlUYjUej&sigt=iTQdTlUYjUej"> -->
     <tr>
     <td>
         <label for="pname">Product name:</label><br><br>
