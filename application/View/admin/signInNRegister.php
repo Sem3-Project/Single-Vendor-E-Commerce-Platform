@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Sign up and Sign in</title>
-    <link href="../../public/css/fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../../public/css/signNReg.css" />
-    <script src="../../public/js/jquery.js"></script>
-    <script type="text/javascript" src="../../public/js/signNReg.js"></script>
+    <link href="../../../public/css/fonts.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../../public/css/signNReg.css" />
+    <script src="../../../public/js/jquery.js"></script>
+    <script type="text/javascript" src="../../../public/js/signNReg.js"></script>
   </head>
   <body>
     <div id="main">
