@@ -4,23 +4,38 @@
 <html lang="en">
 <meta charset="utf-8">
 <title>Update the Product</title>
-<link rel ="stylesheet" type="text/css" href="../../public/CSS/Product_update.css">
+<link rel ="stylesheet" type="text/css" href="../../../public/CSS/product_update.css">
 </head>
 
 <body>
-<div class= container>
+<div class= contain>
     <h1>Update the product</h1>
 
     <label for="image">Product Image:</label><br><br>
-    <div class="drop-zone drop-zone--over">
-    
-    <span class="drop-zone__prompt">Drop file here or click to upload</span>
-    <!-- <div class="drop-zone__thumb" data-label="myfile.txt"></div> -->
-    <input type='file' name="myfile" class="drop-zone__input">
 
-    </div>
-    <script src="../../public/js/Product_update.js"></script>
+    <div class="container">
+      <div class="wrapper">
+        <div class="image">
+          <img src="" alt="">
+        </div>
+<div class="content">
+          <div class="icon">
+<i class="fas fa-cloud-upload-alt"></i></div>
+<div class="text">
+No file chosen, yet!</div>
+</div>
+<div id="cancel-btn">
+<i class="fas fa-times"></i></div>
+<div class="file-name">
+File name here</div>
+</div>
+<button onclick="defaultBtnActive()" id="custom-btn">Choose a file</button>
+      <input id="default-btn" type="file" hidden>
+    </div><br><br>
 
+    <script src="../../../public/js/product_update.js"></script>
+
+  
     <table>
     <tr>
     <td>
