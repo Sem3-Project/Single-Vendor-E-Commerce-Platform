@@ -4,12 +4,17 @@
         <meta charset ="UTF-8">
         <meta name="viewpoint" content="width-device-width initial-scale=1.0">
        
-        <h1 align='center'>Order Status</h1>
-
+        
+        <link rel="stylesheet" href="../../../public/css/login.css" />
+       
     </head>
     <body>
+        
+       
+        <h1 align='left' margin="100px" ><i>Order Status</i></h1>
+
         <table width="80%">
-        <link href="../../../public/css/table.css" rel="stylesheet" />
+        <link href="../../../public/css/table1.css" rel="stylesheet" />
            
             <thead>
                 <tr>
@@ -46,7 +51,16 @@
                     <td> </td>
                    
                 </tr>
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                   
+                </tr>
             </tbody>
         </table>
+        
     </body>
 </html>
