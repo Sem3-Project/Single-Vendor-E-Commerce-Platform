@@ -1,6 +1,8 @@
 <?php
 include 'DbConnection.class.php';
 
+session_start();
+
 class SignInRegister {  
             
     function __construct() {  
@@ -18,28 +20,26 @@ class SignInRegister {
             return $register;      
     }  
 
-    // public function Login($emailid, $password){  
-    //     $res = mysqli_query("SELECT * FROM users WHERE emailid = '".$emailid."' AND password = '".md5($password)."'",$this);  
-    //     $user_data = mysqli_fetch_array($res);  
-    //     //print_r($user_data);  
-    //     $no_rows = mysqli_num_rows($res);  
+    public function login($conn,$email, $password){  
+        $result = mysqli_query($conn,"SELECT * FROM customer WHERE email = '".$email."' AND password = '".md5($password)."'");  
+        $user_data = mysqli_fetch_array($result);  
+     
+        $no_rows = mysqli_num_rows($result);  
           
-    //     if ($no_rows == 1)   
-    //     {  
-       
-    //         $_SESSION['login'] = true;  
-    //         $_SESSION['uid'] = $user_data['id'];  
-    //         $_SESSION['username'] = $user_data['username'];  
-    //         $_SESSION['email'] = $user_data['emailid'];  
-    //         return TRUE;  
-    //     }  
-    //     else  
-    //     {  
-    //         return FALSE;  
-    //     }  
-    // }  
+        if ($no_rows == 1)   
+        {  
+            $_SESSION['login'] = true;   
+            $_SESSION['email'] = $user_data['email'];  
+            return TRUE;  
+        }  
+        else  
+        {  
+            return FALSE;  
+        }  
+    }  
+
     public function isUserExist($email){  
-        $qr = mysqli_query("SELECT * FROM users WHERE email = '".$email."'",$this);  
+        $qr = mysqli_query("SELECT * FROM customer WHERE email = '".$email."'",$this);  
         echo $row = mysqli_num_rows($qr);  
         if($row > 0){  
             return true;  

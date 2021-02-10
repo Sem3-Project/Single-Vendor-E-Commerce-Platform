@@ -14,14 +14,14 @@ include '../model/SignInRegister.php';
         <li class="tab active"><a href="#login">Log In</a></li>
         <li class="tab"><a href="#signup">Sign Up</a></li>
     </ul>
-    <form action="#" id="login" method="POST">
+    <form action="#" id="login" method="POST" name="login">
           <h1 >Login on C-Smart</h1>
           <div class="input-field">
             <label for="email">Email</label>
             <input type="email" name="email" required="email" />
             <label for="password">Password</label> 
             <input type="password" name="password" required/>
-            <input type="submit" value="Login" class="button"/>
+            <input type="submit" name='login' value="Login" class="button"/>
             <p class="text-p"> <a href="#">Forgot password?</a> </p>
           </div>
       </form>

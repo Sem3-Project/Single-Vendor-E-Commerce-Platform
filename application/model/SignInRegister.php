@@ -1,7 +1,7 @@
 <?php
 
-//include '../controller/DbConnection.class.php';
 include '../controller/SignInRegister.class.php';
+
 $connector = new DbConnection();
 $conn = $connector->connect();
 $funObj = new SignInRegister();
@@ -12,6 +12,19 @@ if(isset($_POST['signup'])){
     $last_name = $_POST['last_name'];
     $user = $funObj->customerRegister($conn,$first_name, $last_name, $email, $password);  
     $funObj ->isUserExist($email);
+    if ($user) {  
+        // Registration Success  
+       header("location:../../index.php");  
+    } else {  
+        // Registration Failed  
+        echo "<script>alert('Emailid / Password Not Match')</script>";  
+    }  
+}
+
+if(isset($_POST['login'])){  
+    $emailid = $_POST['email'];  
+    $password = $_POST['password'];  
+    $user = $funObj->login($conn,$emailid, $password);  
     if ($user) {  
         // Registration Success  
        header("location:../../index.php");  
