@@ -10,15 +10,25 @@ if(isset($_POST['signup'])){
     $password = $_POST['password']; 
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
-    $user = $funObj->customerRegister($conn,$first_name, $last_name, $email, $password);  
-    $funObj ->isUserExist($email);
-    if ($user) {  
-        // Registration Success  
-       header("location:../../index.php");  
+    $confirmPassword = $_POST['confirm_password'];  
+
+    if($password == $confirmPassword){  
+        $email = $funObj->isUserExist($conn,$email);  
+        if(!$email){  
+            $register = $funObj->customerRegister($conn,$first_name, $last_name, $email, $password);  
+            if($register){ 
+
+                 echo "<script>alert('Registration Successful')</script>";  
+            }else{  
+                echo "<script>alert('Registration Not Successful')</script>";  
+            }  
+        } else {  
+            echo "<script>alert('Email Already Exist')</script>";  
+        }  
     } else {  
-        // Registration Failed  
-        echo "<script>alert('Emailid / Password Not Match')</script>";  
-    }  
+        echo "<script>alert('Password Not Match')</script>";  
+      
+    } 
 }
 
 if(isset($_POST['login'])){  
@@ -26,11 +36,12 @@ if(isset($_POST['login'])){
     $password = $_POST['password'];  
     $user = $funObj->login($conn,$emailid, $password);  
     if ($user) {  
-        // Registration Success  
+        // login Success  
        header("location:../../index.php");  
     } else {  
-        // Registration Failed  
+        // login Failed  
         echo "<script>alert('Emailid / Password Not Match')</script>";  
     }  
 }  
+ 
 ?>

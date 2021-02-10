@@ -37,7 +37,7 @@ include '../model/SignInRegister.php';
             <label for="password">Password</label> 
             <input type="password" name="password" required/>
             <label for="password">Confirm Password</label> 
-            <input type="password" name="password" required/>
+            <input type="password" name="confirm_password" required/>
             <input type="submit" name="signup" value="Sign up" class="button" />
           </div>
       </form>

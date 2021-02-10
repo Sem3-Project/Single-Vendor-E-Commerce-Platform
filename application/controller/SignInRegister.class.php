@@ -38,8 +38,8 @@ class SignInRegister {
         }  
     }  
 
-    public function isUserExist($email){  
-        $qr = mysqli_query("SELECT * FROM customer WHERE email = '".$email."'",$this);  
+    public function isUserExist($conn,$email){  
+        $qr = mysqli_query($conn,"SELECT * FROM customer WHERE email = '".$email."'");  
         echo $row = mysqli_num_rows($qr);  
         if($row > 0){  
             return true;  
