@@ -16,7 +16,7 @@ class DbConnection {
 			exit();
 		}
 		else{
-			print("connected successfully");
+			//print("connected successfully");
 		}
 		return true;
 	}

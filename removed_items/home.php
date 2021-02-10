@@ -1,14 +1,9 @@
-<?php
-include 'application/controller/DbConnection.class.php';
-$connector = new DbConnection();
-$conn = $connector->connect();
-?>
 <!DOCTYPE html>
     <head>
         <html lang="en">
         <meta charset="utf-8">
         <title>Home</title>
-        <link rel="stylesheet" href="public/css/home.css" />
+        <link rel="stylesheet" href="../../public/css/home.css" />
     </head>
 
     <body>
@@ -21,8 +16,8 @@ $conn = $connector->connect();
                     <a>Television</a>
                 </div>
             </div>
-            <img class="search" src="public/images/search.png">
-            <a href="application/view/admin/loginRegister.php"><img class="login" src="public/images/login.gif"></a>
+            <img class="search" src="../../public/images/search.png">
+            <a href="admin/signInNregister.php"><img class="login" src="../../public/images/login.gif"></a>
         </div>
         <script>
         /* When the user clicks on the button, 
@@ -49,15 +44,15 @@ $conn = $connector->connect();
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-  <img src="public/images/img.jpg" style="width:110%">
+  <img src="../../public/images/img.jpg" style="width:110%">
 </div>
 
 <div class="mySlides fade">
-  <img src="public/images/img2.jpg" style="width:100%">
+  <img src="../../public/images/img2.jpg" style="width:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="public/images/img3.jpg" style="width:100%">
+  <img src="../../public/images/img3.jpg" style="width:100%">
 </div>
 
 </div>
@@ -91,4 +86,3 @@ function showSlides() {
 </script>
     </body>
 </html>
-
