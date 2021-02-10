@@ -18,7 +18,7 @@ class DbConnection {
 		else{
 			//print("connected successfully");
 		}
-		return true;
+		return $connect_db;
 	}
 
 }

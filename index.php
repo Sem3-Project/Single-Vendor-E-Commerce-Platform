@@ -22,7 +22,7 @@ $conn = $connector->connect();
                 </div>
             </div>
             <img class="search" src="public/images/search.png">
-            <a href="application/view/admin/loginRegister.php"><img class="login" src="public/images/login.gif"></a>
+            <a href="application/view/loginRegister.php"><img class="login" src="public/images/login.gif"></a>
         </div>
         <script>
         /* When the user clicks on the button, 
