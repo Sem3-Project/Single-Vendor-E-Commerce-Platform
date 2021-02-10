@@ -16,8 +16,8 @@
                     <a>Television</a>
                 </div>
             </div>
-            <img class="search" src="../../public/pic/search.png">
-            <a href="admin/signInNregister.php"><img class="login" src="../../public/pic/login.gif"></a>
+            <img class="search" src="../../public/images/search.png">
+            <a href="admin/signInNregister.php"><img class="login" src="../../public/images/login.gif"></a>
         </div>
         <script>
         /* When the user clicks on the button, 
@@ -44,15 +44,15 @@
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-  <img src="../../public/pic/img.jpg" style="width:110%">
+  <img src="../../public/images/img.jpg" style="width:110%">
 </div>
 
 <div class="mySlides fade">
-  <img src="../../public/pic/img2.jpg" style="width:100%">
+  <img src="../../public/images/img2.jpg" style="width:100%">
 </div>
 
 <div class="mySlides fade">
-  <img src="../../public/pic/img3.jpg" style="width:100%">
+  <img src="../../public/images/img3.jpg" style="width:100%">
 </div>
 
 </div>
