@@ -1,4 +1,6 @@
-
+<?php
+include '../../model/product_update_model.php';
+?>
 <!DOCTYPE html>
 <head>
 <html lang="en">
@@ -8,10 +10,23 @@
 </head>
 
 <body>
+<form action="#" id="pupdate" method="POST" name="pupdate">
 <div class= contain>
     <h1>Update the product</h1>
 
-    <label for="image">Product Image:</label><br><br>
+    <table>
+    <tr>
+    <td>
+        <label for="product_name">Product name:</label><br><br>
+        <input type="text" id="product_name" name="product_name" value="<?php echo $product_name;?>"><br><br>
+        <input type="submit" class="link" name="search" style="margin-bottom: 50px;" id="search" value="search">
+
+    </td>
+    </tr></table>
+<!-- image start -->
+
+
+    <!-- <label for="image">Product Image:</label><br><br>
 
     <div class="container">
       <div class="wrapper">
@@ -33,70 +48,74 @@ File name here</div>
       <input id="default-btn" type="file" hidden>
     </div><br><br>
 
-    <script src="../../../public/js/product_update.js"></script>
+    <script src="../../../public/js/product_update.js"></script> -->
 
-  
-    <table>
+
+
+
+
+  <br><br>
+    <!-- <table>
     <tr>
     <td>
-        <label for="pname">Product name:</label><br><br>
-        <input type="text" id="pname" name="pname"><br><br>
+        <label for="product_name">Product name:</label><br><br>
+        <input type="text" id="product_name" name="product_name"><br><br>
         <input type="submit" class="link" name="search" style="margin-bottom: 50px;" id="search" value="search">
 
     </td>
-    </tr>
-
+    </tr> -->
+<table>
     <tr>
-    <td>
+    <!-- <td>
         <label for="price">Price:</label><br><br>
         <input type="number" step="0.01" id="price" name="price"><br><br>
-    </td>
+    </td> -->
 
-    <td>
+    <!-- <td>
         <label for="color">Color:</label><br><br>
         <input type="text" id="color" name="color"><br><br>
-    </td>
+    </td> -->
     </tr>
 
     <tr>
-    <td>
-        <label for="brand">Brand:</label><br><br>
+    <!-- <td>
+        <label for="brand">weight:</label><br><br>
         <input type="text" id="brand" name="brand"><br><br>
-    </td>
+    </td> -->
 
     <td>
-        <label for="P_dimension">Product Dimensions:</label><br><br>
-        <input type="text" id="P_dimension" name="P_dimension"><br><br>
+        <label for="dimension">Product Dimensions:</label><br><br>
+        <input type="text" id="dimension" name="dimension"><br><br>
     </td>
     </tr>
 
     <tr>
     <td>
-        <label for="p_weight">Product Weight(grams):</label><br><br>
-        <input type="number" step="any" id="p_weight" name="p_weight"><br><br>
+        <label for="weight">Product Weight(grams):</label><br><br>
+        <input type="number" step="any" id="weight" name="weight"><br><br>
     </td>
 
-    <td>
+    <!-- <td>
         <label for="sku">SKU:</label><br><br>
         <input type="text" id="sku" name="sku"><br><br>
-    </td>
+    </td> -->
     </tr>
 
     <tr>
     <td>
-        <label for="category">Category:</label><br><br>
-        <input type="text" id="category" name="category"><br><br>
+        <label for="category_name">category:</label><br><br>
+        <input type="text" id="category_name" name="category_name"><br><br>
     </td>
 
     <td>
-        <label for="sub_category">Sub Category:</label><br><br>
-        <input type="text" id="sub_category" name="sub_category"><br><br>
+        <label for="subcat_name">Sub category_name:</label><br><br>
+        <input type="text" id="subcat_name" name="subcat_name"><br><br>
     </td>
     </tr>
     <tr>
     <td>
-        <label for="about">About this product:</label><br><br>
-        <input type="text" style="width:250px;height:90px;" id="about" name="about"><br><br>
+        <label for="description">About this product:</label><br><br>
+        <input type="text" style="width:250px;height:90px;" id="description" name="description"><br><br>
     </td>
     <tr>
 </table>
@@ -106,5 +125,6 @@ File name here</div>
 
 
 </div>
+</form>
 </body>
 </html>
