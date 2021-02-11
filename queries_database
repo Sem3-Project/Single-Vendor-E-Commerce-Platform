@@ -1,0 +1,14 @@
+--------------------------------product_sales_report query---------------------------------------
+create view product_sales_report(product_id,product_name,date,summ) as (select product_id,product_name,date,sum(quantity) as summ from (order_product inner join product using(product_id)) inner join `order` using(order_id) group by product_id)
+
+
+
+----------------------------------cart views-----------------------------------
+create view product_varient(product_id,product_name,category_id,subcat_id,varient_id,price,image,varient_1,varient_2,quantity) as (select product_id,product_name,category_id,subcat_id,varient_id,price,image,varient_1,varient_2,quantity from product inner join varient using(product_id))
+
+create view cart_cartproduct(cart_product_id,cart_id,varient_id,product_id,quantity,customer_id) as (select cart_product_id,cart_id,varient_id,product_id,cart_product.quantity,customer_id from (cart_product inner join cart using (cart_id)) inner join customer using(customer_id))
+
+create view cart_view(customer_id,product_name,price,image,varient_1,varient_2,quantity) as (select customer_id,product_name,price,image,varient_1,varient_2,cart_cartproduct.quantity from cart_cartproduct inner join product_varient using(product_id,varient_id))
+
+-------------------------------category sales view----------------------------------
+
