@@ -18,11 +18,11 @@ $product_name="";
 $dimension="";
 $weight="";
 $description="";
-$category_name="";
+// $category_name="";
 $category_id="";
-$category_name="";
+// $category_name="";
 $subcat_id="";
-$subcat_name="";
+// $subcat_name="";
 $varient_id="";
 $SKU="";
 $price="";
@@ -30,6 +30,7 @@ $image="";
 $varient_1="";
 $varient_2="";
 $quantity="";
+$product_id="";
 
 // connect to mysql productbase
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
@@ -48,16 +49,17 @@ function getproduct(){
     $product[2]=$_POST['weight'];
     $product[3]=$_POST['description'];
     $product[4]=$_POST['category_id'];
-    $product[5]=$_POST['category_name'];
+    // $product[5]=$_POST['category_name'];
     $product[6]=$_POST['subcat_id'];
-    $product[7]=$_POST['subcat_name'];
-    $product[8]=$_POST['varient_id'];
-    $product[9]=$_POST['SKU'];
-    $product[10]=$_POST['price'];
-    $product[11]=$_POST['image'];
-    $product[12]=$_POST['varient_1'];
-    $product[13]=$_POST['varient_2'];
-    $product[14]=$_POST['quantity'];
+    // $product[7]=$_POST['subcat_name'];
+    $product[7]=$_POST['varient_id'];
+    $product[8]=$_POST['SKU'];
+    $product[9]=$_POST['price'];
+    $product[10]=$_POST['image'];
+    $product[11]=$_POST['varient_1'];
+    $product[12]=$_POST['varient_2'];
+    $product[13]=$_POST['quantity'];
+    $product[14]=$_POST['product_id'];
    
     return $product;
 }
@@ -68,9 +70,11 @@ if(isset($_POST['Search'])){
     // $search_query="SELECT * FROM `product`,`category` WHERE (product_name='$info[0]' and `category`.category_id='$info[4]') ";
     // $search_query="SELECT * FROM `product` inner join `category` using (category_id) WHERE product_name='$info[0]'";
     // $search_query="SELECT * FROM ((`product` NATURAL INNER JOIN `category`) NATURAL INNER JOIN `subcategory`)NATURAL INNER JOIN `varient`  WHERE (product_name='$info[0]' and varient_1='$info[12]'and varient_2='$info[13]')";
-    $search_query="SELECT * FROM ((`product` NATURAL INNER JOIN `category`) NATURAL INNER JOIN `subcategory`)NATURAL INNER JOIN `varient`  WHERE (product_name='$info[0]')";
-    $search_query2="SELECT * FROM `varient` natural Inner join `product`   WHERE (varient_1='$info[12]'and varient_2='$info[13]')";
+    // $search_query="SELECT * FROM ((`product` NATURAL INNER JOIN `category`) NATURAL INNER JOIN `subcategory`)NATURAL INNER JOIN `varient`  WHERE (product_name='$info[0]')";
+    // $search_query="SELECT * FROM `varient` INNER JOIN `product` using (product_id) where (product_name='$info[0]' and varient_1='$info[11]' and varient_2='$info[12]')";
     // $search_query="SELECT * FROM `product` WHERE product_name='$info[0]' ";
+    $search_query="SELECT * FROM `varient` natural INNER JOIN `product` where (product_name='$info[0]' and varient_1='$info[11]' and varient_2='$info[12]')";
+
     $search_result=mysqli_query($connect,$search_query);
         if($search_result){
             if($search_result){
@@ -83,16 +87,16 @@ if(isset($_POST['Search'])){
                         $weight=$row['weight'];
                         $description=$row['description'];
                         $category_id=$row['category_id'];
-                        $category_name=$row['category_name'];
+                        // $category_name=$row['category_name'];
                         $subcat_id=$row['subcat_id'];
-                        $subcat_name=$row['subcat_name'];
-                        // $varient_id=$row['varient_id'];
-                        // $SKU=$row['SKU'];
-                        // $price=$row['price'];
-                        // $image=$row['image'];
-                        // $varient_1=$row['varient_1'];
-                        // $varient_2=$row['varient_2'];
-                        // $quantity=$row['quantity'];
+                        // $subcat_name=$row['subcat_name'];
+                        $varient_id=$row['varient_id'];
+                        $SKU=$row['SKU'];
+                        $price=$row['price'];
+                        $image=$row['image'];
+                        $varient_1=$row['varient_1'];
+                        $varient_2=$row['varient_2'];
+                        $quantity=$row['quantity'];
                         
                 
                     }
@@ -104,37 +108,37 @@ if(isset($_POST['Search'])){
         }
     }
 
-    $search_result2=mysqli_query($connect,$search_query2);
-    if($search_result2){
-        if($search_result2){
-            if(mysqli_num_rows($search_result2)){
-                while($row = mysqli_fetch_array($search_result2)){
+    // $search_result2=mysqli_query($connect,$search_query2);
+    // if($search_result2){
+    //     if($search_result2){
+    //         if(mysqli_num_rows($search_result2)){
+    //             while($row = mysqli_fetch_array($search_result2)){
     
-                    // $product_name=$row['product_name'];
-                    // $dimension=$row['dimension'];
-                    // $weight=$row['weight'];
-                    // $description=$row['description'];
-                    // $category_id=$row['category_id'];
-                    // $category_name=$row['category_name'];
-                    // $subcat_id=$row['subcat_id'];
-                    // $subcat_name=$row['subcat_name'];
-                    $varient_id=$row['varient_id'];
-                    $SKU=$row['SKU'];
-                    $price=$row['price'];
-                    $image=$row['image'];
-                    $varient_1=$row['varient_1'];
-                    $varient_2=$row['varient_2'];
-                    $quantity=$row['quantity'];
+    //                 // $product_name=$row['product_name'];
+    //                 // $dimension=$row['dimension'];
+    //                 // $weight=$row['weight'];
+    //                 // $description=$row['description'];
+    //                 // $category_id=$row['category_id'];
+    //                 // $category_name=$row['category_name'];
+    //                 // $subcat_id=$row['subcat_id'];
+    //                 // $subcat_name=$row['subcat_name'];
+    //                 $varient_id=$row['varient_id'];
+    //                 $SKU=$row['SKU'];
+    //                 $price=$row['price'];
+    //                 $image=$row['image'];
+    //                 $varient_1=$row['varient_1'];
+    //                 $varient_2=$row['varient_2'];
+    //                 $quantity=$row['quantity'];
                     
             
-                }
-            }else{
-                echo("no varient are available");
-            }
-    }else{
-        echo("result error");
-    }
-}
+    //             }
+    //         }else{
+    //             echo("no varient are available");
+    //         }
+    // }else{
+    //     echo("result error");
+    // }
+// }
 
 }
 
@@ -192,7 +196,7 @@ if(isset($_POST['Search'])){
 <body>
 <h1>Product Update</h1>
 
-<form method="POST" action="product.php">
+<form method="POST" action="varient.php">
 <input type="text" name="product_name" placeholder="Product name" value="<?php echo($product_name);?>"><br><br>
 <input type="text" name="varient_1" placeholder="varient 1 " value="<?php echo($varient_1);?>"><br><br>
 <input type="text" name="varient_2" placeholder="varient 2" value="<?php echo($varient_2);?>"><br><br>
@@ -201,57 +205,15 @@ if(isset($_POST['Search'])){
 <!-- <input type="submit" name="Update" value="Update"><br><br> -->
 
 <table >
-        <tr>
+        
+<tr>
             <td>
-            dimension
-            <input type="text" name="dimension" placeholder="dimension" value="<?php echo($dimension);?>"><br><br>
-                    
-                
+            varient_id
+                <input type="text" name="varient_id"  value="<?php echo($varient_id);?>">
             </td>
-            <td>
-            weight
-                <input type="text" name="weight" maxlength="10" value="<?php echo($weight);?>">
-            </td>
-            </tr>
-            <tr>
-            <td>
-            description
-                <input type="text" name="description"  value="<?php echo($description);?>">
-            </td>
-
             
  
         </tr>
-        <tr>
-            <td>
-            category_id
-                <input type="text" name="category_id"  value="<?php echo($category_id);?>">
-            </td>
-
-            <td>
-            category_name
-                <input type="text" name="category_name"  value="<?php echo($category_name);?>">
-            </td>
-
-            
- 
-        </tr>
-
-        <tr>
-            <td>
-            sub category_id
-                <input type="text" name="subcat_id"  value="<?php echo($subcat_id);?>">
-            </td>
-
-            <td>
-            subcategory_name
-                <input type="text" name="subcat_name"  value="<?php echo($subcat_name);?>">
-            </td>
-
-            
- 
-        </tr>
-
 
         <tr>
             <td>
@@ -285,18 +247,51 @@ if(isset($_POST['Search'])){
 
         <tr>
             <td>
-            varient_id
-                <input type="text" name="varient_id"  value="<?php echo($varient_id);?>">
+            product_id
+                <input type="text" name="product_id"  value="<?php echo($product_id);?>">
             </td>
 
             <td>
-            quantity
-                <input type="text" name="quantity"  value="<?php echo($quantity);?>">
+            dimension
+                <input type="text" name="dimension"  value="<?php echo($dimension);?>">
             </td>
 
             
  
         </tr>
+
+
+
+        <tr>
+            <td>
+            weight
+                <input type="text" name="weight"  value="<?php echo($weight);?>">
+            </td>
+
+            <td>
+            description
+                <input type="text" name="description"  value="<?php echo($description);?>">
+            </td>
+
+            
+ 
+        </tr>
+
+        <tr>
+            <td>
+            category_id
+                <input type="text" name="category_id"  value="<?php echo($category_id);?>">
+            </td>
+
+            <td>
+            subcat_id
+                <input type="text" name="subcat_id"  value="<?php echo($subcat_id);?>">
+            </td>
+
+            
+ 
+        </tr>
+
     </table>
 <br><br>
     
