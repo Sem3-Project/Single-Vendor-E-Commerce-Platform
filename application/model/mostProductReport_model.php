@@ -52,7 +52,7 @@ if(isset($_POST["generate"])){
     
 
     $pdf->SetFont("Arial","",10);
-    $stmt=$db->query("SELECT * from `product_sales_report` where (date>'$sd' and date<'$fd' and summ=(select max(summ) from `product_sales_report`))");
+    $stmt=$db->query("SELECT * from `product_sales_report` where (summ=(select max(summ) from `product_sales_report` where date>'$sd' and date<'$fd') and date>'$sd' and date<'$fd')");
     // $stmt=$db->query("SELECT * from `product_sales_report` where (date>'$sd' and date<'$fd' and summ=(select max(summ) from `product_sales_report`))");
     // $stmt=$db->query("SELECT * from `product_sales_report` where (summ=(select max(summ) from `product_sales_report`))");
     while($data=$stmt->fetch(PDO::FETCH_OBJ)){
@@ -78,7 +78,8 @@ if(isset($_POST["generate"])){
     
 
     $pdf->SetFont("Arial","",10);
-    $stmt2=$db->query("SELECT * from `category_sales_report` where (date>'$sd' and date<'$fd' and total=(select max(total) from `category_sales_report`))");
+    // $stmt2=$db->query("SELECT * from `category_sales_report` where (date>'$sd' and date<'$fd' and total=(select max(total) from `category_sales_report`))");
+    $stmt2=$db->query("SELECT * from `category_sales_report` where (total=(select max(total) from `category_sales_report` where date>'$sd' and date<'$fd') and date>'$sd' and date<'$fd')");
     // $stmt=$db->query("SELECT * from `product_sales_report` where (summ=(select max(summ) from `product_sales_report`))");
     while($data2=$stmt2->fetch(PDO::FETCH_OBJ)){
         $pdf->Cell(55,8,$data2->category_name,1,0,"C");
