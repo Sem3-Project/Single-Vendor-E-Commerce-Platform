@@ -1,6 +1,6 @@
 <!-- /// -->
 <?php
-include '../controller/DbConnection.class.php';
+include '../../controller/DbConnection.class.php';
 $connector = new DbConnection();
 $conn = $connector->connect();
 if(isset($_POST['Search'])){
@@ -8,7 +8,6 @@ if(isset($_POST['Search'])){
 	$category_id=$_POST['category_id'];
 	$subcat_id=$_POST['subcat_id'];
 	$query="SELECT product_name,product_id FROM `product` where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
-	// $query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
 	$search_result=filter($query);
 
 }else{
@@ -57,12 +56,13 @@ $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 
   <a href="#">Log in</a><br>
   <a href="#">Log out</a><br>
+  <a href="#">Report</a><br>
   <a href="#">Sign up</a>
 
 </head>
 <body>
 <div class="container">
-	<form action="Home.php" method="POST">
+	<form action="Home_admin.php" method="POST">
 		<div class="form-group">
         <br><br>
         <input type="text" name="product_name" placeholder="Enter the product name"><br>
@@ -93,11 +93,12 @@ $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 
 		</form>
 <!-- // -->
-<form action="../../removed_items/prduct_details.php" method="POST">
+<form action="../../../removed_items/prduct_details.php" method="POST">
 <div class='element'>
 <h2>Product List</h1>
 		<?php
 			while($row=mysqli_fetch_array($search_result)):?>
+
 
 			<button name="Select" type="submit" value="<?php echo $row["product_id"];?>"><?php
 				echo $row['product_name'];
@@ -117,7 +118,7 @@ $(document).ready(function() {
 	$('#category').on('change', function() {
 			var category_id = this.value;
 			$.ajax({
-				url: "get_subcat.php",
+				url: "../get_subcat.php",
 				type: "POST",
 				data: {
 					category_id: category_id

@@ -11,7 +11,7 @@
   <?php
     $product_id="";
     $product_id=$_POST['Select'];
-    echo $product_id;
+    echo "product id=",$product_id;
   ?>
 
 </body>
