@@ -15,6 +15,15 @@ if(isset($_POST['Search'])){
 	$search_result=filter($query);
 }
 
+
+// if(isset($_POST['Select'])){
+
+// 	$product_id=$_POST['product_id'];
+
+// }
+
+
+
 function filter($query){
 	// include '../controller/DbConnection.class.php';
 	$connector = new DbConnection();
@@ -46,6 +55,7 @@ $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
   <a href="#">Log in</a><br>
+  <a href="#">Log out</a><br>
   <a href="#">Sign up</a>
 
 </head>
@@ -78,23 +88,29 @@ $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
           <input type="submit" name="Search" value="Search">
 		</div>
 
+
+
+		</form>
 <!-- // -->
+<form action="../../removed_items/prduct_details.php" method="POST">
 <div class='element'>
+<h2>Product List</h1>
 		<?php
 			while($row=mysqli_fetch_array($search_result)):?>
-			<?php
+
+
+			<button name="Select" type="submit" value="<?php echo $row["product_id"];?>"><?php
 				echo $row['product_name'];
 				
-			?><br>
-			<?php echo $row['product_id'];?><br>
-			<!-- <input type="submit" name="Show_Details" value="Show Details"><br><br> -->
+			?></button><br><br>
+		
 
 		<?php endwhile;?>
 		
-		</div>
+		</div></form>
 
 <!-- /// -->
-	</form>
+	<!-- </form> -->
 </div>
 <script>
 $(document).ready(function() {
