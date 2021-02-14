@@ -7,11 +7,15 @@ if(isset($_POST['Search'])){
 	$product_name=$_POST['product_name'];
 	$category_id=$_POST['category_id'];
 	$subcat_id=$_POST['subcat_id'];
-	$query="SELECT product_name,product_id FROM `product` where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
+	// $query="SELECT product_name,product_id FROM `product` where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
+	$query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
+
 	$search_result=filter($query);
 
 }else{
-	$query="SELECT product_name,product_id from `product` where product_id<15 order by product_name";
+	// $query="SELECT product_name,product_id from `product` where product_id<15 order by product_name";
+	$query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id)  where product_id<15 order by product_name";
+
 	$search_result=filter($query);
 }
 
@@ -100,6 +104,13 @@ $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 <h2>Product List</h1>
 		<?php
 			while($row=mysqli_fetch_array($search_result)):?>
+
+				<!-- /// image part-->
+		<?php
+		echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['image'] ).'"  width="150" height="150" />';
+		
+		?>
+<!-- //// -->
 
 
 			<button name="Select" type="submit" value="<?php echo $row["product_id"];?>"><?php
