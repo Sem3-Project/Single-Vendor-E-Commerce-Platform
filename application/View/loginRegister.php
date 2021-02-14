@@ -6,7 +6,7 @@ include '../model/SignInRegister.php';
 <head>
 <title>Sign up & Sign in</title>
 </head>
-<link rel="stylesheet" href="../../public/css/login1.css" />
+<link rel="stylesheet" href="../../public/css/login2.css" />
 <link rel="stylesheet" href="../../public/css/register.css" />
 
 <div class="forms">

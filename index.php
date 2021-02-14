@@ -8,7 +8,7 @@ $conn = $connector->connect();
         <html lang="en">
         <meta charset="utf-8">
         <title>Home</title>
-        <link rel="stylesheet" href="public/css/home.css" />
+        <link rel="stylesheet" href="public/css/home3.css" />
     </head>
 
     <body>
@@ -91,4 +91,6 @@ function showSlides() {
 </script>
     </body>
 </html>
+
+ 
 
