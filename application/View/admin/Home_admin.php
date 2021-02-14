@@ -14,17 +14,13 @@ if(isset($_POST['Search'])){
 
 }else{
 	// $query="SELECT product_name,product_id from `product` where product_id<15 order by product_name";
-	$query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id)  where product_id<15 order by product_name";
-
+	// $query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id)  where product_id<15 order by product_name";
+	$query="CALL ProductSelection()";
 	$search_result=filter($query);
 }
 
 
-// if(isset($_POST['Select'])){
 
-// 	$product_id=$_POST['product_id'];
-
-// }
 
 
 
@@ -47,7 +43,18 @@ function filter($query){
 // $connector = new DbConnection();
 // $conn = $connector->connect();
 $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
+
+
+
+
 ?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

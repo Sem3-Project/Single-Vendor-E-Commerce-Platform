@@ -14,8 +14,8 @@ if(isset($_POST['Search'])){
 
 }else{
 	// $query="SELECT product_name,product_id from `product` where product_id<15 order by product_name";
-	$query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id)  where product_id<15 order by product_name";
-
+	// $query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id)  where product_id<15 order by product_name";
+	$query="CALL ProductSelection()";
 	$search_result=filter($query);
 }
 
