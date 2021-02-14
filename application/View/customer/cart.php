@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <title>Cart</title>
-<link href="../../../public/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="../../../public/js/bootstrap.min.js"></script>
-<script src="../../../public/js/jquery-1.11.1.min.js"></script>
+<link href="../../public/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="../../public/js/bootstrap.min.js"></script>
+<script src="../../public/js/jquery-1.11.1.min.js"></script>
 
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="../../../public/css/login1.css" />
+<link rel="stylesheet" href="../../public/css/login1.css" />
 
 <div class="container" style="margin-top:100px;">
 <h1 align='left' margin="100px" ><i><b>Cart</b></i></h1>

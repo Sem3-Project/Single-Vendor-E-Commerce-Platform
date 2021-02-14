@@ -13,8 +13,8 @@ if(isset($_POST['signup'])){
     $confirmPassword = $_POST['confirm_password'];  
 
     if($password == $confirmPassword){  
-        $email = $funObj->isUserExist($conn,$email);  
-        if(!$email){  
+        $emailid = $funObj->isUserExist($conn,$email);  
+        if(!$emailid){  
             $register = $funObj->customerRegister($conn,$first_name, $last_name, $email, $password);  
             if($register){ 
 
