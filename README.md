@@ -4,6 +4,7 @@ Semester 4 group project for Database Systems
 Used technologies
 
 Front End
+- Bootstrap
 - HTML
 - CSS
 - JS

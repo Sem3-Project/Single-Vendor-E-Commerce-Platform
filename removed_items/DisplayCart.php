@@ -22,7 +22,6 @@ if ($result){
     
     while($row = mysqli_fetch_array($result)){
         echo "<tr>";
-            echo"<td><input type='checkbox' name='item'</td>"; 
             echo '<td><img src="data:image/jpeg;base64,'.base64_encode( $row['image'] ).'" width="150" height="150"/></td>';
             echo "<td>" . $row['product_name'] . "</td>";
             echo "<td>" . $row['price'] . "</td>";  
@@ -45,17 +44,24 @@ else{
 }
 
 echo "<input type='submit' name='buy' value='Buy' style='float: right;'>";
-echo "<input type='submit' name='home' value='Home' style='float: left;'>";
+?>
+<html>
+<input type='button' name='home' value='Home' style='float: left' onClick="document.location.href='../../index.php'">
 
+</html>
+<!-- 
+<input type="button" value="Home" class="homebutton" id="btnHome" 
+onClick="document.location.href='some/page'" /> -->
 
-//////////////////not working///////////////////////////
+<!-- //////////////////not working///////////////////////////
 
 if(isset($_POST['buy'])){
     header("Location: ../view/customer/placeOrder.php");
 }
 
 if(isset($_POST['home'])){
+  
     header("Location: ../../index.php");
 }
 
-?>
+?> -->

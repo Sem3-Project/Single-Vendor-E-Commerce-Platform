@@ -1,7 +1,6 @@
 <?php
 
 include 'DbConnection.class.php';
-session_start();
 
 class DisplayCart{
     function __construct() {  
@@ -24,6 +23,27 @@ class DisplayCart{
         $remove = mysqli_query($conn,"DELETE FROM cart_product WHERE cart_product_id='".$cart_product_id."'") or die(mysqli_error($conn));
         return $remove;
     }
+
+    public function num_of_rows($conn,$customer_id){
+        $num = mysqli_query($conn,"SELECT count($customer_id) FROM cart_display") or die(mysqli_error($conn));
+        $row=mysqli_fetch_array($num);
+        return $row[0];
+    }
+
+    // function runQuery($query,$conn) {
+	// 	$result = mysqli_query($this->$conn,$query);
+	// 	while($row=mysqli_fetch_assoc($result)) {
+	// 		$resultset[] = $row;
+	// 	}		
+	// 	if(!empty($resultset))
+	// 		return $resultset;
+	// }
+	
+	// function numRows($query,$conn) {
+	// 	$result  = mysqli_query($this->$conn,$query);
+	// 	$rowcount = mysqli_num_rows($result);
+	// 	return $rowcount;	
+	// }
 
 }
 

@@ -66,17 +66,24 @@ if ($load){
             echo "</tr>";
         }   
         echo "</table>";
-        
+       
     }
+   
 }
 
-echo "<br><br><input type='submit' name='update' value='Update' style='float: left;'>";
 
 if(isset($_POST['update'])){
-    $city = $_POST['city'];
-    $funObj->editProfile($conn,$_POST['customer_id'],$_POST['email'],$_POST['payment_number'],$_POST['first_name'],$_POST['last_name'],$_POST['zip_code'],$_POST['address_line_1'],$_POST['address_line_2'],$city,$_POST['state'],$_POST['mobile_num']);
+    // $city = $_POST['city'];
+    // $funObj->editProfile($conn,$_POST['customer_id'],$_POST['email'],$_POST['payment_number'],$_POST['first_name'],$_POST['last_name'],$_POST['zip_code'],$_POST['address_line_1'],$_POST['address_line_2'],$city,$_POST['state'],$_POST['mobile_num']);
+   
 }
 
+?>
+<html>
+<br><br><input type='submit' name='update' value='Update' style='float: left;'>
+</html>
+
+<?php
 //echo '<br><br><center><input type="submit" class="link" name="update" style="margin-bottom: 50px; width:50%; height:40px;background-color:  rgb(236, 185, 17);" value="Update"></center>';
 
 // if(isset($_POST['update'])){

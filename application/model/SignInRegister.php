@@ -37,7 +37,7 @@ if(isset($_POST['login'])){
     $user = $funObj->login($conn,$emailid, $password);  
     if ($user) {  
         // login Success  
-       header("location:../../index.php");  
+       header("location:../view/customer/dashboard_cus.php");  
     } else {  
         // login Failed  
         echo "<script>alert('Emailid / Password Not Match')</script>";  
