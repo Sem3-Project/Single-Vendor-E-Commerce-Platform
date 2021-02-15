@@ -118,4 +118,6 @@ if (isset($_POST['submit'])){
             $('#make_pdf').submit();
         });
     });
+
 </script>
+

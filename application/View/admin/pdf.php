@@ -13,4 +13,5 @@ class Pdf extends Dompdf{
  }
 }
 
+
 ?>
