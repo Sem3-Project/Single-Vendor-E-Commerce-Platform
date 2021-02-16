@@ -4,11 +4,13 @@ include '../controller/DbConnection.class.php';
 $connector = new DbConnection();
 $conn = $connector->connect();
 if(isset($_POST['Search'])){
-	$product_name=$_POST['product_name'];
+	// $product_name=$_POST['product_name'];
 	$category_id=$_POST['category_id'];
 	$subcat_id=$_POST['subcat_id'];
 	// $query="SELECT product_name,product_id FROM `product` where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
-	$query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
+	// $query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
+	$query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (category_id='$category_id' and subcat_id='$subcat_id')";
+
 	$search_result=filter($query);
 
 }else{
@@ -67,7 +69,7 @@ $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 	<form action="Home.php" method="POST">
 		<div class="form-group">
         <br><br>
-        <input type="text" name="product_name" placeholder="Enter the product name"><br>
+        <!-- <input type="text" name="product_name" placeholder="Enter the product name"><br> -->
 
 		  <label for="sel1">Category</label>
 		  <select class="form-control" id="category" name="category_id">
