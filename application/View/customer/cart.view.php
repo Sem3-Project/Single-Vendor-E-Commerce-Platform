@@ -36,7 +36,7 @@
 
         </table>
         <div class="buttons">
-            <input type="submit" value="Update" name="update">
+            <input type="text" value="Total" name="total" readonly>
             <input type="submit" value="Place Order" name="placeorder">
         </div>
     </form>

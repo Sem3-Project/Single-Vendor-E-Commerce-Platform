@@ -30,6 +30,17 @@ class DisplayCart{
         return $row[0];
     }
 
+    public function getCartProdId ($conn,$customer_id){
+        $cart_prod_id = mysqli_query($conn,"SELECT cart_product_id from cart_display where customer_id='".$customer_id."'");
+        $result = $cart_prod_id->fetch_assoc();
+        return $result['cart_product_id'];
+    }
+
+    public function placeOrder($conn,$customer_id){
+        $order = mysqli_query($conn,"INSERT INTO order(customer_id) VALUES ('".$customer_id."')") or die(mysqli_error($conn));
+        return $order;
+    }
+
     // function runQuery($query,$conn) {
 	// 	$result = mysqli_query($this->$conn,$query);
 	// 	while($row=mysqli_fetch_assoc($result)) {
