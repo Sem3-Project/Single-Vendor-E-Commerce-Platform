@@ -11,9 +11,9 @@ include '../model/Home-Default.model.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-  <a href="#">Log in</a><br>
+  <a href="loginRegister.php">Log in</a><br>
   <a href="#">Log out</a><br>
-  <a href="#">Sign up</a>
+  <a href="loginRegister.php">Sign up</a>
 
 </head>
 <body>
