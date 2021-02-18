@@ -28,5 +28,5 @@ function filter($query){
 }
 
 $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
-// include '../View/customer/Home-customer.php';
+// include '../View/admin/Home_admin.php';
 ?>
