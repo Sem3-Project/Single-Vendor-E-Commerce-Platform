@@ -1,53 +1,7 @@
-<!-- /// -->
 <?php
-include '../../controller/DbConnection.class.php';
-$connector = new DbConnection();
-$conn = $connector->connect();
-if(isset($_POST['Search'])){
-	// $product_name=$_POST['product_name'];
-	$category_id=$_POST['category_id'];
-	$subcat_id=$_POST['subcat_id'];
-	// $query="SELECT product_name,product_id FROM `product` where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
-	// $query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (product_name='$product_name' or (category_id='$category_id' and subcat_id='$subcat_id'))";
-	$query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (category_id='$category_id' and subcat_id='$subcat_id')";
-
-	$search_result=filter($query);
-
-}else{
-	// $query="SELECT product_name,product_id from `product` where product_id<15 order by product_name";
-	// $query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id)  where product_id<15 order by product_name";
-	$query="CALL ProductSelection()";
-	$search_result=filter($query);
-}
-
-
-// if(isset($_POST['Select'])){
-
-// 	$product_id=$_POST['product_id'];
-
-// }
-
-
-
-function filter($query){
-	// include '../controller/DbConnection.class.php';
-	$connector = new DbConnection();
-	$conn = $connector->connect();
-	$filter_result=mysqli_query($conn,$query);
-	return $filter_result;
-
-}
-
-
-// <!-- //// -->
-
-
-
-
-// include '../controller/DbConnection.class.php';
-// $connector = new DbConnection();
-// $conn = $connector->connect();
-$result = mysqli_query($conn,"SELECT * FROM category order by category_name");
+include '../../model/Home-customer.model.php';
+// $conn=mysqli_connect("localhost","root","","singlevendor");
+// $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,12 +13,12 @@ $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-  <a href="#">Log in</a><br>
+  <!-- <a href="#">Log in</a><br> -->
   <a href="#">Log out</a><br>
   <a href="#">Cart</a><br>
   <a href="#">Orders</a><br>
-  <a href="#">Report</a><br>
-  <a href="#">Sign up</a>
+  <a href="orderPDF.php">Order Details Report</a><br>
+  <!-- <a href="#">Sign up</a> -->
 
 </head>
 <body>
@@ -106,20 +60,18 @@ $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 		<?php
 			while($row=mysqli_fetch_array($search_result)):?>
 
-				<!-- /// image part-->
+			<!-- /// image part-->
 		<?php
 		echo '<img src="data:image/jpeg;base64,'.base64_encode( $row['image'] ).'"  width="150" height="150" />';
 		
 		?>
 <!-- //// -->
 
-
 			<button name="Select" type="submit" value="<?php echo $row["product_id"];?>"><?php
 				echo $row['product_name'];
 				
 			?></button><br><br>
-		
-
+			
 		<?php endwhile;?>
 		
 		</div></form>
