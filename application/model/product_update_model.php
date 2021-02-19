@@ -28,4 +28,6 @@ if(isset($_POST['search'])){
 
 
 }  
+
+include '../View/admin/product_update.php';
 ?>
