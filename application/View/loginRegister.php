@@ -1,5 +1,5 @@
 <?php
-include '../model/SignInRegister.php';
+include '../controller/controllerUserData.php';
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +7,8 @@ include '../model/SignInRegister.php';
 <title>Sign up & Sign in</title>
 </head>
 <link rel="stylesheet" href="../../public/css/login2.css" />
-<link rel="stylesheet" href="../../public/css/register.css" />
+<link rel="stylesheet" href="../../public/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../public/css/register1.css" />
 
 <div class="forms">
     <ul class="tab-group">
@@ -16,17 +17,43 @@ include '../model/SignInRegister.php';
     </ul>
     <form action="#" id="login" method="POST" name="login">
           <h1 >Login on C-Smart</h1>
+          <?php
+            if(count($errors) > 0){
+                ?>
+                <div class="alert alert-danger text-center">
+                    <?php
+                    foreach($errors as $showerror){
+                        echo $showerror;
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+          ?>
           <div class="input-field">
             <label for="email">Email</label>
             <input type="email" name="email" required="email" />
             <label for="password">Password</label> 
             <input type="password" name="password" required/>
             <input type="submit" name='login' value="Login" class="button"/>
-            <p class="text-p"> <a href="#">Forgot password?</a> </p>
+            <p class="text-p"> <a href="forgot-password.php">Forgot password?</a> </p>
           </div>
       </form>
       <form action="#" id="signup" name="signup" method="POST">  
           <h1>Sign Up on C-Smart</h1>
+          <?php
+            if(count($errors) > 0){
+              ?>
+              <div class="alert alert-danger text-center">
+                  <?php
+                  foreach($errors as $showerror){
+                      echo $showerror;
+                  }
+                  ?>
+              </div>
+              <?php
+            }
+          ?>
           <div class="input-field">
             <label for="first_name">First Name</label> 
             <input type="text" name="first_name" required="first_name"/>
