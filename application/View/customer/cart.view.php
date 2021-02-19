@@ -31,7 +31,20 @@
                             <td><input type=number value=<?php echo $row['quantity'] ?> min=1>
                             <td><?php echo $row['price'] ?></td>
                             <td></td>
-                            <td><input type='submit' name='remove' value='Remove'>
+                            <td>
+                                <input type='submit' name='remove' value='Remove'>
+
+                                <?php if (isset($_POST['remove'])) {
+                                    $remove = $funObj->removeItem($conn, $cart_product_id);
+
+                                    if ($remove) {
+                                        echo "Records were deleted successfully.";
+                                    } else {
+                                        echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+                                    }
+                                    // header("location:cart.php");  
+                                } ?>
+                            </td>
                         </tr>
 
                     <?php } ?>

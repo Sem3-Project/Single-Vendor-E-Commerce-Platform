@@ -20,7 +20,7 @@ class DisplayCart{
     } 
 
     public function removeItem($conn,$cart_product_id){
-        $remove = mysqli_query($conn,"DELETE FROM cart_product WHERE cart_product_id='".$cart_product_id."'") or die(mysqli_error($conn));
+        $remove = mysqli_query($conn,"DELETE FROM cart_product WHERE 1cart_product_id1='$cart_product_id") or die(mysqli_error($conn));
         return $remove;
     }
 
@@ -40,6 +40,7 @@ class DisplayCart{
         $order = mysqli_query($conn,"INSERT INTO order(customer_id) VALUES ('".$customer_id."')") or die(mysqli_error($conn));
         return $order;
     }
+
 
     // function runQuery($query,$conn) {
 	// 	$result = mysqli_query($this->$conn,$query);

@@ -34,7 +34,7 @@ class SignInRegister {
             return TRUE;  
         }  
         else  
-        {  
+        {  session_destroy();
             return FALSE;  
         }  
     }

@@ -9,15 +9,20 @@ $funObj = new DisplayCart();
 
 $cus_id = 15;
 
-
+$cart_product_id =10;
 $num = $funObj->num_of_rows($conn,$cus_id);
 $result = $funObj->createCart($conn,$cus_id);
 $cart_product_id = $funObj->getCartProdId($conn,$cus_id);
-//$remove = $funObj->removeItem($conn,$cart_product_id);
 
 // if(isset($_POST['remove'])){
-//     //header("location:cart.php");  
-//     echo $remove;
+//     $remove = $funObj->removeItem($conn,$cart_product_id);
+
+//     if($remove){
+//         echo "Records were deleted successfully.";
+//     } else{
+//         echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+//     }
+//    // header("location:cart.php");  
 // }
 //onclick= "resetForm()" 
 

@@ -24,7 +24,7 @@
                 while ($row = mysqli_fetch_array($result)) { ?>
                     <tr>
                         <td><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" width="120" height="120"/>' ?></td>
-                        <td><input type=text value=<?php echo $row['quantity'] ?> readonly>
+                        <td><?php echo $row['quantity'] ?> </td>
                     </tr>
 
                 <?php } ?>
@@ -41,11 +41,11 @@
         <link rel="stylesheet" href="../../public/css/table1.css">
         <tr>
             <th>Total amount</th>
-            <td><input type="text" name="total_payment" readonly></td>
+            <td><?php echo $total_payment ?></td>
         </tr>
         <tr>
             <th>Address</th>
-            <td><input type="text" name="address" readonly value=""></td>
+            <td><?php echo $address ?></td>
         </tr>
         <tr>
             <th>Payment method</th>
