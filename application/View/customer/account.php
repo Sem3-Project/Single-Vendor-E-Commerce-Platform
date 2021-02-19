@@ -3,15 +3,15 @@
         <title>Account</title>
         <meta charset ="UTF-8">
         <meta name="viewpoint" content="width-device-width initial-scale=1.0">
-        <link rel="stylesheet" href="../../public/css/login1.css" />
+        <link rel="stylesheet" href="../../../public/css/login2.css" />
 
     </head>
     <body>
     <h1 align='left' margin="100px" ><i>Account Information</i></h1>
-    <center><img class="user" src="../../public/images/user1.png" ></center>
+    <center><img class="user" src="../../../public/images/user1.png" ></center>
     <form method="POST" action="#">
         <table>
-            <link rel="stylesheet" href="../../public/css/table1.css">
+            <link rel="stylesheet" href="../../../public/css/table1.css">
                 <tr>
                     <td>Customer ID</td> <td> <input type="text" style="width: 100%" name="customer_id" readonly value="<?php echo $customer_id;?>"></td>
                 </tr>
