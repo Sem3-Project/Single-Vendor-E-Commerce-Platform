@@ -16,17 +16,17 @@ class product_update {
     } 
 
     public function search_category($conn,$product_name){
-        $search_result1=mysqli_query($conn,"Select * from (product,category) where product.product_name=$product_name")
+        $search_result1=mysqli_query($conn,"Select * from (product,category) where product.product_name=$product_name");
         return search_result1;
     }
 
     public function search_subcategory($conn,$product_name){
-        $search_result2=mysqli_query($conn,"Select * from (product,subcategory) where product.product_name=$product_name")
+        $search_result2=mysqli_query($conn,"Select * from (product,subcategory) where product.product_name=$product_name");
         return search_result2;
     }
 
     public function search_varient($conn,$product_name){
-        $search_result3=mysqli_query($conn,"Select * from (product,varient) where product.product_name=$product_name")
+        $search_result3=mysqli_query($conn,"Select * from (product,varient) where product.product_name=$product_name");
         return search_result3;
     }
 

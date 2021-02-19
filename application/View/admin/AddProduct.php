@@ -18,7 +18,9 @@
     <tr>
     <td>
         <label for="product_name">Product name:</label><br><br>
-        <input type="text" id="product_name" name="product_name" value="<?php echo $product_name;?>"><br><br>
+        <input type="text" id="product_name" name="product_name"><br><br>
+
+        <!-- <input type="text" id="product_name" name="product_name" value="<?php echo $product_name;?>"><br><br> -->
         <input type="submit" class="link" name="search" style="margin-bottom: 50px;" id="search" value="search">
 
     </td>
@@ -26,7 +28,7 @@
 <!-- image start -->
 
 
-    <!-- <label for="image">Product Image:</label><br><br>
+    <label for="image">Product Image:</label><br><br>
 
     <div class="container">
       <div class="wrapper">
@@ -48,7 +50,7 @@ File name here</div>
       <input id="default-btn" type="file" hidden>
     </div><br><br>
 
-    <script src="../../../public/js/product_update.js"></script> -->
+    <script src="../../../public/js/product_update.js"></script>
 
 
 
