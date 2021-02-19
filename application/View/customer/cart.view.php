@@ -14,8 +14,8 @@
                     <th>Name</th>
                     <th>Quantity</th>
                     <th>Unit price</th>
-                    <th>
-                    <th>
+                    <th>Total price per product</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +30,7 @@
                             <td><?php echo $row['product_name']  ?></td>
                             <td><input type=number value=<?php echo $row['quantity'] ?> min=1>
                             <td><?php echo $row['price'] ?></td>
+                            <td></td>
                             <td><input type='submit' name='remove' value='Remove'>
                         </tr>
 
