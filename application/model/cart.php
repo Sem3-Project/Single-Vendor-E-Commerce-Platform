@@ -9,6 +9,7 @@ $funObj = new DisplayCart();
 
 $cus_id = 15;
 
+
 $num = $funObj->num_of_rows($conn,$cus_id);
 $result = $funObj->createCart($conn,$cus_id);
 $cart_product_id = $funObj->getCartProdId($conn,$cus_id);
@@ -32,6 +33,3 @@ include '../view/customer/cart.view.php';
 //add order_id to order table
 //add item to the order_product table
 //fill each column in tables, order and order_product
-
-?>
-
