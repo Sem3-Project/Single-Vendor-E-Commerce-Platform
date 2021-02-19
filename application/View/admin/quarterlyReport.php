@@ -2,18 +2,23 @@
 include '../../controller/DbConnection.class.php';
 $connector = new DbConnection();
 $conn = $connector->connect();
-
+global $conn;
 if (isset($_POST['submit'])){
-        $getyear = $_POST['year'];
+    $getyear = $_POST['year'];
 
-        $sql ="SELECT QUARTER(date) as Quarter,sum(total_price) as Total from quartely_sales where YEAR(date)=$getyear GROUP BY Quarter ORDER BY Quarter";
-        $result = mysqli_query($conn,$sql);
-        $chart_data="";
-        while ($row = mysqli_fetch_array($result)) { 
-            $productname[]  = $row['Quarter']  ;
-            $sales[] = $row['Total'];
-        }
+    $sql ="SELECT QUARTER(date) as Quarter,sum(total_price) as Total from quartely_sales where YEAR(date)=$getyear GROUP BY Quarter ORDER BY Quarter";
+    $result = mysqli_query($conn,$sql);
+    $chart_data="";
+    while ($row = mysqli_fetch_array($result)) { 
+        $productname[]  = $row['Quarter']  ;
+        $sales[] = $row['Total'];
     }
+    $query1 = "SELECT product_name,sum(total_price) as price, QUARTER(date) as quarter from quartely_sales where YEAR(date)=$getyear group by product_name,quarter";
+    $res = mysqli_query($conn,$query1);
+    
+        
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +31,9 @@ if (isset($_POST['submit'])){
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../../public/css/login2.css" />
+        <link rel="stylesheet" href="../../../public/css/tablenew.css" />
         <title>Graph</title> 
+        
     </head>
     <body >
 
@@ -90,10 +97,57 @@ if (isset($_POST['submit'])){
                     }
                 ?>
                 <div id="piechart" style="width: 100%; max-width:900px; height: 500px; "></div>
-                <p>1 - Quarter 1 (January to March)</p>
-                <p>2 - Quarter 2 (April to June)</p>
-                <p>3 - Quarter 3 (July to September)</p>
-                <p>4 - Quarter 4 (October to December)</p>
+                <br>
+                
+                <?php
+                if (isset($_POST['submit'])){
+                echo " <h4 align='center' style='color:black'>Sales Details</h4>";
+                if(mysqli_num_rows($res) >0 ){
+        echo "<table bortder='1' style='width:95%'>";
+            echo "<tr  style='background-color: black; color:white'>";
+                echo "<th>Product</th>";
+                echo "<th >Quarter 1</th>";
+                echo "<th>Quarter 2</th>";
+                echo "<th>Quarter 3</th>";
+                echo "<th>Quarter 4</th>";
+                
+            echo "</tr>";
+        while($row1 = mysqli_fetch_array($res)){
+            echo "<tr >";
+                echo "<td>" . $row1['product_name'] . "</td>";
+                if ($row1['quarter']==1){
+                echo "<td>" . $row1['price'] . "</td>";
+                }
+                else{
+                    echo "<td>-</td>";
+                }
+                if ($row1['quarter']==2){
+                echo "<td>" . $row1['price'] . "</td>";
+                }
+                else{
+                    echo "<td>-</td>";
+                }
+                if ($row1['quarter']==3){
+                echo "<td>" . $row1['price'] . "</td>";
+                }
+                else{
+                    echo "<td>-</td>";
+                }
+                if ($row1['quarter']==4){
+                echo "<td>" . $row1['price'] . "</td>";
+                }
+                else{
+                    echo "<td>-</td>";
+                }
+            echo "</tr>";
+        }
+        echo "</table>";
+    }
+    
+                }
+
+        ?>
+        <br>
             </div>
         </div>
     </div>
