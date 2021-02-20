@@ -1,13 +1,14 @@
 <?php
 
-include('addProduct.model.php');
+include('update-script.php');
 ?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product Adding</title>
+<title>PHP CRUD Operations</title>
 <style>
     
 body{
@@ -76,24 +77,27 @@ button[type=submit]:hover {
     
     </div>
  
-<p style="color:red"><?php if(!empty($msg)){echo $msg; }else{echo 'empty';}?></p>
-
-    <!-- <form method="post" action="addProduct.model.php"> -->
+    <p style="color:red">
+    
+<?php if(!empty($msg)){echo $msg; }?>
+</p>
     <form method="post" action="">
-          <label>Product Name</label>
-          <input type="text" placeholder="Enter procuct name" name="procuct_name" required><br><br>
-          <label>Description</label>
-          <input type="text" placeholder="Enter description" name="description" ><br><br>
-          <label>weight</label>
-          <input type="text" placeholder="Enter weight(g)" name="weight" ><br><br>
-          <label>dimension</label>
-          <input type="text" placeholder="Enter dimension" name="dimension" ><br><br>
-          <label>sku</label>
-          <input type="text" placeholder="Enter sku" name="sku" ><br><br>
-          <label>price</label>
-          <input type="text" placeholder="Enter price" name="price" ><br><br>
+          <label>Full Name</label>
+        
+<input type="text" placeholder="Enter Full Name" name="full_name" required value="<?php echo isset($editData) ? $editData['full_name'] : '' ?>">
 
-          <button type="submit" name="create">Submit</button>
+          <label>Email Address</label>
+        
+<input type="email" placeholder="Enter Email Address" name="email_address" required value="<?php echo isset($editData) ? $editData['email_address'] : '' ?>">
+
+          <label>City</label>
+<input type="city" placeholder="Enter Full City" name="city" required value="<?php echo isset($editData) ? $editData['city'] : '' ?>">
+
+          <label>Country</label>
+        
+<input type="text" placeholder="Enter Full Country" name="country" required value="<?php echo isset($editData) ? $editData['country'] : '' ?>">
+
+          <button type="submit" name="update">update</button>
     </form>
         </div>
 </div>
