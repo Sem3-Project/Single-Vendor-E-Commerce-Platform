@@ -8,7 +8,7 @@ $conn = $connector->connect();
         <html lang="en">
         <meta charset="utf-8">
         <title>Home</title>
-        <link rel="stylesheet" href="public/css/home3.css" />
+        <link rel="stylesheet" href="public/css/newhome.css" />
     </head>
 
     <body>

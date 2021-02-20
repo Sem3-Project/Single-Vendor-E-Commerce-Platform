@@ -6,7 +6,7 @@ if(isset($_POST['Search'])){
 	// $product_name=$_POST['product_name'];
 	$category_id=$_POST['category_id'];
 	$subcat_id=$_POST['subcat_id'];
-	$query="SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (category_id='$category_id' and subcat_id='$subcat_id')";
+	$query="SELECT product_name,product_id,`image`,price FROM `product` inner join `varient` using(product_id) where (category_id='$category_id' and subcat_id='$subcat_id')";
 
 	$search_result=filter($query);
 

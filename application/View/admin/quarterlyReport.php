@@ -30,12 +30,15 @@ if (isset($_POST['submit'])){
         <link rel="stylesheet" href="../../../public/css/bootstrap.min.css">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../public/css/login2.css" />
+        <link rel="stylesheet" href="../../../public/css/login.css" />
         <link rel="stylesheet" href="../../../public/css/tablenew.css" />
         <title>Graph</title> 
         
     </head>
     <body >
+    <a href="Homeadmin.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px;  position: relative;"></a>
+
+    <a href="../../view/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px;margin-left:25px; position: absolute;"></a>
 
     <center><form method="POST" style="margin-top:80px;fontSize: 25px">
     

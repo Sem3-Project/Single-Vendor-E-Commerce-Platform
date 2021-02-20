@@ -1,0 +1,187 @@
+body {
+    background-color: #e8ebeb; 
+    background-image: url(../../public/images/home.gif);
+    background-repeat: no-repeat;
+    background-size:100%;
+    position: relative;
+    
+    
+  }
+
+  /* Add a black background color to the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #ffffff;
+  width:25%;
+  margin-left: 12%;
+  margin-top: 13px;
+  height: 35px;
+  border-radius: 5px;
+  border:solid 2px rgb(236, 185, 17);
+  position: absolute;
+}
+.topnav1 {
+    overflow: hidden;
+    background-color: #ffffff;
+    width:25%;
+    margin-left: 40%;
+    margin-top: 13px;
+    height: 35px;
+    border-radius: 5px;
+    border:solid 2px rgb(236, 185, 17);
+    position: absolute;
+  }
+
+
+/* Style the links inside the navigation bar */
+/*.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: #bebebe;
+}
+*/
+/* Change the color of links on hover 
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+*/
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+  float: left;
+  border: none;
+  height: 35px;
+  font-size: 17px;
+  width:72%;
+  
+}
+.login{
+  position: absolute;
+  width: 10%;
+  margin-top: 13px;
+  margin-left: 80%;
+  border:solid 2px rgb(236, 185, 17);
+  border-radius: 5px;
+}
+.report{
+    position: absolute;
+    border:solid 2px rgb(236, 185, 17);
+    border-radius: 5px;
+    
+  }
+
+.container .search {
+	border:solid 2px  rgb(236, 185, 17);
+	outline: none;
+	padding: 5px 5px;
+	font-size: 15px;
+	font-weight: 300;
+	background:#ffffff;
+	color: black;
+	cursor: pointer;
+    margin-top: 13px;
+	-moz-transition: all 0.4s ease-in-out;
+	-o-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+    border-radius: 5px;
+    margin-left: 82%;
+}
+.img1 {
+    border-bottom: 60px solid rgb(255, 255, 255);
+    border-top: 40px solid rgb(255, 255, 255);
+    border-left: 2px solid rgb(237, 241, 4);
+    border-right: 2px solid rgb(237, 241, 4);
+    
+  }
+
+  .container1 {
+    position: relative;
+  margin: 0 auto; /* Center it */
+ 
+  }
+  
+  .container1 .content {
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgb(0, 0, 0); /* Fallback color */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 25%; /* Full width */
+    padding: 2px; /* Some padding */
+   
+  }
+  
+
+/* determines the position of the boxes in each row */
+
+
+button{
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    border:0;
+}
+
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}

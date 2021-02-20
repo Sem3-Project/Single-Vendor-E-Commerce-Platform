@@ -10,14 +10,17 @@ $conn = $connector->connect();
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../public/css/login2.css" />
+        <link rel="stylesheet" href="../../../public/css/login.css" />
         <title>Most interst time period</title> 
     </head>
     <body >
+    <a href="Homeadmin.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; position: relative;"></a>
+
+    <a href="../../view/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-left:25px; position: absolute;"></a>
 
     <center><form method="POST" style="margin-top:90px;fontSize: 25px">
     
-    <h2 class="page-header" >Most intersted time period/s to a product</h2>
+    <h2 class="page-header" >Most Intersted Time Period/s to a Product</h2>
         Product:
         <select name="product" width="200px">
         <option disabled selected >-- Select Product --</option>

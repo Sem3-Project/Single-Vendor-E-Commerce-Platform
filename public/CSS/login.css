@@ -1,0 +1,30 @@
+body {
+    background-color: #e8ebeb; 
+    background-image: url(../../public/images/home.gif);
+    background-repeat: no-repeat;
+    background-size:100%;
+    position: relative;
+    
+    
+  }
+
+
+.user{
+    position: relative;
+    width:7%;
+    
+  }
+  .login{
+    position: absolute;
+    width: 10%;
+    margin-top: 5px;
+    margin-left: 80%;
+    border:solid 2px rgb(236, 185, 17);
+    border-radius: 5px;
+  }
+
+  .color{
+    background-color : white;
+    position: relative; 
+    border:1px solid black;
+}
