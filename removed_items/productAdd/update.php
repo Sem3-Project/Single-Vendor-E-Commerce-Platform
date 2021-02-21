@@ -1,58 +1,116 @@
+<!-- using mysql_connect in this page -->
 <?php
 // Include config file
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$name = $address = $salary = "";
-$name_err = $address_err = $salary_err = "";
+$product_name = $category_id = $subcat_id = $description = $weight = $dimension = "";
+$product_name_err = $category_id_err = $subcat_id_err = $description_err = $weight_err = $dimension_err ="";
  
 // Processing form data when form is submitted
-if(isset($_POST["id"]) && !empty($_POST["id"])){
+if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
     // Get hidden input value
-    $id = $_POST["id"];
+    $product_id = $_POST["product_id"];
     
     // Validate name
-    $input_name = trim($_POST["name"]);
-    if(empty($input_name)){
-        $name_err = "Please enter a name.";
-    } elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        $name_err = "Please enter a valid name.";
-    } else{
-        $name = $input_name;
+    $input_product_name= trim($_POST["product_name"]);
+    if(empty($input_product_name)){
+        $product_name_err = "Please enter a product_name.";
+    } 
+    // elseif(!filter_var($input_name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+    //     $name_err = "Please enter a valid name.";
+    // } 
+    else{
+        $product_name = $input_product_name;
     }
     
     // Validate address address
-    $input_address = trim($_POST["address"]);
-    if(empty($input_address)){
-        $address_err = "Please enter an address.";     
+    // $input_address = trim($_POST["address"]);
+    // if(empty($input_address)){
+    //     $address_err = "Please enter an address.";     
+    // } else{
+    //     $address = $input_address;
+    // }
+    
+    // // Validate salary
+    // $input_salary = trim($_POST["salary"]);
+    // if(empty($input_salary)){
+    //     $salary_err = "Please enter the salary amount.";     
+    // } elseif(!ctype_digit($input_salary)){
+    //     $salary_err = "Please enter a positive integer value.";
+    // } else{
+    //     $salary = $input_salary;
+    // }
+
+    $input_category_id = trim($_POST["category_id"]);
+
+    //this one can be replace with following if clause
+    // $category_id = $input_category_id;
+    if(empty($input_category_id)){
+        $category_id_err = "Please enter an category_id.";     
     } else{
-        $address = $input_address;
+        $category_id = $input_category_id;
     }
     
     // Validate salary
-    $input_salary = trim($_POST["salary"]);
-    if(empty($input_salary)){
-        $salary_err = "Please enter the salary amount.";     
-    } elseif(!ctype_digit($input_salary)){
-        $salary_err = "Please enter a positive integer value.";
+    $input_subcat_id = trim($_POST["subcat_id"]);
+    // $subcat_id = $input_subcat_id;
+    if(empty($input_subcat_id)){
+        $subcat_id_err = "Please enter the salary amount.";     
+    } elseif(!ctype_digit($input_subcat_id)){
+        $subcat_id_err = "Please enter a positive integer value.";
     } else{
-        $salary = $input_salary;
+        $subcat_id = $input_subcat_id;
+    }
+
+
+    $input_description = trim($_POST["description"]);
+    // $description = $input_description;
+    if(empty($input_description)){
+        $description_err = "Please enter the description ";     
+    }  else{
+        $description = $input_description;
+    }
+
+    $input_weight = trim($_POST["weight"]);
+    // $weight = $input_weight;
+    if(empty($input_weight)){
+        $weight_err = "Please enter the weight ";     
+    }  else{
+        $weight = $input_weight;
+    }
+
+    $input_dimension = trim($_POST["dimension"]);
+    // $dimension = $input_dimension;
+    if(empty($input_dimension)){
+        $dimension_err = "Please enter the dimension ";     
+    }  else{
+        $dimension = $input_dimension;
     }
     
     // Check input errors before inserting in database
-    if(empty($name_err) && empty($address_err) && empty($salary_err)){
+    if(empty($product_name_err) && empty($category_id_err) && empty($subcat_id_err)&&
+    empty($description_err) && empty($weight_err) && empty($dimension_err)){
         // Prepare an update statement
-        $sql = "UPDATE employees SET name=?, address=?, salary=? WHERE id=?";
-         
+        // $sql = "UPDATE product SET  product_name=?,category_id=?, subcat_id=?, description=?, weight=?, dimension=? WHERE product_id=?";
+        $sql = "UPDATE product SET  product_name=?,category_id=?, subcat_id=?, description=?, weight=?, dimension=? WHERE product_id=?";
+        // echo "oh yeah";
         if($stmt = mysqli_prepare($link, $sql)){
+            
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssi", $param_name, $param_address, $param_salary, $param_id);
+            mysqli_stmt_bind_param($stmt, "siisssi", $param_product_name, $param_category_id, $param_subcat_id,
+            $param_description, $param_weight, $param_dimension, $param_product_id);
             
             // Set parameters
-            $param_name = $name;
-            $param_address = $address;
-            $param_salary = $salary;
-            $param_id = $id;
+            $param_product_name= $product_name;
+            $param_category_id = $category_id;
+            $param_subcat_id = $subcat_id;
+
+            $param_description= $description;
+            $param_weight = $weight;
+            $param_dimension= $dimension;
+
+            $param_product_id = $product_id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -72,18 +130,18 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     mysqli_close($link);
 } else{
     // Check existence of id parameter before processing further
-    if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
+    if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
         // Get URL parameter
-        $id =  trim($_GET["id"]);
+        $product_id =  trim($_GET["product_id"]);
         
         // Prepare a select statement
-        $sql = "SELECT * FROM employees WHERE id = ?";
+        $sql = "SELECT * FROM product WHERE product_id = ?";
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "i", $param_id);
+            mysqli_stmt_bind_param($stmt, "i", $param_product_id);
             
             // Set parameters
-            $param_id = $id;
+            $param_product_id = $product_id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -95,9 +153,13 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
                     // Retrieve individual field value
-                    $name = $row["name"];
-                    $address = $row["address"];
-                    $salary = $row["salary"];
+                    $product_name = $row["product_name"];
+                    $category_id = $row["category_id"];
+                    $subcat_id = $row["subcat_id"];
+
+                    $description = $row["description"];
+                    $weight = $row["weight"];
+                    $dimension = $row["dimension"];
                 } else{
                     // URL doesn't contain valid id. Redirect to error page
                     header("location: error.php");
@@ -145,7 +207,8 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                     </div>
                     <p>Please edit the input values and submit to update the record.</p>
                     <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
-                        <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
+
+                        <!-- <div class="form-group <?php echo (!empty($name_err)) ? 'has-error' : ''; ?>">
                             <label>Name</label>
                             <input type="text" name="name" class="form-control" value="<?php echo $name; ?>">
                             <span class="help-block"><?php echo $name_err;?></span>
@@ -159,8 +222,81 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                             <label>Salary</label>
                             <input type="text" name="salary" class="form-control" value="<?php echo $salary; ?>">
                             <span class="help-block"><?php echo $salary_err;?></span>
+                        </div> -->
+
+                        <div class="form-group <?php echo (!empty($product_name_err)) ? 'has-error' : ''; ?>">
+                            <label>product name</label>
+                            <input type="text" name="product_name" class="form-control" value="<?php echo $product_name; ?>">
+                            <span class="help-block"><?php echo $product_name_err;?></span>
                         </div>
-                        <input type="hidden" name="id" value="<?php echo $id; ?>"/>
+
+                        <!-- <div class="form-group <?php echo (!empty($category_id_err)) ? 'has-error' : ''; ?>">
+                            <label>category id</label>
+                            <input type='int' name="category_id" class="form-control" value="<?php echo $category_id; ?>">
+                            <span class="help-block"><?php echo $category_id_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($subcat_id_err)) ? 'has-error' : ''; ?>">
+                            <label>subcat_id</label>
+                            <input type="int" name="subcat_id" class="form-control" value="<?php echo $subcat_id; ?>">
+                            <span class="help-block"><?php echo $subcat_id_err;?></span>
+                        </div> -->
+
+                        <!-- ---------------------------- -->
+                        <label for="sel1">Category</label>
+		                <select class="form-control" id="category" name="category_id">
+		                <option value="">Select Category</option>
+                        
+		                <?php
+                        $conn=mysqli_connect("localhost","root","","single");
+                        $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
+			            while($row = mysqli_fetch_array($result)) {
+			            ?>
+				            <option value="<?php echo $row["category_id"];?>"><?php echo $row["category_name"];?></option>
+			            <?php
+			            }
+			            ?>
+			            </select>
+                        <!-- ---------------------------------->
+
+                        <!-- ------------------------------------ -->
+                        <label for="sel2">Sub Category</label>
+		                <select class="form-control" id="subcat_id" name="subcat_id">
+		                <option value="">Select sub Category</option>
+                        
+		                <?php
+                        $conn=mysqli_connect("localhost","root","","single");
+                        $result = mysqli_query($conn,"SELECT * FROM subcategory order by category_id");
+			            while($row = mysqli_fetch_array($result)) {
+			            ?>
+				            <option value="<?php echo $row["subcat_id"];?>"><?php echo $row["subcat_name"];?></option>
+			            <?php
+			            }
+			            ?>
+			            </select>
+                        <!-- ----------------------------------- -->
+
+                        
+
+                        <div class="form-group <?php echo (!empty($description_err)) ? 'has-error' : ''; ?>">
+                            <label>description</label>
+                            <textarea name="description" class="form-control"><?php echo $description; ?></textarea>
+                            <span class="help-block"><?php echo $description_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($weight_err)) ? 'has-error' : ''; ?>">
+                            <label>weight</label>
+                            <input type="text" name="weight" class="form-control" value="<?php echo $weight; ?>">
+                            <span class="help-block"><?php echo $weight_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($dimension_err)) ? 'has-error' : ''; ?>">
+                            <label>dimension</label>
+                            <input type="text" name="dimension" class="form-control" value="<?php echo $dimension; ?>">
+                            <span class="help-block"><?php echo $dimension_err;?></span>
+                        </div>
+
+                        <input type="hidden" name="product_id" value="<?php echo $product_id; ?>"/>
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="index.php" class="btn btn-default">Cancel</a>
                     </form>
