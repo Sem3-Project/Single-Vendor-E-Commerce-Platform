@@ -158,7 +158,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		                <option value="">Select Category</option>
                         
 		                <?php
-                        $conn=mysqli_connect("localhost","root","","single");
+                        $conn=mysqli_connect("localhost","root","","singlevendor");
                         $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
@@ -175,7 +175,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		                <option value="">Select sub Category</option>
                         
 		                <?php
-                        $conn=mysqli_connect("localhost","root","","single");
+                        $conn=mysqli_connect("localhost","root","","singlevendor");
                         $result = mysqli_query($conn,"SELECT * FROM subcategory order by category_id");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>

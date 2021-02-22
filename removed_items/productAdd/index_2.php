@@ -87,13 +87,14 @@
                                             echo "<a href='delete.php?product_id=". $row['product_id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
                                         echo "</td>";
 
-                                        // ------------
-                                        echo "<td>";
-                                        echo "<a href='indexVarient.php?product_id=". $row['product_id'] ."' title='Update varient' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
-                                    echo "</td>";
-
-
-                                        // -----------------
+                                        echo"<td>";?>
+                                        <form action="indexVarient.php" method='post'>
+                                        <!-- // echo "<a href='indexVarient.php?product_id=". $row['product_id'] ."' title='Varient' data-toggle='tooltip'><labeL>varient</label></a>"; -->
+                                        <button name="Select" type="submit" value="<?php echo $row["product_id"];?>"><?php
+				                            echo "Varient";?></button>
+                                        
+                                        <?php
+                                        echo "</td>";
                                     echo "</tr>";
                                 }
                                 echo "</tbody>";                            
