@@ -5,7 +5,7 @@ $finishDate="";
 
 
 if(isset($_POST["generate"])){
-    $db=new PDO('mysql:host=localhost;dbname=singlevendor','root','');
+    $db=new PDO('mysql:host=localhost;dbname=singlevendor','admin','1234');
 
 
     // include("../controller/mostProductReport.class.php");

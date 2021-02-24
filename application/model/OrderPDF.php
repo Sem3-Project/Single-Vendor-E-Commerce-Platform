@@ -29,7 +29,7 @@ class myPDF extends FPDF{
 
     function ViewTable($customer_id){//------------------------------this part should be change according to the form--------------------------------
         $connector = new DbConnection();
-        $conn = $connector->connect();
+        $conn = $connector->connect1();
         $funObj = new orderPDF();
         
         // function ViewTable(){//------------------------------this part should be change according to the form--------------------------------

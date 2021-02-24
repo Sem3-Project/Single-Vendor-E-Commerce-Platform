@@ -4,7 +4,7 @@ $subtotal = 0.00;
 
 include '../controller/DisplayCart.class.php';
 $connector = new DbConnection();
-$conn = $connector->connect();
+$conn = $connector->connect1();
 $funObj = new DisplayCart();
 
 $cus_id = 15;

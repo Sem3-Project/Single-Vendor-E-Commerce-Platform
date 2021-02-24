@@ -6,7 +6,7 @@ class orderPDF{
     function __construct() {  
  
         $connector = new DbConnection();
-        $conn = $connector->connect();  
+        $conn = $connector->connect1();  
     }  
     function __destruct() {  
           

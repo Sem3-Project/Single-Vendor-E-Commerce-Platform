@@ -2,7 +2,7 @@
 // include '../controller/DbConnection.class.php';
 // $connector = new DbConnection();
 // $conn = $connector->connect();
-$conn=mysqli_connect("localhost","root","","singlevendor");
+$conn=mysqli_connect("localhost","admin","1234","singlevendor");
 if(isset($_POST['Search'])){
 	// $product_name=$_POST['product_name'];
 	$category_id=$_POST['category_id'];
@@ -19,7 +19,7 @@ if(isset($_POST['Search'])){
 
 
 function filter($query){
-	$conn=mysqli_connect("localhost","root","","singlevendor");
+	$conn=mysqli_connect("localhost","admin","1234","singlevendor");
 	// $connector = new DbConnection();
 	// $conn = $connector->connect();
 	$filter_result=mysqli_query($conn,$query);
