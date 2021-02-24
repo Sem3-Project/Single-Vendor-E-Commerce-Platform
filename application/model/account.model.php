@@ -2,7 +2,7 @@
 include '../controller/Profile.class.php';
 
 $connector = new DbConnection();
-$conn = $connector->connect();
+$conn = $connector->connect1();
 $funObj = new Profile();
 
 $load = $funObj->loadProfile($conn,15); ////set session to get customer id==========================

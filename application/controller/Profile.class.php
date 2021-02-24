@@ -7,7 +7,7 @@ class Profile{
           
         // make the connection with database  
         $connector = new DbConnection();
-        $conn = $connector->connect();  
+        $conn = $connector->connect1();  
     }  
     function __destruct() {  
           

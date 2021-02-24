@@ -1,6 +1,8 @@
 <?php
 
-$conn=mysqli_connect("localhost","root","","singlevendor");
+include '../../controller/DbConnection.class.php';
+$connector = new DbConnection();
+$conn = $connector->connect();
 
 //$insert = mysqli_query($conn,"INSERT INTO admin first_name,last_name,password,email,code,status SELECT first_name,last_name,password,email,code,status FROM customer where")
 
