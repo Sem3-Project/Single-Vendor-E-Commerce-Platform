@@ -1,18 +1,18 @@
 <?php
 // Process delete operation after confirmation
-if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
+if(isset($_POST["varient_id"]) && !empty($_POST["varient_id"])){
     // Include config file
     require_once "addProduct.php";
     
     // Prepare a delete statement
-    $sql = "DELETE FROM product WHERE product_id = ?";
+    $sql = "DELETE FROM varient WHERE varient_id = ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "i", $param_product_id);
+        mysqli_stmt_bind_param($stmt, "i", $param_varient_id);
         
         // Set parameters
-        $param_product_id = trim($_POST["product_id"]);
+        $param_varient_id= trim($_POST["varient_id"]);
         
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
@@ -31,7 +31,7 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
     mysqli_close($link);
 } else{
     // Check existence of id parameter
-    if(empty(trim($_GET["product_id"]))){
+    if(empty(trim($_GET["varient_id"]))){
         // URL doesn't contain id parameter. Redirect to error page
         header("location: error.php");
         exit();
@@ -61,7 +61,7 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger fade in">
-                            <input type="hidden" name="product_id" value="<?php echo trim($_GET["product_id"]); ?>"/>
+                            <input type="hidden" name="varient_id" value="<?php echo trim($_GET["varient_id"]); ?>"/>
                             <p>Are you sure you want to delete this record?</p><br>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
