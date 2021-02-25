@@ -10,8 +10,8 @@
 // }
 
 $host="localhost";
-$user = "root";
-$password = "";
+$user = "admin";
+$password = "1234";
 $productbase = "singlevendor";
 
 $product_name="";
