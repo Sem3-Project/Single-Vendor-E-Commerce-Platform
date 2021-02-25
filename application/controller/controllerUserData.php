@@ -43,14 +43,14 @@ if(isset($_POST['signup'])){
             $mail->isSMTP();                      // Set mailer to use SMTP 
             $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers 
             $mail->SMTPAuth = true;               // Enable SMTP authentication 
-            $mail->Username = 'writerlucky92@gmail.com';   // SMTP username 
-            $mail->Password = 'Writer123@';   // SMTP password 
+            $mail->Username = 'krishalikar@gmail.com';   // SMTP username 
+            $mail->Password = 'Puppy#52';   // SMTP password 
             $mail->SMTPSecure = 'tls';            // Enable TLS encryption, `ssl` also accepted 
             $mail->Port = 587;                    // TCP port to connect to 
             
             // Sender info 
-            $mail->setFrom('writerlucky92@gmail.com', 'supuni'); 
-            $mail->addReplyTo('writerlucky92@gmail.com', 'supuni'); 
+            $mail->setFrom('krishalikar@gmail.com', 'Krishalika'); 
+            $mail->addReplyTo('krishalikar@gmail.com', 'Krishalika'); 
             
             // Add a recipient 
             $mail->addAddress($email); 
@@ -72,7 +72,7 @@ if(isset($_POST['signup'])){
             // Send email 
                     
                         
-            $sender = "From: writerlucky92@gmail.com";
+            $sender = "From: krishalikar@gmail.com";
             if($mail->send()){
                 $info = "We've sent a verification code to your email - $email";
                 $_SESSION['info'] = $info;
@@ -183,14 +183,14 @@ if(isset($_POST['check-email'])){
             $mail->isSMTP();                      // Set mailer to use SMTP 
             $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers 
             $mail->SMTPAuth = true;               // Enable SMTP authentication 
-            $mail->Username = 'writerlucky92@gmail.com';   // SMTP username 
-            $mail->Password = 'Writer123@';   // SMTP password 
+            $mail->Username = 'krishalikar@gmail.com';   // SMTP username 
+            $mail->Password = 'Puppy#52';   // SMTP password 
             $mail->SMTPSecure = 'tls';            // Enable TLS encryption, `ssl` also accepted 
             $mail->Port = 587;                    // TCP port to connect to 
 
             // Sender info 
-            $mail->setFrom('writerlucky92@gmail.com', 'supuni'); 
-            $mail->addReplyTo('writerlucky92@gmail.com', 'supuni'); 
+            $mail->setFrom('krishalikar@gmail.com', 'Krishalika'); 
+            $mail->addReplyTo('krishalikar@gmail.com', 'Krishalika'); 
 
             // Add a recipient 
             $mail->addAddress($email); 
@@ -211,7 +211,7 @@ if(isset($_POST['check-email'])){
 
                         
                         
-            $sender = "From: writerlucky92@gmail.com";
+            $sender = "From: krishalikar@gmail.com";
             if($mail->send()){
                 $info = "We've sent a passwrod reset otp to your email - $email";
                 $_SESSION['info'] = $info;

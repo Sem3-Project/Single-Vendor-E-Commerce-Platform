@@ -44,17 +44,32 @@
             <td><?php echo $total_payment ?></td>
         </tr>
         <tr>
-            <th>Address</th>
-            <td><?php echo $address ?></td>
+            <th>Zip Code</th>
+            <td><input type="text" value="<?php echo $zip_code ?>" name="zip_code" required></td>
+        </tr>
+        <tr>
+            <th>Address Line 1</th>
+            <td><input type="text" value="<?php echo $address_line_1 ?>" name="address_line_1" required></td>
+        </tr>
+        <tr>
+            <th>Address Line 2</th>
+            <td><input type="text" value="<?php echo $address_line_2 ?>" name="address_line_2"></td>
+        </tr>
+        <tr>
+            <th>Main City</th>
+            <td><input type="text" value="<?php echo $city ?>" name="city" required></td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td><input type="text" value="<?php echo $state ?>" name="state" required></td>
         </tr>
         <tr>
             <th>Payment method</th>
             <td>
-                <select name="payment_method">
-                    <option value="not done">---Select---</option>
+                <select name="payment_method" required>
+                    <option value="not selected">---Select---</option>
                     <option value="CashONDelivery">Cash on delivery</option>
                     <option value="VISA">Visa</option>
-                    <option value="Paypal">Paypal</option>
                 </select>
             </td>
         </tr>

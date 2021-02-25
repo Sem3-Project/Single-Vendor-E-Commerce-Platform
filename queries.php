@@ -8,10 +8,20 @@ create view cart_display(customer_id,product_name,price,image,varient_1,varient_
 
 
 Krishalika - view for order - 19/02
-create VIEW `order_confirmation` AS  (select `order_product`.`quantity` AS `quantity`,`order_product`.`order_id` AS `order_id`,`order_product`.`product_price` AS `product_price`,`varient`.`image` AS `image` from (`order_product` join `varient` on(`order_product`.`varient_id` = `varient`.`varient_id`)))
+create VIEW `order_confirmation` AS (select `order_product`.`quantity` AS `quantity`,`order_product`.`order_id` AS `order_id`,`order_product`.`product_price` AS `product_price`,`varient`.`image` AS `image` from (`order_product` join `varient` on(`order_product`.`varient_id` = `varient`.`varient_id`)))
 
 
 
 <option value="CashONDelivery" <?php if ($_POST['CashONDelivery'] == "CashONDelivery") echo 'selected="selected"'; ?>>Cash on delivery</option>
-                    <option value="VISA" <?php if ($_POST['VISA'] == "VISA") echo 'selected="selected"'; ?>>Visa</option>
-                    <option value="Paypal" <?php if ($_POST['Paypal'] == "Paypal") echo 'selected="selected"'; ?>>Paypal</option>
+<option value="VISA" <?php if ($_POST['VISA'] == "VISA") echo 'selected="selected"'; ?>>Visa</option>
+<option value="Paypal" <?php if ($_POST['Paypal'] == "Paypal") echo 'selected="selected"'; ?>>Paypal</option>
+
+
+
+ALTER TABLE `cart` CHANGE `quantity` `total_value` DOUBLE(10,2) NULL DEFAULT NULL;
+
+ALTER TABLE `order` ADD `zip_code` VARCHAR(10) NOT NULL AFTER `total_payment`, ADD `address_line_1` VARCHAR(100) NOT NULL AFTER `zip_code`, ADD `address_line_2` VARCHAR(100) NOT NULL AFTER `address_line_1`, ADD `city` VARCHAR(50) NOT NULL AFTER `address_line_2`, ADD `state` VARCHAR(50) NOT NULL AFTER `city`;
+
+ALTER TABLE `order` CHANGE `payment_method` `payment_method` ENUM('CashONDelivery','VISA''') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+ALTER TABLE `order` CHANGE `payment_method` `payment_method` ENUM('CashONDelivery','VISA') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;

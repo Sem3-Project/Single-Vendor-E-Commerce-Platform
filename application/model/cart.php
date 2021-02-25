@@ -1,6 +1,7 @@
 <?php
 $products = array();
 $subtotal = 0.00;
+$per_product_total = 0.00;
 
 include '../controller/DisplayCart.class.php';
 $connector = new DbConnection();
@@ -13,6 +14,12 @@ $cart_product_id =10;
 $num = $funObj->num_of_rows($conn,$cus_id);
 $result = $funObj->createCart($conn,$cus_id);
 $cart_product_id = $funObj->getCartProdId($conn,$cus_id);
+
+// $max = $funObj->getMaxVarientQty($conn,$cus_id);
+
+// while ($row = mysqli_fetch_array($max)){
+//    // echo $row[];
+// }
 
 // if(isset($_POST['remove'])){
 //     $remove = $funObj->removeItem($conn,$cart_product_id);

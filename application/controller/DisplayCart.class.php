@@ -41,6 +41,20 @@ class DisplayCart{
         return $order;
     }
 
+    public function getMaxVarientQty ($conn,$customer_id){
+        $varient = mysqli_query($conn,"SELECT cart_product_id FROM cart_display WHERE customer_id='".$customer_id."' ORDER BY cart_product_id");
+       // $qty_array = [];
+      
+        // while ($row = mysqli_fetch_array($varient)) {
+        //     $select_qty = mysqli_query($conn,"SELECT quantity FROM varient NATURAL JOIN cart_product ON $row ORDER BY cart_product_id");
+        //     array_push($qty_array,$select_qty);
+        // }
+             
+        // $varient_id_from_cart_prod = mysqli_query($conn,"SELECT varient_id FROM cart_product WHERE cart_product_id='$varient_result'");
+        // $cart_prod_res = $varient_id_from_cart_prod->fetch_assoc();
+        //$qty = $select_qty->fetch_assoc();
+        return $varient;
+    }
 
     // function runQuery($query,$conn) {
 	// 	$result = mysqli_query($this->$conn,$query);
@@ -58,5 +72,3 @@ class DisplayCart{
 	// }
 
 }
-
-?>
