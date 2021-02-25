@@ -2,12 +2,13 @@
 
 <head>
     <title>Cart</title>
+    <script src="../../../public/js/jquery.js"></script>
 </head>
 
 <div class="cart content-wrapper">
     <h1>Shopping Cart</h1>
     <form action="../../model/cart.php" method="post">
-    <input type='submit' name='remove' value='Remove from Cart'>
+        <input type='submit' name='remove' value='Remove from Cart'>
         <table width=100%>
             <thead>
                 <tr>
@@ -28,10 +29,17 @@
                     <?php else :
                     while ($row = mysqli_fetch_array($result)) { ?>
                         <tr>
-                            <td><input type="checkbox" name="checkbox[]" value=<?php echo $row['customer_id']?>></td>
+                            <td><input type="checkbox" name="checkbox[]" value=<?php echo $row['customer_id'] ?>></td>
                             <td><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" width="120" height="120"/>' ?></td>
                             <td><?php echo $row['product_name']  ?></td>
-                            <td><input type=number value=<?php echo $row['quantity'] ?> min=1 max="">
+                            <td><input type=number value=<?php echo $row['quantity'] ?> required min=1 max=<?php echo $maxQty ?> >
+                                <script>
+                                    $('input[type="number"]').keydown(function(e) {
+                                        e.preventDefault();
+                                    });
+                                </script>
+
+                            </td>
                             <td><?php echo $row['price'] ?></td>
                             <td></td>
                             <td>
@@ -60,5 +68,7 @@
         </div>
     </form>
 </div>
+
+
 
 </html>

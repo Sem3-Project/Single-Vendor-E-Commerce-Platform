@@ -15,6 +15,8 @@ $num = $funObj->num_of_rows($conn,$cus_id);
 $result = $funObj->createCart($conn,$cus_id);
 $cart_product_id = $funObj->getCartProdId($conn,$cus_id);
 
+$maxQty = $funObj->getMaxVarientQty($conn,$cus_id);
+
 // $max = $funObj->getMaxVarientQty($conn,$cus_id);
 
 // while ($row = mysqli_fetch_array($max)){

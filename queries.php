@@ -25,3 +25,6 @@ ALTER TABLE `order` ADD `zip_code` VARCHAR(10) NOT NULL AFTER `total_payment`, A
 ALTER TABLE `order` CHANGE `payment_method` `payment_method` ENUM('CashONDelivery','VISA''') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
 
 ALTER TABLE `order` CHANGE `payment_method` `payment_method` ENUM('CashONDelivery','VISA') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL;
+
+user code - not sure
+CREATE USER 'customer'@'%' IDENTIFIED VIA mysql_native_password USING '***';GRANT ALL PRIVILEGES ON *.* TO 'customer'@'%' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `singlevendor`.* TO 'customer'@'%';

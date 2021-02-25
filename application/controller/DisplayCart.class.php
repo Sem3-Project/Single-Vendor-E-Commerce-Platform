@@ -42,7 +42,16 @@ class DisplayCart{
     }
 
     public function getMaxVarientQty ($conn,$customer_id){
-        $varient = mysqli_query($conn,"SELECT cart_product_id FROM cart_display WHERE customer_id='".$customer_id."' ORDER BY cart_product_id");
+        $cart_prod_id = mysqli_query($conn,"SELECT cart_product_id from cart_display where customer_id='".$customer_id."'");
+        $result = $cart_prod_id->fetch_assoc();
+        $id =  $result['cart_product_id'];       
+        $varientID_qry = mysqli_query($conn, "SELECT varient_id FROM cart_product WHERE cart_product_id=$id");
+        $result2 = $varientID_qry->fetch_assoc();
+        $varient_id = $result2['varient_id'];
+        $get_qty = mysqli_query($conn, "SELECT quantity FROM varient WHERE varient_id=$varient_id");
+        $result3 = $get_qty->fetch_assoc();
+        return $result3['quantity'];
+        //$varient = mysqli_query($conn,"SELECT cart_product_id FROM cart_display WHERE customer_id='".$customer_id."' ORDER BY cart_product_id");
        // $qty_array = [];
       
         // while ($row = mysqli_fetch_array($varient)) {
@@ -53,7 +62,7 @@ class DisplayCart{
         // $varient_id_from_cart_prod = mysqli_query($conn,"SELECT varient_id FROM cart_product WHERE cart_product_id='$varient_result'");
         // $cart_prod_res = $varient_id_from_cart_prod->fetch_assoc();
         //$qty = $select_qty->fetch_assoc();
-        return $varient;
+  
     }
 
     // function runQuery($query,$conn) {
