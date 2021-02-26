@@ -44,7 +44,7 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <h2 class="pull-left">Varient Details</h2>
-                        <a href='VarientCreate.php' class="btn btn-success pull-right">Add New Varient</a>
+                        <!-- <a href='VarientCreate.php' class="btn btn-success pull-right">Add New Varient</a> -->
                        
 
                     </div>
@@ -59,6 +59,7 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
                         // Get URL parameter
                         $product_id =  trim($_GET["product_id"]);
                     }
+                    echo "<a href='VarientCreate.php?product_id=". $product_id ."' class='btn btn-success pull-right'>Add New Varient</a><br><br>";   
                     // echo $product_id;
 // echo $product_id;
                     // if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
@@ -108,9 +109,12 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
                                         echo "</td>";
 
                                     echo "</tr>";
+                                    
+                                    
                                 }
-                                echo "</tbody>";                            
-                            echo "</table>";
+                                echo "</tbody>"; 
+                                echo "</table>";                         
+                                // echo "<a href='VarientCreate.php?product_id=". $product_id ."' class='btn btn-success pull-right'>Add New Varient</a>";   
                             // Free result set
                         mysqli_free_result($result);
                         } else{

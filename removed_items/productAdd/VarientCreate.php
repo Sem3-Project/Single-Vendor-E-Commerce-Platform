@@ -1,6 +1,7 @@
 <?php 
 // Include the database configuration file  
 require_once 'addProduct.php'; 
+
 // if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
 //     // Get hidden input value
 //     $product_id = $_POST["product_id"];
@@ -9,8 +10,8 @@ require_once 'addProduct.php';
 //     // Get URL parameter
 //     $product_id =  trim($_GET["product_id"]);
 // }
-// If file upload form is submitted 
-// $status = $statusMsg = ''; 
+// echo $product_id;
+
 if(isset($_POST["submit"])){ 
     $product_id=$_POST['product_id'];
     $SKU=$_POST['SKU'];

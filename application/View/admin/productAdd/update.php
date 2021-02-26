@@ -248,7 +248,7 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
 		                <option value="">Select Category</option>
                         
 		                <?php
-                        $conn=mysqli_connect("localhost","root","","singlevendor");
+                        $conn=mysqli_connect("localhost","admin","1234","singlevendor");
                         $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
@@ -265,7 +265,7 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
 		                <option value="">Select sub Category</option>
                         
 		                <?php
-                        $conn=mysqli_connect("localhost","root","","singlevendor");
+                        $conn=mysqli_connect("localhost","admin","1234","singlevendor");
                         $result = mysqli_query($conn,"SELECT * FROM subcategory order by category_id");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
