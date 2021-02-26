@@ -80,7 +80,7 @@ if(isset($_POST["submit"])){
     <input type="text" name="SKU" required><br><br>
 
     <label>Enter price:</label>
-    <input type="text" name="price" required><br><br>
+    <input type="number" name="price" step=0.01 required><br><br>
 
     <label>Select Image File:</label>
     <input type="file" name="image" required><br><br>
@@ -92,7 +92,7 @@ if(isset($_POST["submit"])){
     <input type="text" name="varient_2"><br><br>
 
     <label>Enter quantity:</label>
-    <input type="int" name="quantity" required><br><br>
+    <input type="number" name="quantity" step=1 required><br><br>
 
     
     <input type="submit" name="submit" value="Upload">
