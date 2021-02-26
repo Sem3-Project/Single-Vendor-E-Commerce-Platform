@@ -7,7 +7,7 @@ class Order
     {
 
         $connector = new DbConnection();
-        $conn = $connector->connect();
+        $conn = $connector->connect1();
     }
     function __destruct()
     {
@@ -23,14 +23,20 @@ class Order
     {
         $address = mysqli_query($conn, "SELECT `zip_code`,`address_line_1`,`address_line_2`,`city`,`state` FROM address WHERE customer_id='" . $customer_id . "'") or die(mysqli_error($conn));
         $result = mysqli_fetch_assoc($address);
-       // return implode("<br>", $result);
+        // return implode("<br>", $result);
         return $result;
     }
 
-    public function saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1,$address_line_2, $city,$state)
+    public function saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state)
     {
         $updateQr = mysqli_query($conn, "UPDATE `order` SET `date` = '$date' ,`payment_method`='$payment_method',`zip_code`='$zip_code',`address_line_1`='$address_line_1',`address_line_2`='$address_line_2',`city`='$city',`state`='$state' WHERE `order_id`='$order_id'");
         return $updateQr;
+    }
+
+    public function saveDelivery($conn, $order_id, $delivery_method)
+    {
+        $insertDelivery = mysqli_query($conn, "INSERT INTO delivery(order_id,delivery_method) VALUES('" . $order_id . "','" . $delivery_method . "')");
+        return $insertDelivery;
     }
 
     public function num_of_rows($conn, $order_id)

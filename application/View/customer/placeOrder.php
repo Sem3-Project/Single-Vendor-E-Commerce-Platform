@@ -73,6 +73,17 @@
                 </select>
             </td>
         </tr>
+        <tr>
+            <th>Delivery method</th>
+            <td>
+                <select name="delivery_method" required>
+                    <!-- <option value="not selected">---Select---</option> -->
+                    <option value="Postal">Postal</option>
+                    <option value="Courier">Courier</option>
+                    <option value="In-store_pickup">In store pickup</option>
+                </select>
+            </td>
+        </tr>
     </table>
     <input type="submit" value="Back" name="back" readonly>
     <input type="submit" value="Confirm" name="confirm">

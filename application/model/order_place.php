@@ -3,7 +3,7 @@
 include '../controller/place_order.class.php';
 
 $connector = new DbConnection();
-$conn = $connector->connect();
+$conn = $connector->connect1();
 $funObj = new Order();
 
 $order_id = $funObj->get_orderID($conn, 15);
@@ -29,13 +29,15 @@ if (isset($_POST['confirm'])) {
     $address_line_2 = $_POST['address_line_2'];
     $city = $_POST['city'];
     $state = $_POST['state'];
-    $insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
+    $delivery_method = $_POST['delivery_method'];
 
-    if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
-        echo "<script>alert('Please enter a payment method')</script>";
-    } else {
-        header("location:../view/customer/order_status.php");
-    }
+    // if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
+    //     echo "<script>alert('Please enter payment method')</script>";
+    // } else {
+    $insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
+    $del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
+    header("location:../view/customer/order_status.php");
+    // }
 }
 
 if (isset($_POST['back'])) {

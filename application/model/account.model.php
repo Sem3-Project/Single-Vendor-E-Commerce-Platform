@@ -42,4 +42,3 @@ if ($load){
 //$submit_value = "Update";
 
 include '../view/customer/account.php';
-?>

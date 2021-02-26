@@ -10,12 +10,12 @@ $funObj = new DisplayCart();
 
 $cus_id = 15;
 
-$cart_product_id =10;
-$num = $funObj->num_of_rows($conn,$cus_id);
-$result = $funObj->createCart($conn,$cus_id);
-$cart_product_id = $funObj->getCartProdId($conn,$cus_id);
+$cart_product_id = 10;
+$num = $funObj->num_of_rows($conn, $cus_id);
+//$result = $funObj->createCart($conn, $cus_id);
+$cart_product_id = $funObj->getCartProdId($conn, $cus_id);
 
-$maxQty = $funObj->getMaxVarientQty($conn,$cus_id);
+$maxQty = $funObj->getMaxVarientQty($conn, $cus_id);
 
 // $max = $funObj->getMaxVarientQty($conn,$cus_id);
 
@@ -36,11 +36,11 @@ $maxQty = $funObj->getMaxVarientQty($conn,$cus_id);
 //onclick= "resetForm()" 
 
 // if(isset($_POST['placeorder'])){
-  
+
 // }
 
 
-include '../view/customer/cart.view.php';
+include '../view/customer/cart_view.php';
 
 
 //remove from cart
