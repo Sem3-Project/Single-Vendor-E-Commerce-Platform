@@ -5,10 +5,10 @@ require_once 'addProduct.php';
 //     // Get hidden input value
 //     $product_id = $_POST["product_id"];
 // }
-// if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
-//     // Get URL parameter
-//     $product_id =  trim($_GET["product_id"]);
-// }
+if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
+    // Get URL parameter
+    $product_id =  trim($_GET["product_id"]);
+}
 // If file upload form is submitted 
 // $status = $statusMsg = ''; 
 if(isset($_POST["submit"])){ 
@@ -34,8 +34,12 @@ if(isset($_POST["submit"])){
             // Insert image content into database 
             // $insert = mysqli_query("INSERT into image (product_id,SKU,price,image, varient_1,varient_2,quantity) 
             // VALUES ('$product_id','$SKU','$price','$imgContent','$varient_1','$varient_2','$quantity' )");
+      
             $insert = $link->query("INSERT into varient (product_id, SKU, price, image, varient_1, varient_2, quantity) 
             VALUES ('$product_id','$SKU','$price','$imgContent','$varient_1','$varient_2','$quantity')");
+            // $insert = $link->query("INSERT into varient (product_id, SKU, price, image, varient_1, varient_2, quantity) 
+            // VALUES ('$product_id','$SKU','$price','$imgContent','$varient_1','$varient_2','$quantity') where $product_id=?");
+            
         // echo "done"; 
     }}
              
@@ -70,25 +74,25 @@ if(isset($_POST["submit"])){
 <form action="VarientCreate.php" method="post" enctype="multipart/form-data">
 
     <label>Enter product id:</label>
-    <input type="int" name="product_id"><br><br>
+    <input type="int" name="product_id" value=<?php echo $product_id;?>><br><br>
 
     <label>Enter SKU:</label>
-    <input type="text" name="SKU"><br><br>
+    <input type="text" name="SKU" required><br><br>
 
     <label>Enter price:</label>
-    <input type="text" name="price"><br><br>
+    <input type="number" name="price" step=0.01 required><br><br>
 
     <label>Select Image File:</label>
-    <input type="file" name="image"><br><br>
+    <input type="file" name="image" required><br><br>
 
     <label>Enter varient 1:</label>
-    <input type="text" name="varient_1"><br><br>
+    <input type="text" name="varient_1" required><br><br>
     
     <label>Enter varient 2:</label>
     <input type="text" name="varient_2"><br><br>
 
     <label>Enter quantity:</label>
-    <input type="int" name="quantity"><br><br>
+    <input type="number" name="quantity" step=1 required><br><br>
 
     
     <input type="submit" name="submit" value="Upload">

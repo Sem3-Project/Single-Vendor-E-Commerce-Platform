@@ -59,6 +59,7 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
                         // Get URL parameter
                         $product_id =  trim($_GET["product_id"]);
                     }
+                    
                     // echo $product_id;
 // echo $product_id;
                     // if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
@@ -108,8 +109,10 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
                                         echo "</td>";
 
                                     echo "</tr>";
+                                    // echo "<a href='VarientCreate.php?varient_id=". $row['product_id'] ."' class='btn btn-success pull-right'>Add New Varient</a>";    
                                 }
-                                echo "</tbody>";                            
+                                echo "</tbody>"; 
+                                                      
                             echo "</table>";
                             // Free result set
                         mysqli_free_result($result);

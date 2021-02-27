@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_description = trim($_POST["description"]);
     // $description = $input_description;
     if(empty($input_description)){
-        $description_err = "Please enter the description ";     
+        // $description_err = "Please enter the description ";     
     }  else{
         $description = $input_description;
     }
@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_weight = trim($_POST["weight"]);
     // $weight = $input_weight;
     if(empty($input_weight)){
-        $weight_err = "Please enter the weight ";     
+        // $weight_err = "Please enter the weight ";     
     }  else{
         $weight = $input_weight;
     }
@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_dimension = trim($_POST["dimension"]);
     // $dimension = $input_dimension;
     if(empty($input_dimension)){
-        $dimension_err = "Please enter the dimension ";     
+        // $dimension_err = "Please enter the dimension ";     
     }  else{
         $dimension = $input_dimension;
     }
@@ -154,11 +154,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <!-- -------------------------------------- -->
                         <label for="sel1">Category</label>
-		                <select class="form-control" id="category" name="category_id">
+		                <select class="form-control" id="category" name="category_id" required>
 		                <option value="">Select Category</option>
                         
 		                <?php
-                        $conn=mysqli_connect("localhost","root","","singlevendor");
+                        $conn=mysqli_connect("localhost","admin","1234","singlevendor");
                         $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
@@ -171,15 +171,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         <!-- ------------------------------------ -->
                         <label for="sel2">Sub Category</label>
-		                <select class="form-control" id="subcat_id" name="subcat_id">
+		                <select class="form-control" id="subcat_id" name="subcat_id" required>
 		                <option value="">Select sub Category</option>
-                        
+
+
+                        <!-- <label for="sel1">Sub Category</label>
+		  <select class="form-control" id="subcat_id" name="subcat_id">
+			
+		  </select> -->
+                        <!-- ///////////////////// -->
 		                <?php
-                        $conn=mysqli_connect("localhost","root","","singlevendor");
-                        $result = mysqli_query($conn,"SELECT * FROM subcategory order by category_id");
+                        $conn=mysqli_connect("localhost","admin","1234","singlevendor");
+                        $result = mysqli_query($conn,"SELECT * FROM subcategory inner join category using(category_id) order by category_id");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
-				            <option value="<?php echo $row["subcat_id"];?>"><?php echo $row["subcat_name"];?></option>
+				            <option value="<?php echo $row["subcat_id"];?>"><?php echo $row["category_name"];?> - <?php echo $row["subcat_name"];?></option>
 			            <?php
 			            }
 			            ?>
@@ -221,7 +227,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 
 
-
+    
 
 </body>
 </html>

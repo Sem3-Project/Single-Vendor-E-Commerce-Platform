@@ -244,14 +244,15 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
 
                         <!-- ---------------------------- -->
                         <label for="sel1">Category</label>
-		                <select class="form-control" id="category" name="category_id">
+		                <select class="form-control" id="category" name="category_id" >
 		                <option value="">Select Category</option>
                         
 		                <?php
-                        $conn=mysqli_connect("localhost","root","","singlevendor");
+                        $conn=mysqli_connect("localhost","admin","1234","singlevendor");
                         $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
+                        
 				            <option value="<?php echo $row["category_id"];?>"><?php echo $row["category_name"];?></option>
 			            <?php
 			            }
@@ -265,11 +266,11 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
 		                <option value="">Select sub Category</option>
                         
 		                <?php
-                        $conn=mysqli_connect("localhost","root","","singlevendor");
-                        $result = mysqli_query($conn,"SELECT * FROM subcategory order by category_id");
+                        $conn=mysqli_connect("localhost","admin","1234","singlevendor");
+                        $result = mysqli_query($conn,"SELECT * FROM subcategory inner join category using(category_id) order by category_id");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
-				            <option value="<?php echo $row["subcat_id"];?>"><?php echo $row["subcat_name"];?></option>
+				            <option value="<?php echo $row["subcat_id"];?>"><?php echo $row["category_name"];?> - <?php echo $row["subcat_name"];?></option>
 			            <?php
 			            }
 			            ?>
