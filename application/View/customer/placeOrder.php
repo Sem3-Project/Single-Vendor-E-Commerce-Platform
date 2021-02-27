@@ -16,19 +16,20 @@
             </tr>
         </thead>
         <tbody>
-            <?php if (empty($num)) : ?>
+            <!-- <--?php if (empty($num)) : ?>
                 <tr>
                     <td colspan="5" style="text-align:center;">You have no orders placed yet</td>
                 </tr>
-                <?php else :
-                while ($row = mysqli_fetch_array($result)) { ?>
-                    <tr>
-                        <td><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" width="120" height="120"/>' ?></td>
-                        <td><?php echo $row['quantity'] ?> </td>
-                    </tr>
+                <--?php else : -->
+            <?php
+            while ($rows = mysqli_fetch_array($result)) { ?>
+                <tr>
+                    <td><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($rows['image']) . '" width="120" height="120"/>' ?></td>
+                    <td><?php echo $rows['quantity'] ?> </td>
+                </tr>
 
-                <?php } ?>
-            <?php endif; ?>
+            <?php } ?>
+            <!-- <--?php endif; ?> -->
 
     </table>
 </form>

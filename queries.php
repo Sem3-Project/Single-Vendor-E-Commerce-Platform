@@ -29,6 +29,12 @@ ALTER TABLE `order` CHANGE `payment_method` `payment_method` ENUM('CashONDeliver
 user code - not sure
 CREATE USER 'customer'@'%' IDENTIFIED VIA mysql_native_password USING '***';GRANT ALL PRIVILEGES ON *.* TO 'customer'@'%' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;GRANT ALL PRIVILEGES ON `singlevendor`.* TO 'customer'@'%';
 
-
+================NEW=============
 ALTER TABLE `cart_product` ADD `selected` TEXT NOT NULL AFTER `quantity`;
 ALTER TABLE `cart_product` CHANGE `selected` `selected` BOOLEAN NOT NULL;
+create VIEW `confirm_order` AS (select `cart_product`.`quantity` AS `quantity`,`cart_product`.`cart_product_id` AS `cart_product_id`,`cart_product`.`cart_id` AS `cart_id`,`varient`.`image` AS `image` from (`cart_product` join `varient` on(`cart_product`.`varient_id` = `varient`.`varient_id`)) WHERE cart_product.selected=1)
+
+
+
+
+create VIEW `order_confirm` AS (select `cart_product`.`quantity` AS `quantity`,`cart_product`.`cart_product_id` AS `cart_product_id`,`cart_product`.`cart_id` AS `cart_id`,`varient`.`image` AS `image` from (`cart_product` join `varient` on(`cart_product`.`varient_id` = `varient`.`varient_id`)))

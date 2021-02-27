@@ -13,13 +13,14 @@ try {
 
     $cust_id = 15;
 
-    $order_id = $funObj->get_orderID($conn, $cust_id);
+    // $order_id = $funObj->get_orderID($conn, $cust_id);
+    $cart_id = $funObj->getCartId($conn, $cust_id);
 
-    $num = $funObj->num_of_rows($conn, $order_id);
-    $result = $funObj->loadItems($conn, $order_id);
-    $total_pay = $funObj->getTotalPayment($conn, $order_id);
+  //  $num = $funObj->num_of_rows($conn, $order_id);
+    $result = $funObj->loadItems($conn, $cart_id);
+    $total_pay = $funObj->getTotalPayment($conn, $cust_id);
     $row = $total_pay->fetch_assoc();
-    $total_payment = $row['total_payment'];
+    $total_payment = $row['total_value'];
 
     $address = $funObj->getAddress($conn, $cust_id);
     $zip_code = $address['zip_code'];
