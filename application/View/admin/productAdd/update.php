@@ -67,7 +67,7 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
     $input_description = trim($_POST["description"]);
     // $description = $input_description;
     if(empty($input_description)){
-        $description_err = "Please enter the description ";     
+        // $description_err = "Please enter the description ";     
     }  else{
         $description = $input_description;
     }
@@ -75,7 +75,7 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
     $input_weight = trim($_POST["weight"]);
     // $weight = $input_weight;
     if(empty($input_weight)){
-        $weight_err = "Please enter the weight ";     
+        // $weight_err = "Please enter the weight ";     
     }  else{
         $weight = $input_weight;
     }
@@ -83,7 +83,7 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
     $input_dimension = trim($_POST["dimension"]);
     // $dimension = $input_dimension;
     if(empty($input_dimension)){
-        $dimension_err = "Please enter the dimension ";     
+        // $dimension_err = "Please enter the dimension ";     
     }  else{
         $dimension = $input_dimension;
     }
@@ -243,9 +243,19 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
                         </div> -->
 
                         <!-- ---------------------------- -->
+                        <?php
+                        $conn=mysqli_connect("localhost","admin","1234","singlevendor");
+                        $result2 = mysqli_query($conn,"SELECT * FROM category where category_id=$category_id");
+                        $result3=mysqli_query($conn,"SELECT * FROM subcategory where subcat_id=$subcat_id");
+                        $cat=mysqli_fetch_array($result2);
+                        $subcat=mysqli_fetch_array($result3);
+                        // echo $cat["category_name"];
+                        // echo $subcat["subcat_name"];
+                        ?>
                         <label for="sel1">Category</label>
 		                <select class="form-control" id="category" name="category_id" >
-		                <option value="">Select Category</option>
+		                <option value=""><?php echo $cat["category_name"]; ?></option>
+                        <!-- <option value="">Select category name</option> -->
                         
 		                <?php
                         $conn=mysqli_connect("localhost","admin","1234","singlevendor");
@@ -263,10 +273,11 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
                         <!-- ------------------------------------ -->
                         <label for="sel2">Sub Category</label>
 		                <select class="form-control" id="subcat_id" name="subcat_id">
-		                <option value="">Select sub Category</option>
-                        
+		                <option value=""><?php echo $subcat["subcat_name"]; ?></option>
+                        <!-- <option value="">Select subcategory name</option> -->
+
 		                <?php
-                        $conn=mysqli_connect("localhost","admin","1234","singlevendor");
+                        // $conn=mysqli_connect("localhost","admin","1234","singlevendor");
                         $result = mysqli_query($conn,"SELECT * FROM subcategory inner join category using(category_id) order by category_id");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
