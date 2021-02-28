@@ -70,9 +70,9 @@ smtp.gmail.com
             $mail->Body    = $message; 
             
             // Send email            
-            $sender = "From: 
-csmartcse@gmail.com
-";
+
+            $sender = "From: csmartcse@gmail.com";
+
             if($mail->send()){
                 $info = "We've sent a verification code to your email - $email";
                 $_SESSION['info'] = $info;
@@ -213,9 +213,9 @@ smtp.gmail.com
             $message = "Your password reset code is $code"; 
             $mail->Body    = $message;
           
-            $sender = "From: 
-csmartcse@gmail.com
-";
+
+            $sender = "From: csmartcse@gmail.com";
+
             if($mail->send()){
                 $info = "We've sent a passwrod reset otp to your email - $email";
                 $_SESSION['info'] = $info;
@@ -270,10 +270,8 @@ smtp.gmail.com
             // Mail body content 
             $message = "Your password reset code is $code"; 
             $mail->Body    = $message;
-          
-            $sender = "From: 
-csmartcse@gmail.com
-";
+     $sender = "From: csmartcse@gmail.com";
+
             if($mail->send()){
                 $info = "We've sent a passwrod reset otp to your email - $email1";
                 $_SESSION['info'] = $info;
