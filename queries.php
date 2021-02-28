@@ -32,6 +32,18 @@ CREATE USER 'customer'@'%' IDENTIFIED VIA mysql_native_password USING '***';GRAN
 ================NEW=============
 ALTER TABLE `cart_product` ADD `selected` TEXT NOT NULL AFTER `quantity`;
 ALTER TABLE `cart_product` CHANGE `selected` `selected` BOOLEAN NOT NULL;
+
+================NEW=============
+create VIEW `confirmed_order` AS (select `cart_product`.`quantity` AS `quantity`,`cart_product`.`product_id` AS `product_id`,`cart_product`.`cart_product_id` AS `cart_product_id`,`cart_product`.`varient_id` AS `varient_id`,`cart_product`.`cart_id` AS `cart_id`,`varient`.`image` AS `image` from (`cart_product` join `varient` on(`cart_product`.`varient_id` = `varient`.`varient_id`)) WHERE cart_product.selected=1)
+ALTER TABLE `order_product` DROP `product_price`;
+
+
+create VIEW `confirmation` AS (select `cart_product`.`quantity` AS `quantity`,`cart_product`.`cart_product_id` AS `cart_product_id`,`cart_product`.`cart_id` AS `cart_id`,`cart_product`.`selected` as `selected`,`varient`.`image` AS `image` from (`cart_product` join `varient` on(`cart_product`.`varient_id` = `varient`.`varient_id`)))
+
+
+
+
+
 create VIEW `confirm_order` AS (select `cart_product`.`quantity` AS `quantity`,`cart_product`.`cart_product_id` AS `cart_product_id`,`cart_product`.`cart_id` AS `cart_id`,`varient`.`image` AS `image` from (`cart_product` join `varient` on(`cart_product`.`varient_id` = `varient`.`varient_id`)) WHERE cart_product.selected=1)
 
 

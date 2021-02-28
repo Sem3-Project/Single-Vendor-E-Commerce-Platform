@@ -20,7 +20,7 @@ class Home_Default{
     }
     
     public function Selection($conn,$category_id,$subcat_id){  
-        $query = "SELECT product_name,product_id,`image` FROM `product` inner join `varient` using(product_id) where (category_id='$category_id' and subcat_id='$subcat_id')";  
+        $query = "SELECT product_name,product_id,`image`,price FROM `product` inner join `varient` using(product_id) where (category_id='$category_id' and subcat_id='$subcat_id')";  
         return $query;
 
     }

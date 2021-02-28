@@ -18,11 +18,11 @@
            
             <thead>
                 <tr>
-                    <th>Date</th>
+                    <th>Order Date</th>
                     <th>Order ID</th>
-                    <!-- <th>Order</th> -->
                     <th>Total Payment</th>
                     <th>Delivery Status</th>
+                    <th>Delivery Estimate</th>
                 </tr>
             </thead>
         
@@ -31,7 +31,7 @@
 include '../../controller/order_status.class.php';
 
 $connector = new DbConnection();
-$conn = $connector->connect1();
+$conn = $connector->connect();
 $funObj = new OrderStatus();
 
 $load = $funObj->loadStatus($conn,14); 
@@ -49,6 +49,8 @@ if ($load){
             echo "<td>" . $row['total_payment'] . "</td>";
 
             echo "<td>" . $row['delivery_status'] . "</td>";
+
+            echo "<td>" . $row['delivery_estimate'] . "</td>";
 
             echo "</tr>";
 

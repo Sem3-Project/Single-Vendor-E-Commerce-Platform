@@ -42,7 +42,9 @@ if(isset($_POST['signup'])){
             $mail = new PHPMailer; 
   
             $mail->isSMTP();                      // Set mailer to use SMTP 
-            $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers 
+            $mail->Host = '
+smtp.gmail.com
+';       // Specify main and backup SMTP servers 
             $mail->SMTPAuth = true;               // Enable SMTP authentication 
             $mail->Username = 'csmartcse@gmail.com';   // SMTP username 
             $mail->Password = 'csmartcse123';   // SMTP password 
@@ -68,7 +70,9 @@ if(isset($_POST['signup'])){
             $mail->Body    = $message; 
             
             // Send email            
+
             $sender = "From: csmartcse@gmail.com";
+
             if($mail->send()){
                 $info = "We've sent a verification code to your email - $email";
                 $_SESSION['info'] = $info;
@@ -182,7 +186,9 @@ if(isset($_POST['check-email'])){
             $mail = new PHPMailer; 
 
             $mail->isSMTP();                      // Set mailer to use SMTP 
-            $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers 
+            $mail->Host = '
+smtp.gmail.com
+';       // Specify main and backup SMTP servers 
             $mail->SMTPAuth = true;               // Enable SMTP authentication 
             $mail->Username = 'csmartcse@gmail.com';   // SMTP username 
             $mail->Password = 'csmartcse123';   // SMTP password 
@@ -207,7 +213,9 @@ if(isset($_POST['check-email'])){
             $message = "Your password reset code is $code"; 
             $mail->Body    = $message;
           
+
             $sender = "From: csmartcse@gmail.com";
+
             if($mail->send()){
                 $info = "We've sent a passwrod reset otp to your email - $email";
                 $_SESSION['info'] = $info;
@@ -236,7 +244,9 @@ if(isset($_POST['check-email'])){
             $mail = new PHPMailer; 
 
             $mail->isSMTP();                      // Set mailer to use SMTP 
-            $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers 
+            $mail->Host = '
+smtp.gmail.com
+';       // Specify main and backup SMTP servers 
             $mail->SMTPAuth = true;               // Enable SMTP authentication 
             $mail->Username = 'csmartcse@gmail.com';   // SMTP username 
             $mail->Password = 'csmartcse123';   // SMTP password 
@@ -260,8 +270,8 @@ if(isset($_POST['check-email'])){
             // Mail body content 
             $message = "Your password reset code is $code"; 
             $mail->Body    = $message;
-          
-            $sender = "From: csmartcse@gmail.com";
+     $sender = "From: csmartcse@gmail.com";
+
             if($mail->send()){
                 $info = "We've sent a passwrod reset otp to your email - $email1";
                 $_SESSION['info'] = $info;
