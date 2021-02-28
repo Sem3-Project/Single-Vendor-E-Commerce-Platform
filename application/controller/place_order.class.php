@@ -87,10 +87,11 @@ class Order
         return $query;
     }
 
-    public function get_orderID($conn, $customer_id)
+    public function get_orderID($conn, $customer_id,$date)
     {
-        $orderID = mysqli_query($conn, "SELECT `order_id` FROM `order` WHERE `customer_id`='$customer_id'") or die(mysqli_error($conn));
-        return mysqli_fetch_assoc($orderID)['order_id'];
+        $orderID = mysqli_query($conn, "SELECT `order_id` FROM `order` WHERE customer_id='" . $customer_id . "' and date='" . $date . "'") or die(mysqli_error($conn));
+        $result = mysqli_fetch_assoc($orderID);
+        return $result['order_id'];
     }
 
     public function order_details($conn, $cart_id, $order_id)
@@ -98,16 +99,18 @@ class Order
         // $countQuery = mysqli_query($conn, "SELECT count(cart_id) FROM confirmed_order WHERE cart_id= '" . $cart_id . "'");
         // $count = mysqli_fetch_assoc($countQuery)[0];
         // while($count){
+          
         $query = mysqli_query($conn, "SELECT (product_id,varient_id,quantity) FROM confirmed_order WHERE cart_id= '" . $cart_id . "'");
-
+        $i=-1;
         while ($row = mysqli_fetch_assoc($query)) {
-            $product_id = $row['product_id'];
-            $varient_id = $row['varient_id'];
-            $quantity = $row['quantity'];
-            $getvalues = mysqli_query($conn,"INSERT INTO order_product(order_id,product_id,varient_id,quantity) VALUES ('".$order_id."','".$product_id."','".$varient_id."','".$quantity."')");
-            
+            $i++;
+            $output[$i]['product_id'] = $row['product_id'];
+            $output[$i]['varient_id'] = $row['varient_id'];
+            $output[$i]['quantity'] = $row['quantity'];
+            $getvalues = mysqli_query($conn,"INSERT INTO order_product(order_id,product_id,varient_id,quantity) VALUES ('".$order_id."','".$output[$i]['product_id']."','". $output[$i]['varient_id']."','".$output[$i]['quantity']."')");
+            return $getvalues;
         }
-        // }
+        
         //$arr = mysqli_fetch_array($query);
 
         // $getvalues = mysqli_query($conn,"INSERT INTO order_product(order_id,product_id,varient_id,quantity) VALUES ('".$order_id."','".$product_id."','".$varient_id."','".$quantity."')");
