@@ -15,7 +15,7 @@ include '../controller/controllerUserData.php';
         <li class="tab active"><a href="#login">Log In</a></li>
         <li class="tab"><a href="#signup">Sign Up</a></li>
     </ul>
-    <form action="#" id="login" method="POST" name="login">
+    <form action="#" id="login" method="POST" name="login" autocomplete="off">
           <h1 >Login on C-Smart</h1>
           <?php
             if(count($errors) > 0){
