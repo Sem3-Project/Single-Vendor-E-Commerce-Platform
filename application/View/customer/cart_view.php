@@ -4,7 +4,7 @@ include "../../controller/DisplayCart.class.php";
 $connector = new DbConnection();
 
 $funObj = new DisplayCart();
-$cus_id = 15;
+$cus_id = 24;
 
 $conn = $connector->connect1();
 // include '../../model/cart.php';
