@@ -1,20 +1,19 @@
-
 <?php
 // include '../../controller/DbConnection.class.php';
 include '../../controller/product_details.class.php';
 
-$connector = new DbConnection();
-$conn = $connector->connect();
+// $connector = new DbConnection();
+// $conn = $connector->connect();
 $funObj = new ProductDetails();
 
-session_start();
+//session_start();
 //$product_id=$_POST['Select'];
 $product_id=8;
-$customer_id=15;
+$customer_id=$_SESSION['customer_id'];
 $varient_1='';
 $varient_2='';
 $quantity='';
-
+//echo $_SESSION['product_id'];
 // if(isset($_GET['cat'])){
     
 //   $get_id = $_GET['cat'];
@@ -78,8 +77,8 @@ if (isset($_POST['varient2'])){
 		<div class="form-group">
         <br><br>
         <?php
-        $cart_id=$funObj->getCartId($conn, $customer_id);
-        $load = $funObj->loadProduct($conn,$product_id);
+        $cart_id=$funObj->getCartId($con1, $customer_id);
+        $load = $funObj->loadProduct($con1,$product_id);
 
 //if ($varient_1!='' || $varient_2!='') {
   if ($load){
@@ -117,7 +116,7 @@ if (isset($_POST['varient2'])){
         <select class="form-control" id="varient_1" name="varient_1">
 		  <option value="">Select Variant Type 1</option>
 		    <?php
-        $result1 = mysqli_query($conn,"SELECT DISTINCT varient_1 FROM varient where product_id = $product_id");
+        $result1 = mysqli_query($con1,"SELECT DISTINCT varient_1 FROM varient where product_id = $product_id");
 			while($row = mysqli_fetch_array($result1)) {
 			?>
 				<option value="<?php echo $row["varient_1"];?>" <?php if ($row["varient_1"]==$varient_1){ echo 'selected';} ?>><?php echo $row["varient_1"];?></option>
@@ -130,7 +129,7 @@ if (isset($_POST['varient2'])){
         <select class="form-control" id="varient_2" name="varient_2">
 		  <option value="">Select Variant Type 2</option>
 		    <?php
-        $result2 = mysqli_query($conn,"SELECT DISTINCT varient_2 FROM varient where product_id = $product_id");
+        $result2 = mysqli_query($con1,"SELECT DISTINCT varient_2 FROM varient where product_id = $product_id");
 			while($row = mysqli_fetch_array($result2)) {
 			?>
 				<option value="<?php echo $row["varient_2"];?>" <?php if ($row["varient_2"]==$varient_2){ echo 'selected';} ?>><?php echo $row["varient_2"];?></option>
@@ -159,14 +158,13 @@ if (isset($_POST['varient2'])){
           
           
           $query="SELECT quantity,price FROM `varient` where (product_id=$product_id and varient_1='$varient_1' and varient_2='$varient_2')";
-          $search_result=mysqli_query($conn,$query);
+          $search_result=mysqli_query($con1,$query);
           
           //header("Location:product_details.php");
           //$search_result=filter($query);
         }
         
 			while($row=mysqli_fetch_array($search_result)):?>
-
 				<?php echo $row ['quantity'];?><?php
 			
 			?></td></tr>
@@ -180,12 +178,12 @@ if (isset($_POST['varient2'])){
         </table>
        <?php 
       
-        $varient_id=$funObj->getVarientId($conn, $product_id,$varient_1,$varient_2);
+        $varient_id=$funObj->getVarientId($con1, $product_id,$varient_1,$varient_2);
         if(isset($_POST['confirm'])){
     
           //$quantity=$_POST['quantity'];
          
-          mysqli_query($conn,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
+          mysqli_query($con1,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
          // header("Location:product_details.php");
         }?>
                  
@@ -193,7 +191,6 @@ if (isset($_POST['varient2'])){
         <br><center><input type="submit" class="link" name="confirm" style="margin-bottom: 50px; width:50%; height:40px;background-color:  rgb(236, 185, 17);" value="Add to Cart"></center>
         
         </div>
-
 		</form> --> 
 
 

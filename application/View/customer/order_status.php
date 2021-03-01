@@ -29,11 +29,8 @@
             <tbody>
             <?php
 require '../../controller/order_status.class.php';
-
-
 //$connector = new DbConnection();
 //$conn = $connector->connect1();
-
 $funObj = new OrderStatus();
 
 $load = $funObj->loadStatus($con1,$_SESSION['customer_id']); 

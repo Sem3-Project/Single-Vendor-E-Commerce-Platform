@@ -1,17 +1,21 @@
 <?php
+<<<<<<< HEAD
+include 'controllerUserData.php';
+=======
 include 'DbConnection.class.php';
 //include 'controllerUserData.php';
+>>>>>>> d24ffdb4de6cb38772abc132d96387a787723f98
 
 class Order
 {
-    function __construct()
-    {
-        $connector = new DbConnection();
-        $conn = $connector->connect1();
-    }
-    function __destruct()
-    {
-    }
+    // function __construct()
+    // {
+    //     $connector = new DbConnection();
+    //     $conn = $connector->connect1();
+    // }
+    // function __destruct()
+    // {
+    // }
 
     public function getTotalPayment($conn, $customer_id)
     {

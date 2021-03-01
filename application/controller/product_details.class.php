@@ -1,17 +1,17 @@
 <?php
-include 'DbConnection.class.php';
+include 'controllerUserData.php';
 
 class ProductDetails{  
             
-    function __construct() {  
+    // function __construct() {  
           
-        // make the connection with database  
-        $connector = new DbConnection();
-        $conn = $connector->connect();  
-    }  
-    function __destruct() {  
+    //     // make the connection with database  
+    //     $connector = new DbConnection();
+    //     $conn = $connector->connect();  
+    // }  
+    // function __destruct() {  
           
-    } 
+    // } 
     
     public function loadProduct($conn,$product_id){
         $loadQr = mysqli_query($conn,"SELECT * FROM product_details WHERE product_id = '".$product_id."'");  
