@@ -4,7 +4,7 @@ include "../../controller/DisplayCart.class.php";
 $connector = new DbConnection();
 
 $funObj = new DisplayCart();
-$cus_id = 24;
+$cus_id = 22;
 
 $conn = $connector->connect1();
 // include '../../model/cart.php';
@@ -27,7 +27,7 @@ if (isset($_POST['proceed'])) {
         //$tot = $tot + (int)($_POST['qty'])*(float)$price;
         mysqli_query($conn, "UPDATE cart_product SET quantity=" . $_POST['qty'] . ",selected=1 WHERE cart_product_id=" . $id);
     }
-    mysqli_query($conn, "UPDATE cart SET total_value=". $tot. " WHERE customer_id=$cus_id");
+    mysqli_query($conn, "UPDATE cart SET total_value=" . $tot . " WHERE customer_id=$cus_id");
     //echo $tot;
     header("Location:cart_view.php");
 }
@@ -91,27 +91,32 @@ if (isset($_POST['proceed'])) {
                 </tr>
 
                 <?php
+        
                 $query = "SELECT * FROM cart_display where customer_id = $cus_id";
                 $result = mysqli_query($conn, $query);
-
-                $count = 1;
-                while ($row = mysqli_fetch_array($result)) {
-                    $id = $row['cart_product_id'];
-                    $username = $row['product_name'];
-                    $quantity = $row['quantity'];
-                    $price = $row['price'];
-                    if ((int)$maxQty != 0) { ?>
-                        <tr id='tr_<?= $id ?>'>
-                            <td><input type='checkbox' name='checkbox[]' value=<?php echo $row['cart_product_id'] ?>></td>
-                            <td><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" width="120" height="120"/>' ?></td>
-                            <td><?= $username ?></td>
-                            <td><input type=number name='qty' value=<?php echo $row['quantity'] ?> id="num" oninput="calc()" required min=1 max=<?php echo $maxQty ?>></td>
-                            <td>$<span id="item_price"><input type=text value=<?php echo $row['price'] ?> readonly></td>
-                            <!-- <td>$<span id="total" name="input[]" value=<--?php echo $row['cart_product_id'] ?>><input type="text" value=<?php echo $row['price'] * $row['quantity'] ?> readonly></span></td> -->
-                        </tr>
+                $num_rows = mysqli_num_rows($result);
+                if ($num_rows == 0) :
+                    echo "Looks like your cart is empty!!!";
+                else :
+                    // $count = 1;
+                    while ($row = mysqli_fetch_array($result)) {
+                        $id = $row['cart_product_id'];
+                        $username = $row['product_name'];
+                        $quantity = $row['quantity'];
+                        $price = $row['price'];
+                        if ((int)$maxQty != 0) { ?>
+                            <tr id='tr_<?= $id ?>'>
+                                <td><input type='checkbox' name='checkbox[]' value=<?php echo $row['cart_product_id'] ?>></td>
+                                <td><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" width="120" height="120"/>' ?></td>
+                                <td><?= $username ?></td>
+                                <td><input type=number name='qty' value=<?php echo $row['quantity'] ?> id="num" oninput="calc()" required min=1 max=<?php echo $maxQty ?>></td>
+                                <td>$<span id="item_price"><input type=text value=<?php echo $row['price'] ?> readonly></td>
+                                <!-- <td>$<span id="total" name="input[]" value=<--?php echo $row['cart_product_id'] ?>><input type="text" value=<?php echo $row['price'] * $row['quantity'] ?> readonly></span></td> -->
+                            </tr>
                 <?php
+                        }
                     }
-                }
+                  endif;
                 ?>
             </table>
             <input type='submit' id="delete" value='Delete' name='delete'>
@@ -153,4 +158,3 @@ if (isset($_POST['proceed'])) {
 </body>
 
 </html>
-

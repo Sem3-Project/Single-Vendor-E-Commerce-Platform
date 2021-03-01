@@ -104,7 +104,7 @@ if(isset($_GET["product_id"]) && !empty(trim($_GET["product_id"]))){
                                         
                                         echo "<td>";
                                             // echo "<a href='read.php?id=". $row['id'] ."' title='View Record' data-toggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>";
-                                            // echo "<a href='update.php?product_id=". $row['product_id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
+                                            echo "<a href='updateVarient.php?varient_id=". $row['varient_id'] ."' title='Update Record' data-toggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>";
                                             echo "<a href='deleteVarient.php?varient_id=". $row['varient_id'] ."' title='Delete Record' data-toggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>";
                                         echo "</td>";
 
