@@ -1,4 +1,6 @@
-<?php
+<?php 
+
+
 
 require "DbConnection.class.php";
 $email = "";
@@ -6,19 +8,25 @@ $name = "";
 $errors = array();
 
 $connector = new DbConnection();
-$con = $connector->connect();
-$con1 = $connector->connect1();
+
+$con = $connector->connect();  
+$con1 = $connector->connect1();  
 session_start();
+use PHPMailer\PHPMailer\PHPMailer; 
+use PHPMailer\PHPMailer\Exception; 
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+require '../../../PHPMailer/src/Exception.php'; 
+require '../../../PHPMailer/src/PHPMailer.php'; 
+require '../../../PHPMailer/src/SMTP.php'; 
 
-require '../../PHPMailer/src/Exception.php';
-require '../../PHPMailer/src/PHPMailer.php';
-require '../../PHPMailer/src/SMTP.php';
+
 
 //signup as a customer
-if (isset($_POST['signup'])) {
+if(isset($_POST['signup'])){
+    
+
+
+
     $first_name = mysqli_real_escape_string($con1, $_POST['first_name']);
     $last_name = mysqli_real_escape_string($con1, $_POST['last_name']);
     $email = mysqli_real_escape_string($con1, $_POST['email']);
@@ -106,7 +114,8 @@ if (isset($_POST['check'])) {
         if ($update_res) {
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
-            header('location: customer/HomeCustomer.php');
+            echo "<script>alert('Please login ')</script>";
+            header('location: loginRegister.php');
             exit();
         } else {
             $errors['otp-error'] = "Failed while updating code!";
@@ -121,43 +130,30 @@ if (isset($_POST['login'])) {
     //customer login
     $email1 = mysqli_real_escape_string($con1, $_POST['email']);
     $password1 = mysqli_real_escape_string($con1, $_POST['password']);
-
-    // //==========================
-   // $id1 = mysqli_real_escape_string($con1, $_POST['customer_id']);
-
     $check_email_customer = "SELECT * FROM customer WHERE email = '$email1'";
     $res = mysqli_query($con1, $check_email_customer);
-    if (mysqli_num_rows($res) > 0) {
+    if(mysqli_num_rows($res) > 0){
         $fetch = mysqli_fetch_assoc($res);
         $fetch_pass = $fetch['password'];
-
-        //==============
-
-
-        if (password_verify($password1, $fetch_pass)) {
-            $_SESSION['email'] = $email;
+        $fetch_id = $fetch['customer_id'];
+        if(password_verify($password1, $fetch_pass)){
+            $_SESSION['email'] = $email1;
             $status = $fetch['status'];
-            //    $fetch_id = $fetch['customer_id'];
-            if ($status == 'verified') {
+            if($status == 'verified'){
                 $_SESSION['email'] = $email1;
                 $_SESSION['password'] = $password1;
+                $_SESSION['customer_id'] = $fetch_id;
+                header('location: ../customer/HomeCustomer.php');
 
-                //====================================
-
-
-                $_SESSION['customer_id'] = $id1;
-echo   $_SESSION['customer_id'];
-
-               // header('location: customer/HomeCustomer.php');
-            } else {
-                $info = "It's look like you haven't still verify your email - $email";
+            }else{
+                $info = "It's look like you haven't still verify your email - $email1";
                 $_SESSION['info'] = $info;
                 header('location: user-otp.php');
             }
-        } else {
+        }else{
             $errors['email'] = "Incorrect email or password!";
         }
-    } else {
+    }else{
         $errors['email'] = "It's look like you're not yet a member! Sign up to be a member.";
     }
     //admin login
@@ -174,8 +170,11 @@ echo   $_SESSION['customer_id'];
             if ($status == 'verified') {
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
-                header('location: admin/Homeadmin.php');
-            } else {
+
+                header('location: ../admin/Homeadmin.php');
+            }else{
+
+            
                 $info = "It's look like you haven't still verify your email - $email";
                 $_SESSION['info'] = $info;
                 header('location: user-otp.php');

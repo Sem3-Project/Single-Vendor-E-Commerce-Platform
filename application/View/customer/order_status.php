@@ -28,15 +28,15 @@
         
             <tbody>
             <?php
-include '../../controller/order_status.class.php';
+require '../../controller/order_status.class.php';
 
-$connector = new DbConnection();
-$conn = $connector->connect1();
+
+//$connector = new DbConnection();
+//$conn = $connector->connect1();
+
 $funObj = new OrderStatus();
 
-$load = $funObj->loadStatus($conn,14); 
-
-
+$load = $funObj->loadStatus($con1,$_SESSION['customer_id']); 
 
 if ($load){
     if(mysqli_num_rows($load) > 0){

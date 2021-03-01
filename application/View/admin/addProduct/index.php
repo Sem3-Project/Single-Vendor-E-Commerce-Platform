@@ -58,7 +58,7 @@
                                 echo "<thead>";
                                     echo "<tr>";
                                         echo "<th>#</th>";
-                                        echo "<th>Product Name</th>";
+                                        echo "<th>Product name</th>";
                                         echo "<th>Category id</th>";
                                         echo "<th>Category name</th>";
                                         echo "<th>Sub category id</th>";

@@ -20,7 +20,7 @@ include '../model/Home-Default.model.php';
 <div class="container">
 
 	<form action="DefHome.php" method="POST">
-    <a href="../view/loginRegister.php"><img class="login" src="../../public/images/login.gif"></a>
+    <a href="../view/signin/loginRegister.php"><img class="login" src="../../public/images/login.gif"></a>
 
     <div class="topnav">
   
@@ -50,7 +50,7 @@ include '../model/Home-Default.model.php';
         
         </div>
 
-<input type="submit" name="Search" value="Search" class="search" />
+<input type="submit" name="Search" value="Search" class="search" style="margin-left:85%"/>
 
 		</form>
         
@@ -79,7 +79,7 @@ include '../model/Home-Default.model.php';
         <button name="Select" type="submit" value="<?php echo $row["product_id"];?>">
         
         <?php
-		echo "<h5 >" .$row['product_name']."<br>".$row['price']."</h5>";
+		echo "<h5 >" .$row['product_name']."<br>$ ".$row['price']."</h5>";
 		?></button></div></center>
       </div><br>
       </div></div>

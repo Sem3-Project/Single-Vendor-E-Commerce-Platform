@@ -1,22 +1,22 @@
 <?php
-include 'DbConnection.class.php';
+include 'controllerUserData.php';
 
 class OrderStatus{  
             
-    function __construct() {  
+    //function __construct() {  
           
         // make the connection with database  
-        $connector = new DbConnection();
-        $conn = $connector->connect1();  
-    }  
-    function __destruct() {  
+       // $connector = new DbConnection();
+       // $conn = $connector->connect1();  
+   // }  
+   // function __destruct() {  
           
-    } 
+    //} 
     
     
 
-    public function loadStatus($conn,$customer_id){
-        $loadQr = mysqli_query($conn,"SELECT * FROM order_status WHERE customer_id = '".$customer_id."'");  
+    public function loadStatus($con1,$customer_id){
+        $loadQr = mysqli_query($con1,"SELECT * FROM order_status WHERE customer_id = '".$customer_id."'");  
         return $loadQr;
     }
   

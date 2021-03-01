@@ -65,39 +65,77 @@ if(isset($_POST["submit"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create varient</title>
+    <title>Create Varient</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../../public/css/login.css" />
+
+    <style type="text/css">
+        .wrapper{
+            width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-left: 1px solid rgb(236, 185, 17);
+            border-right: 1px solid rgb(236, 185, 17);
+        }
+        .input{
+            width:100%; 
+            border:2px solid #e8ebeb; 
+            border-radius:5px; 
+            padding:5px; 
+            padding-left:10px
+           
+        }
+    </style>
 </head>
 <body>
-<h2>Create Record</h2>
-<p>Please fill this form and submit to add varient record to the database.</p>
-<form action="VarientCreate.php" method="post" enctype="multipart/form-data">
+    <a href="../Homeadmin.php"><img class="login" src="../../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px;  position: relative;"></a>
 
-    <label>Enter product id:</label>
-    <input type="int" name="product_id" value=<?php echo $product_id;?>><br><br>
-
-    <label>Enter SKU:</label>
-    <input type="text" name="SKU" required><br><br>
-
-    <label>Enter price:</label>
-    <input type="number" name="price" step=0.01 required><br><br>
-
-    <label>Select Image File:</label>
-    <input type="file" name="image" required><br><br>
-
-    <label>Enter varient 1:</label>
-    <input type="text" name="varient_1" required><br><br>
+    <a href="../../../view/logout-user.php"><img class="login" src="../../../../public/images/logout.gif" style="width:7%; margin-top:13px;margin-left:25px; position: absolute;"></a>
     
-    <label>Enter varient 2:</label>
-    <input type="text" name="varient_2"><br><br>
+    <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="page-header">
+                            <h2>Create Record</h2>
+                        </div>
+                        <p>Please fill this form and submit to add varients.</p>
+                        <form action="VarientCreate.php" method="post" enctype="multipart/form-data">
 
-    <label>Enter quantity:</label>
-    <input type="number" name="quantity" step=1 required><br><br>
+                            <label>Enter product id:</label><br>
+                            <input type="int" name="product_id" class="input" value=<?php echo $product_id;?>><br><br>
+                        
+                            <label>Enter SKU:</label><br>
+                            <input type="text" name="SKU" class="input" required><br><br>
 
-    
-    <input type="submit" name="submit" value="Upload">
-    <a href="index.php" class="btn btn-default">Cancel</a>
-</form>
-    
-</body>
+                            <label>Enter price:</label><br>
+                            <input type="number" name="price" class="input" step=0.01 required><br><br>
+
+                            <label>Select image file:</label>
+                            <input type="file" name="image" required><br>
+
+                            <label>Enter characteristic 1:</label><br>
+                            <input type="text" name="varient_1" class="input" required><br><br>
+                            
+                            <label>Enter characteristic 2:</label><br>
+                            <input type="text" name="varient_2" class="input"><br><br>
+
+                            <label>Enter quantity:</label><br>
+                            <input type="number" name="quantity" class="input" step=1 required><br><br>
+
+                            
+                            <input type="submit" name="submit" class="btn btn-default" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)" value="Upload">
+                            <a href="index.php" class="btn btn-default">Cancel</a>
+                        </form>
+                        <br>
+                    </div>
+                </div>        
+            </div>
+        </div>
+
+
+        <br><br><br>
+    </body>
 </html>
