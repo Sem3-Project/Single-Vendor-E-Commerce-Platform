@@ -1,5 +1,6 @@
 <?php
 include '../../model/Home-customer.model.php';
+
 // $conn=mysqli_connect("localhost","root","","singlevendor");
 // $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 ?>

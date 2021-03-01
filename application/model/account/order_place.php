@@ -1,6 +1,6 @@
 <?php
 
-include '../controller/place_order.class.php';
+include '../../controller/place_order.class.php';
 
 // $connector = new DbConnection();
 // $conn = $connector->connect1();
@@ -60,4 +60,4 @@ try {
 }
 
 
-include '../view/customer/order_place.php';
+include '../../view/customer/order_place.php';

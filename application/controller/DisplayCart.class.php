@@ -1,14 +1,14 @@
 <?php
 
-include 'DbConnection.class.php';
+include 'controllerUserData.php';
 
 class DisplayCart{
-    function __construct() {  
+    // function __construct() {  
           
-        // make the connection with database  
-        $connector = new DbConnection();
-        $conn = $connector->connect1();  
-    }  
+    //     // make the connection with database  
+    //     $connector = new DbConnection();
+    //     $conn = $connector->connect1();  
+    // }  
     function __destruct() {  
           
     } //$search_query="SELECT * FROM `product` NATURAL INNER JOIN `category` WHERE product_name='$info[0]'";
