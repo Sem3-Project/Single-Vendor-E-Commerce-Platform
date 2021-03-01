@@ -66,7 +66,7 @@ include '../../model/Home-customer.model.php';
 
     </form>
     <!-- // -->
-    <form action="../../../removed_items/prduct_details.php" method="POST">
+    <form action="product_details.php" method="POST">
       <div class='element'><br><br><br><br>
         <h2>Product</h1>
 

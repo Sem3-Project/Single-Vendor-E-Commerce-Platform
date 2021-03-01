@@ -16,7 +16,7 @@ try {
     // $order_id = $funObj->get_orderID($conn, $cust_id);
     $cart_id = $funObj->getCartId($conn, $cust_id);
 
-  //  $num = $funObj->num_of_rows($conn, $order_id);
+    //  $num = $funObj->num_of_rows($conn, $order_id);
     $result = $funObj->loadItems($conn, $cart_id);
     $total_pay = $funObj->getTotalPayment($conn, $cust_id);
     $row = $total_pay->fetch_assoc();
@@ -42,14 +42,25 @@ try {
         // if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
         //     echo "<script>alert('Please enter payment method')</script>";
         // } else {
+<<<<<<< HEAD
         //$insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
         //$del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
         //header("location:../view/customer/order_status.php");
+=======
+        // $insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
+        // $del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
+        $order_id = $funObj->get_orderID($conn, $cust_id);
+        //$enter_order_prod = $funObj->order_details($conn,$cart_id,$order_id);
+        // $dltFromCartProduct = $funObj->dltCartproduct($conn,$cart_id);
+       // header("location:../view/customer/order_status.php");
+>>>>>>> 2f64b970357e56ab599527f6cfc19eab44d13626
         // }
     }
 
     if (isset($_POST['back'])) {
-        header("location:cart.php");
+        $return = $funObj->back($conn, $cart_id);
+        $set_zero = $funObj->totalset_zero($conn, $cust_id);
+        header("location:../view/customer/cart_view.php");
     }
     $conn->commit();
 } catch (mysqli_sql_exception $exception) {

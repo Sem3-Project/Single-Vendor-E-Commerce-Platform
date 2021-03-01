@@ -56,7 +56,7 @@ include '../model/Home-Default.model.php';
         
        
 <!-- // -->
-<form action="../../removed_items/prduct_details.php" method="POST">
+<form action="customer/product_details.php" method="POST">
 <div class='element'>
 <br><br>
 <h2>Products</h1>
