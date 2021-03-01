@@ -31,7 +31,7 @@
 include '../../controller/order_status.class.php';
 
 $connector = new DbConnection();
-$conn = $connector->connect();
+$conn = $connector->connect1();
 $funObj = new OrderStatus();
 
 $load = $funObj->loadStatus($conn,14); 

@@ -7,7 +7,7 @@ class ProductDetails{
           
         // make the connection with database  
         $connector = new DbConnection();
-        $conn = $connector->connect();  
+        $conn = $connector->connect1();  
     }  
     function __destruct() {  
           
@@ -17,10 +17,16 @@ class ProductDetails{
         $loadQr = mysqli_query($conn,"SELECT * FROM product_details WHERE product_id = '".$product_id."'");  
         return $loadQr;
     }
+    public function getCartId($conn,$customer_id){
+        $cart_id = mysqli_query($conn,"SELECT cart_id from cart_update where customer_id='".$customer_id."'");
+        $result = $cart_id->fetch_assoc();
+        return $result['cart_id'];
+    }
 
-    public function addtoCart($conn,$customer_id){
-        $order = mysqli_query($conn,"INSERT INTO cart_product(customer_id) VALUES ('".$customer_id."')") or die(mysqli_error($conn));
-        return $order;
+     public function getVarientId($conn, $product_id,$varient_1,$varient_2){
+        $varient_id = mysqli_query($conn,"SELECT varient_id FROM varient WHERE product_id='".$product_id."'and varient_1='".$varient_1."'and varient_2='".$varient_2."'") ;
+        $result = $varient_id->fetch_assoc();
+        return $result['varient_id'];
     }
 }  
 ?>  
