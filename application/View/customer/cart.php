@@ -1,21 +1,21 @@
 <?php
 include "../../controller/DisplayCart.class.php";
 
-$connector = new DbConnection();
+//$connector = new DbConnection();
 
 $funObj = new DisplayCart();
-$cus_id = 29;
+$cus_id = $_SESSION['customer_id'];
 
-$conn = $connector->connect1();
+//$conn = $connector->connect1();
 // include '../../model/cart.php';
-$cart_product_id = $funObj->getCartProdId($conn, $cus_id);
+$cart_product_id = $funObj->getCartProdId($con1, $cus_id);
 
-$maxQty = $funObj->getMaxVarientQty($conn, $cus_id);
+$maxQty = $funObj->getMaxVarientQty($con1, $cus_id);
 if (isset($_POST['delete'])) {
 
     $chkarr = $_POST['checkbox'];
     foreach ($chkarr as $id) {
-        mysqli_query($conn, "DELETE FROM cart_product WHERE cart_product_id=" . $id);
+        mysqli_query($con1, "DELETE FROM cart_product WHERE cart_product_id=" . $id);
     }
     header("Location:cart.php");
 }
@@ -25,11 +25,11 @@ if (isset($_POST['proceed'])) {
     $chkarr = $_POST['checkbox'];
     foreach ($chkarr as $id) {
         //$tot = $tot + (int)($_POST['qty'])*(float)$price;
-        mysqli_query($conn, "UPDATE cart_product SET quantity=" . $_POST['qty'] . ",selected=1 WHERE cart_product_id=" . $id);
+        mysqli_query($con1, "UPDATE cart_product SET quantity=" . $_POST['qty'] . ",selected=1 WHERE cart_product_id=" . $id);
     }
-    mysqli_query($conn, "UPDATE cart SET total_value=". $tot. " WHERE customer_id=$cus_id");
+    mysqli_query($con1, "UPDATE cart SET total_value=". $tot. " WHERE customer_id=$cus_id");
     //echo $tot;
-    header("Location:cart.php");
+    header("Location:../../model/account/order_place.php");
 }
 // if (isset($_POST['total_bill'])) {
 //     $sum = 0.00;
@@ -125,7 +125,7 @@ if (isset($_POST['proceed'])) {
 
                 <?php
                 $query = "SELECT * FROM cart_display where customer_id = $cus_id";
-                $result = mysqli_query($conn, $query);
+                $result = mysqli_query($con1, $query);
 
                 $count = 1;
                 while ($row = mysqli_fetch_array($result)) {
