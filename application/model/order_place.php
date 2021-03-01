@@ -50,8 +50,6 @@ try {
         //$del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
         //header("location:../view/customer/order_status.php");
 
-        // $insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
-
 
         $insert = $funObj->saveConfirmation($conn, $cust_id,$date, $payment_method,$total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
         // $order_id = $funObj->get_orderID($conn, $cust_id, $date);
