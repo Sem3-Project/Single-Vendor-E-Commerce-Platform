@@ -1,5 +1,5 @@
 <?php
-include '../controller/Profile.class.php';
+include '../../controller/Profile.class.php';
 
 // $connector = new DbConnection();
 // $conn = $connector->connect1();
@@ -41,4 +41,4 @@ if ($load){
 
 //$submit_value = "Update";
 
-include '../view/customer/account.php';
+include '../../view/customer/account.php';

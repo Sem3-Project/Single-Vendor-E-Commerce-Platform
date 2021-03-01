@@ -59,7 +59,7 @@ class Order
 
     public function loadItems($conn, $cart_id)
     {
-        $load = mysqli_query($conn, "SELECT image, quantity FROM confirm_order WHERE cart_id='" . $cart_id . "'") or die(mysqli_error($conn));
+        $load = mysqli_query($conn, "SELECT image, quantity FROM confirmed_order WHERE cart_id='" . $cart_id . "'") or die(mysqli_error($conn));
         return $load;
     }
 

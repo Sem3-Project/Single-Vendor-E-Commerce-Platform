@@ -11,7 +11,7 @@ $conn->begin_transaction();
 try {
     $funObj = new Order();
 
-    $cust_id = 15;
+    $cust_id = 24;
 
     // $order_id = $funObj->get_orderID($conn, $cust_id);
     $cart_id = $funObj->getCartId($conn, $cust_id);
@@ -42,9 +42,9 @@ try {
         // if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
         //     echo "<script>alert('Please enter payment method')</script>";
         // } else {
-        $insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
-        $del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
-        header("location:../view/customer/order_status.php");
+        //$insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
+        //$del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
+        //header("location:../view/customer/order_status.php");
         // }
     }
 
@@ -58,4 +58,4 @@ try {
 }
 
 
-include '../view/customer/placeOrder.php';
+include '../view/customer/order_place.php';

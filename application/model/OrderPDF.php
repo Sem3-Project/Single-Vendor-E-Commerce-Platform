@@ -1,6 +1,7 @@
 <?php
 include('../../fpdf181/fpdf.php');
-include('../controller/orderPDF.class.php');
+//include('../../controller/DbConnection.class.php');
+include('../../controller/controllerUserData.php');
 //$db=new PDO('mysql:host=localhost;dbname=new_reg','root','');
 
 
@@ -27,11 +28,11 @@ class myPDF extends FPDF{
     //     $this->Ln();
     // }
 
-    function ViewTable($customer_id){//------------------------------this part should be change according to the form--------------------------------
-        $connector = new DbConnection();
-        $conn = $connector->connect1();
-        $funObj = new orderPDF();
-        
+    function ViewTable($con1,$customer_id){//------------------------------this part should be change according to the form--------------------------------
+        // $connector = new DbConnection();
+        // $con1 = $connector->connect1();
+        //$funObj = new orderPDF();
+        //$customer_id=$_SESSION['customer_id'];
         // function ViewTable(){//------------------------------this part should be change according to the form--------------------------------
 
         // $db=new PDO('mysql:host=localhost;dbname=singlevendor','root','');
@@ -79,7 +80,7 @@ class myPDF extends FPDF{
     
 
     $pdf->SetFont("Arial","",10);
-    $stmt=mysqli_query($conn,"SELECT * from order_order_product where customer_id='$customer_id'");
+    $stmt=mysqli_query($con1,"SELECT * from order_order_product where customer_id='$customer_id'");
     // $stmt=$db->query("SELECT * from order_order_product where customer_id='$customer_id'");
     // $stmt=$db->query("SELECT * from `product_sales_report` where (date>'$sd' and date<'$fd' and summ=(select max(summ) from `product_sales_report`))");
     // $stmt=$db->query("SELECT * from `product_sales_report` where (summ=(select max(summ) from `product_sales_report`))");

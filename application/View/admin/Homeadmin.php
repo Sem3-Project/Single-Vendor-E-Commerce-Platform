@@ -24,7 +24,8 @@ include '../../model/Home-admin.model.php';
     <a href="../../view/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%"></a>
     <a href="report.php"><img class="report" src="../../../public/images/report.gif" style="width:13%; margin-top:70px"></a>
     <a href="RegisterAdmin.php"><img class="report" src="../../../public/images/register.gif" style="width:10%; margin-top:70px;margin-left:20%"></a>
- 
+    <a href="addProduct/index.php"><img class="report" src="../../../public/images/addproduct.gif" style="width:12.5%; margin-top:70px;margin-left:37%"></a>
+
    
 
     <div class="topnav">
@@ -55,7 +56,7 @@ include '../../model/Home-admin.model.php';
       
       </div>
 
-<input type="submit" name="Search" value="Search" class="search" />
+<input type="submit" name="Search" value="Search" class="search" style="margin-left:85%"/>
 
 
 
@@ -82,7 +83,7 @@ include '../../model/Home-admin.model.php';
         <button name="Select" type="submit" value="<?php echo $row["product_id"];?>">
         
         <?php
-		echo "<h5 >" .$row['product_name']."<br>".$row['price']."</h5>";
+		echo "<h5 >" .$row['product_name']."<br>$ ".$row['price']."</h5>";
 		?></button></div></center>
       </div><br>
       </div></div>

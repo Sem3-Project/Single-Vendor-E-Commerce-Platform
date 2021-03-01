@@ -235,7 +235,7 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
                         </div> -->
 
                         <div class="form-group <?php echo (!empty($product_name_err)) ? 'has-error' : ''; ?>">
-                            <label>product name</label>
+                            <label>Product name</label>
                             <input type="text" name="product_name" class="form-control" value="<?php echo $product_name; ?>">
                             <span class="help-block"><?php echo $product_name_err;?></span>
                         </div>
@@ -272,16 +272,16 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
                         $result = mysqli_query($conn,"SELECT * FROM category order by category_name");
 			            while($row = mysqli_fetch_array($result)) {
 			            ?>
-                        
+
 				            <option value="<?php echo $row["category_id"];?>"><?php echo $row["category_name"];?></option>
 			            <?php
 			            }
 			            ?>
 			            </select>
                         <!-- ---------------------------------->
-
+                        <br>
                         <!-- ------------------------------------ -->
-                        <label for="sel2">Sub Category</label>
+                        <label for="sel2">Sub category</label>
 		                <select class="form-control" id="subcat_id" name="subcat_id">
 		                <option value=""><?php echo $subcat["subcat_name"]; ?></option>
                         <!-- <option value="">Select subcategory name</option> -->
@@ -298,22 +298,22 @@ if(isset($_POST["product_id"]) && !empty($_POST["product_id"])){
 			            </select>
                         <!-- ----------------------------------- -->
 
-                        
+                        <br>
 
                         <div class="form-group <?php echo (!empty($description_err)) ? 'has-error' : ''; ?>">
-                            <label>description</label>
+                            <label>Description</label>
                             <textarea name="description" class="form-control"><?php echo $description; ?></textarea>
                             <span class="help-block"><?php echo $description_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($weight_err)) ? 'has-error' : ''; ?>">
-                            <label>weight</label>
+                            <label>Weight</label>
                             <input type="text" name="weight" class="form-control" value="<?php echo $weight; ?>">
                             <span class="help-block"><?php echo $weight_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($dimension_err)) ? 'has-error' : ''; ?>">
-                            <label>dimension</label>
+                            <label>Dimension</label>
                             <input type="text" name="dimension" class="form-control" value="<?php echo $dimension; ?>">
                             <span class="help-block"><?php echo $dimension_err;?></span>
                         </div>

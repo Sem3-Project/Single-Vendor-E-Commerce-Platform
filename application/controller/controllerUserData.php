@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 require "DbConnection.class.php";
 $email = "";
 $name = "";
@@ -8,16 +8,19 @@ $errors = array();
 $connector = new DbConnection();
 $con = $connector->connect();  
 $con1 = $connector->connect1();  
-
+session_start();
 use PHPMailer\PHPMailer\PHPMailer; 
 use PHPMailer\PHPMailer\Exception; 
 
-require '../../PHPMailer/src/Exception.php'; 
-require '../../PHPMailer/src/PHPMailer.php'; 
-require '../../PHPMailer/src/SMTP.php'; 
+require '../../../PHPMailer/src/Exception.php'; 
+require '../../../PHPMailer/src/PHPMailer.php'; 
+require '../../../PHPMailer/src/SMTP.php'; 
+
+
 
 //signup as a customer
 if(isset($_POST['signup'])){
+    
     $first_name = mysqli_real_escape_string($con1, $_POST['first_name']);
     $last_name = mysqli_real_escape_string($con1, $_POST['last_name']);
     $email = mysqli_real_escape_string($con1, $_POST['email']);
@@ -102,7 +105,8 @@ if(isset($_POST['check'])){
         if($update_res){
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
-            header('location: customer/HomeCustomer.php');
+            echo "<script>alert('Please login ')</script>";
+            header('location: loginRegister.php');
             exit();
         }else{
             $errors['otp-error'] = "Failed while updating code!";
@@ -122,15 +126,18 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($res) > 0){
         $fetch = mysqli_fetch_assoc($res);
         $fetch_pass = $fetch['password'];
+        $fetch_id = $fetch['customer_id'];
         if(password_verify($password1, $fetch_pass)){
-            $_SESSION['email'] = $email;
+            $_SESSION['email'] = $email1;
             $status = $fetch['status'];
             if($status == 'verified'){
                 $_SESSION['email'] = $email1;
                 $_SESSION['password'] = $password1;
-                header('location: customer/HomeCustomer.php');
+                $_SESSION['customer_id'] = $fetch_id;
+                header('location: ../customer/HomeCustomer.php');
+
             }else{
-                $info = "It's look like you haven't still verify your email - $email";
+                $info = "It's look like you haven't still verify your email - $email1";
                 $_SESSION['info'] = $info;
                 header('location: user-otp.php');
             }
@@ -154,7 +161,7 @@ if(isset($_POST['login'])){
             if($status == 'verified'){
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
-                header('location: admin/Homeadmin.php');
+                header('location: ../admin/Homeadmin.php');
             }else{
                 $info = "It's look like you haven't still verify your email - $email";
                 $_SESSION['info'] = $info;
