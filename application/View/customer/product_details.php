@@ -4,7 +4,7 @@
 include '../../controller/product_details.class.php';
 
 $connector = new DbConnection();
-$conn = $connector->connect();
+$conn = $connector->connect1();
 $funObj = new ProductDetails();
 $product_id=8;
 $customer_id=15;
