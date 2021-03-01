@@ -7,7 +7,7 @@ class ProductDetails{
           
         // make the connection with database  
         $connector = new DbConnection();
-        $conn = $connector->connect1();  
+        $conn = $connector->connect();  
     }  
     function __destruct() {  
           
@@ -25,8 +25,23 @@ class ProductDetails{
 
      public function getVarientId($conn, $product_id,$varient_1,$varient_2){
         $varient_id = mysqli_query($conn,"SELECT varient_id FROM varient WHERE product_id='".$product_id."'and varient_1='".$varient_1."'and varient_2='".$varient_2."'") ;
-        $result = $varient_id->fetch_assoc();
-        return $result['varient_id'];
-    }
+        $result1 = $varient_id->fetch_assoc();
+        return $result1['varient_id'];;
+        
+    //     try {
+    //         //check if
+    //         if($result1['varient_id']!= null) {
+    //           //throw exception if email is not valid
+    //           return $result1['varient_id'];;
+    //         }
+    //       }
+          
+    //       catch (customException $e) {
+    //         //display custom message
+    //         echo $e->errorMessage();
+            
+        
+    // }
 }  
+}
 ?>  
