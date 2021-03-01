@@ -11,7 +11,9 @@ $conn->begin_transaction();
 try {
     $funObj = new Order();
 
-    $cust_id = 24;
+
+    $cust_id = 22;
+
 
     // $order_id = $funObj->get_orderID($conn, $cust_id);
     $cart_id = $funObj->getCartId($conn, $cust_id);
@@ -42,18 +44,29 @@ try {
         // if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
         //     echo "<script>alert('Please enter payment method')</script>";
         // } else {
-<<<<<<< HEAD
+
+
         //$insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
         //$del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
         //header("location:../view/customer/order_status.php");
-=======
+
         // $insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
+
+
+        $insert = $funObj->saveConfirmation($conn, $cust_id,$date, $payment_method,$total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
+        // $order_id = $funObj->get_orderID($conn, $cust_id, $date);
+
         // $del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
-        $order_id = $funObj->get_orderID($conn, $cust_id);
+
+        // $order_prod = $funObj->order_details($conn, $order_id);
         //$enter_order_prod = $funObj->order_details($conn,$cart_id,$order_id);
         // $dltFromCartProduct = $funObj->dltCartproduct($conn,$cart_id);
+
        // header("location:../view/customer/order_status.php");
->>>>>>> 2f64b970357e56ab599527f6cfc19eab44d13626
+
+
+        // header("location:../view/customer/order_status.php");
+
         // }
     }
 
@@ -63,6 +76,7 @@ try {
         header("location:../view/customer/cart_view.php");
     }
     $conn->commit();
+    clearstatcache();
 } catch (mysqli_sql_exception $exception) {
     $conn->rollback();
     throw $exception;

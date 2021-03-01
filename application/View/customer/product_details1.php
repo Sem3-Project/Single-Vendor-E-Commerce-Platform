@@ -6,19 +6,11 @@ include '../../controller/product_details.class.php';
 $connector = new DbConnection();
 $conn = $connector->connect();
 $funObj = new ProductDetails();
-
-session_start();
-//$product_id=$_POST['Select'];
 $product_id=8;
 $customer_id=15;
 $varient_1='';
 $varient_2='';
 $quantity='';
-
-// if(isset($_GET['cat'])){
-    
-//   $get_id = $_GET['cat'];
-  
 
 if (isset($_POST['varient1'])){
   $varient1=$_POST['varient1'];
@@ -74,7 +66,7 @@ if (isset($_POST['varient2'])){
 <body>
 <div class="container">
 
-	<form action="product_details1.php" method="POST">
+	<form action="" method="POST">
 		<div class="form-group">
         <br><br>
         <?php
@@ -140,13 +132,10 @@ if (isset($_POST['varient2'])){
 			 </select>
         </td></tr></table>
         
-        <br><center><input type="submit" class="link" name="search" style="margin-bottom: 50px; width:50%; height:40px;background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center>
+        <!-- <br><center><input type="submit" class="link" name="search" style="margin-bottom: 50px; width:50%; height:40px;background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center> -->
         </div>
 
-        </form>
-        <!-- <form action="" method="POST">
        
-        
         <table>
         <tr><td><h5>Available Quantity</h5></td><td>
         <?php
@@ -194,7 +183,7 @@ if (isset($_POST['varient2'])){
         
         </div>
 
-		</form> --> 
+		</form>
 
 
 </body>

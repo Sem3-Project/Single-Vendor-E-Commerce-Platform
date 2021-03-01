@@ -37,7 +37,7 @@
 <br>
 </form>
 
-<form method="POST" action="#">
+<form method="POST" action="#" autocomplete="off">
     <table>
         <link rel="stylesheet" href="../../public/css/table1.css">
         <tr>

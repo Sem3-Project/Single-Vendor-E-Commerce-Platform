@@ -30,13 +30,10 @@
             <?php
 require '../../controller/order_status.class.php';
 
-<<<<<<< HEAD
+
 //$connector = new DbConnection();
 //$conn = $connector->connect1();
-=======
-$connector = new DbConnection();
-$conn = $connector->connect();
->>>>>>> 2f64b970357e56ab599527f6cfc19eab44d13626
+
 $funObj = new OrderStatus();
 
 $load = $funObj->loadStatus($con1,$_SESSION['customer_id']); 
