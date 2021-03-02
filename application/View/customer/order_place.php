@@ -83,7 +83,7 @@
     <table class='table table-bordered table-striped'>
         
         <tr>
-            <th>Total amount</th>
+            <th>Total amount ($)</th>
             <td><?php echo $total_payment ?></td>
         </tr>
         <tr>
@@ -129,7 +129,7 @@
         </tr>
     </table>
     <input type="submit" value="Back" name="back" readonly class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
-    <input type="submit" value="Confirm" name="confirm" class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
+    <input type="submit" value="Confirm" name="confirm" class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)"<?php if ($total_payment == 0.00){ ?> disabled <?php   } ?> >
 </form>
 </div>
     </div>

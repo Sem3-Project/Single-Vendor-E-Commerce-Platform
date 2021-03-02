@@ -106,6 +106,11 @@ class Order
         // return $getvalues;
     }
 
+    // public function varient_update($conn)
+    // {
+    //     $query = mysqli_query($conn,"UPDATE varient varient.quantity SET quantity=varient.quentity");
+    // }
+
     public function dltCartproduct($conn, $cart_id)
     {
         $query = mysqli_query($conn, "DELETE FROM cart_product WHERE selected=1 and cart_id='" . $cart_id . "'");
