@@ -4,10 +4,18 @@
     <title>Place order</title>
     <meta charset="UTF-8">
     <meta name="viewpoint" content="width-device-width initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="
+https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
+"></script>
+    <link rel="stylesheet" href="
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css
+">
+    <script src="
+https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
+"></script>
+    <script src="
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js
+"></script>
     <link rel="stylesheet" href="../../../public/css/login.css" />
     
     <style type="text/css">
@@ -83,7 +91,7 @@
     <table class='table table-bordered table-striped'>
         
         <tr>
-            <th>Total amount</th>
+            <th>Total amount ($)</th>
             <td><?php echo $total_payment ?></td>
         </tr>
         <tr>
@@ -129,7 +137,7 @@
         </tr>
     </table>
     <input type="submit" value="Back" name="back" readonly class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
-    <input type="submit" value="Confirm" name="confirm" class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
+    <input type="submit" value="Confirm" name="confirm" class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)"<?php if ($total_payment == 0.00){ ?> disabled <?php   } ?> >
 </form>
 </div>
     </div>

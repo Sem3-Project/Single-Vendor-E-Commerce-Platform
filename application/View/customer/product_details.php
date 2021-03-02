@@ -76,10 +76,9 @@ if (isset($_POST['varient_2'])){
   
 </head>
 <body>
-  <a href="HomeCustomer.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; position: relative;"></a>
+<a href="HomeCustomer.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; position: relative;"></a>
 
-  <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px; margin-left:25px; position: absolute;"></a>
-
+<a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px; margin-left:25px; position: absolute;"></a>
 
 <div class="container">
 <div class="wrapper" >
@@ -110,8 +109,7 @@ if (isset($_POST['varient_2'])){
         <center><h2><?php echo $product_name?></h2></center>
         </div>
         <br>
-        <center>  
-      <?php
+      <center><?php
       $result= mysqli_query($con1,"SELECT DISTINCT `image` FROM varient where product_id = $product_id");
       while($row = mysqli_fetch_array($result)) {
       echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" style="width:40%;
@@ -155,28 +153,17 @@ if (isset($_POST['varient_2'])){
 			 </select>
         </td></tr></table>
         
-
-        <br><input type="submit"  name="search" class="btn btn-success pull-right" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17);margin-right:35%" value="Check Available Quantity and Price">
+        <br><input type="submit" name="search" class="btn btn-success pull-right" style="margin-right:37%; background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)" value="Check Available Quantity and Price">
         
-        <br><br><br><br>
-
-        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:white; color:black; border:rgb(236, 185, 17)border-color:black;">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="search" style="background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center>
-        
-<br><br>
-
+<br><br><br><br>
                           
         </div>
 
         </form>
-
         </div>
             </div>        
         </div>
     </div>
-        <!-- <form action="" method="POST">
-
-
-       
 
 
 </body>

@@ -24,7 +24,7 @@ class Profile{
     }
 
     public function loadProfile($con1,$customer_id){
-        $loadQr = mysqli_query($con1,"SELECT * FROM customer WHERE customer_id = '".$customer_id."'");  
+        $loadQr = mysqli_query($con1,"SELECT customer_id,email,payment_number,first_name,last_name,zip_code,address_line_1,address_line_2,city,state,mobile_num FROM customer WHERE customer_id = '".$customer_id."'");  
         return $loadQr;
     }
   //  public function editProfile($conn,$customer_id,$email,$payment_number,$first_name,$last_name,$zip_code,$address_line_1,$address_line_2,$city,$state,$mobile_num){  

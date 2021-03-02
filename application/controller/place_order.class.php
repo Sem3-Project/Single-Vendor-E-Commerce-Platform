@@ -13,7 +13,6 @@ class Order
     {
         $address = mysqli_query($conn, "SELECT `zip_code`,`address_line_1`,`address_line_2`,`city`,`state` FROM address WHERE customer_id='" . $customer_id . "'") or die(mysqli_error($conn));
         $result = mysqli_fetch_assoc($address);
-        // return implode("<br>", $result);
         return $result;
     }
 
@@ -73,9 +72,10 @@ class Order
         return $query;
     }
 
-    public function get_orderID($conn, $customer_id, $date)
+    public function get_orderID($conn, $customer_id,$date)
     {
         $orderID = mysqli_query($conn, "SELECT `order_id` FROM `order` WHERE customer_id='" . $customer_id . "' and date='" . $date . "'") or die(mysqli_error($conn));
+        //$orderID = mysqli_query($conn, "SELECT max(order_id) FROM `order` WHERE customer_id='" . $customer_id . "'") or die(mysqli_error($conn));
         $result = mysqli_fetch_assoc($orderID);
         return $result['order_id'];
     }
@@ -106,9 +106,15 @@ class Order
         // return $getvalues;
     }
 
+    // public function varient_update($conn)
+    // {
+    //     $query = mysqli_query($conn,"UPDATE varient varient.quantity SET quantity=varient.quentity");
+    // }
+
     public function dltCartproduct($conn, $cart_id)
     {
         $query = mysqli_query($conn, "DELETE FROM cart_product WHERE selected=1 and cart_id='" . $cart_id . "'");
         return $query;
     }
 }
+?>

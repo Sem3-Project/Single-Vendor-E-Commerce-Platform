@@ -25,6 +25,7 @@ include '../../model/Home-admin.model.php';
     <a href="report.php"><img class="report" src="../../../public/images/report.gif" style="width:13%; margin-top:70px"></a>
     <a href="RegisterAdmin.php"><img class="report" src="../../../public/images/register.gif" style="width:10%; margin-top:70px;margin-left:20%"></a>
     <a href="addProduct/index.php"><img class="report" src="../../../public/images/addproduct.gif" style="width:12.5%; margin-top:70px;margin-left:37%"></a>
+    <a href="order_status.php"><img class="report" src="../../../public/images/checkStatus.gif" style="width:14%; margin-top:70px;margin-left:57%"></a>
 
    
 

@@ -61,14 +61,28 @@ if ($varient_1!='' && $varient_2!='') {
 
 
 
-    if(isset($_POST['confirm'])){
-      
-     // $varient_id=$_SESSION['varient_id'];
+    //if(isset($_POST['confirm'])){
+      //$varient_id=$_SESSION['varient_id'];
       //$quantity=$_POST['quantity'];
+      //$insert = $funObj->addToCart($con1,$cart_id,$varient_id,$product_id,$quantity);
+      //echo $_SESSION['varient_id'];
+      // $productResult = $funObj->getProductByCode($con1,$varient_id);
+			// $cartResult = $funObj->getCartItemByProduct($productResult[0]["id"], $member_id);
+					
+			// 		if (! empty($cartResult)) {
+			// 			// Update cart item quantity in database
+			// 			$newQuantity = $cartResult[0]["quantity"] + 1;
+			// 			$shoppingCart->updateCartQuantity($newQuantity, $cartResult[0]["id"]);
+			// 		} else {
+						//Add to cart table
+           // mysqli_query($con1,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id','$quantity')");
+					//}
+      
+   
      
-      mysqli_query($con1,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
+      
      // header("Location:product_details.php");
-    }
+   // }
        
 ?>
 
@@ -99,7 +113,7 @@ if ($varient_1!='' && $varient_2!='') {
       margin-right: 15px;
   }
   .input{
-      width:250%; 
+      width:50%; 
       border:2px solid #e8ebeb; 
       border-radius:5px; 
       padding:5px; 
@@ -108,27 +122,22 @@ if ($varient_1!='' && $varient_2!='') {
   }
   
 </style>
-  
 </head>
 <body>
 <a href="HomeCustomer.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; position: relative;"></a>
 
-  <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px; margin-left:25px; position: absolute;"></a>
-
+<a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px; margin-left:25px; position: absolute;"></a>
 
 <div class="container">
 <div class="wrapper" >
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-	
-
 	<form action="goto_cart.php" method="POST">
 		<div class="form-group">
         <br><br>
         <?php
         
-
 
 //if ($varient_1!='' || $varient_2!='') {
   if ($load){
@@ -152,10 +161,10 @@ if ($varient_1!='' && $varient_2!='') {
       $result= mysqli_query($con1,"SELECT DISTINCT `image` FROM varient where product_id = $product_id");
       while($row = mysqli_fetch_array($result)) {
       echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" style="width:40%;
-        height: 350px;"  class="img1" />'; }?></center>
-
+        height: 350px;"  class="img1" />'; }?>
+      </center>
       
-   
+      <br>
 
 	
 		
@@ -173,14 +182,11 @@ if ($varient_1!='' && $varient_2!='') {
         <!-- <select class="form-control" id="varient_1" name="varient_1">
 		  <option value="">Select Variant Type 1</option>
 		    <?php
-
-        $result1 = mysqli_query($con1,"SELECT DISTINCT varient_1 FROM varient where product_id = $product_id");
-			while($row = mysqli_fetch_array($result1)) {
-
+       
 			?>
 				<option value="<?php echo $row["varient_1"];?>" <?php if ($row["varient_1"]==$varient_1){ echo 'selected';} ?>><?php echo $row["varient_1"];?></option>
 			<?php
-			}
+			//}
 			?>
 			 </select> -->
         </td></tr>
@@ -188,14 +194,11 @@ if ($varient_1!='' && $varient_2!='') {
         <!-- <select class="form-control" id="varient_2" name="varient_2">
 		  <option value="">Select Variant Type 2</option>
 		    <?php
-
-        $result2 = mysqli_query($con1,"SELECT DISTINCT varient_2 FROM varient where product_id = $product_id");
-			while($row = mysqli_fetch_array($result2)) {
-
+        
 			?>
 				<option value="<?php echo $row["varient_2"];?>" <?php if ($row["varient_2"]==$varient_2){ echo 'selected';} ?>><?php echo $row["varient_2"];?></option>
 			<?php
-			}
+			//}
 			?>
 			 </select> -->
         </td></tr></table>
@@ -207,22 +210,7 @@ if ($varient_1!='' && $varient_2!='') {
         <table class='table table-bordered table-striped'>
         <tr><td style="width:15%"><h5>Available Quantity</h5></td><td>
         <?php
-
-         if(isset($_POST['search'])){
-          // $product_name=$_POST['product_name'];
-          $varient_1=$_POST['varient_1'];
-          $varient_2=$_POST['varient_2'];
-          
-          
-          
-          
-          $query="SELECT quantity,price FROM `varient` where (product_id=$product_id and varient_1='$varient_1' and varient_2='$varient_2')";
-          $search_result=mysqli_query($con1,$query);
-          
-          //header("Location:product_details.php");
-          //$search_result=filter($query);
-        }
-
+         
         
 			while($row=mysqli_fetch_array($search_result)):?>
 
@@ -235,31 +223,18 @@ if ($varient_1!='' && $varient_2!='') {
 			
 			?><?php endwhile;?>
       </td></tr>
-      <tr><td><h5>Quantity</h5></td><td><input type="number" name="quantity" value="1" min="1" max="<?=$product['quantity']?>" placeholder="Select Quantity" required>   </td></tr>
+      <tr><td><h5>Quantity</h5></td><td><input type="number" class="input" name="quantity" value="1" min="1" max="<?=$product['quantity']?>" placeholder="Select Quantity" required>   </td></tr>
         </table>
        <?php 
       
-
-        $varient_id=$funObj->getVarientId($con1, $product_id,$varient_1,$varient_2);
-        $_SESSION['varient_id']=$varient_id;
-
-        //echo $_SESSION['varient_id'];
-        if(isset($_POST['confirm'])){
-         // $varient_id=$_SESSION['varient_id'];
-          //$quantity=$_POST['quantity'];
-         
-          mysqli_query($con1,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
-         // header("Location:product_details.php");
-        }?>
+        ?>
                  
         
-        <br><center><input type="submit"  name="confirm" class="btn btn-success pull-right" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17);margin-right:45%" value="Add to Cart"></center>
+        <br>
+        <br><input type="submit" name="confirm" class="btn btn-success pull-right" style="margin-right:47%; background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)" value="Add to Cart">
+
+        <!--input type="submit" class="btn btn-default" name="confirm" style="background-color:  rgb(236, 185, 17);" value="Add to Cart"></center-->
         <br><br><br><br>
-
-        
-        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:white; color:black; border:rgb(236, 185, 17)border-color:black;">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="confirm" style="background-color:  rgb(236, 185, 17);" value="Add to Cart"></center>
-        <br><br>
-
         </div>
 
 		</form>
