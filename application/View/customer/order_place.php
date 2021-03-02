@@ -110,7 +110,7 @@
             <th>Payment method</th>
             <td>
                 <select name="payment_method" required class="input">
-                    <option value="not selected">---Select---</option>
+                    <!-- <option value="not selected">---Select---</option> -->
                     <option value="CashONDelivery">Cash on delivery</option>
                     <option value="VISA">Visa</option>
                 </select>
@@ -128,8 +128,8 @@
             </td>
         </tr>
     </table>
-    <input type="submit" value="Back" name="back" readonly class="btn btn-primary" name='delete' style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
-    <input type="submit" value="Confirm" name="confirm" class="btn btn-primary" name='delete' style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
+    <input type="submit" value="Back" name="back" readonly class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
+    <input type="submit" value="Confirm" name="confirm" class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
 </form>
 </div>
     </div>
