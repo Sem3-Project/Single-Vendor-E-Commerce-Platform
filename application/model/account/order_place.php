@@ -41,6 +41,7 @@ try {
         // if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
         //     echo "<script>alert('Please enter payment method')</script>";
         // } else {
+            
         $funObj->saveConfirmation($con1, $cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
         $order_id = $funObj->get_orderID($con1, $cust_id, $date);
         $del_method = $funObj->saveDelivery($con1, $order_id, $delivery_method);
