@@ -17,8 +17,8 @@ $varient_2='';
 
 $quantity='';
 
-$cart_id=$funObj->getCartId($conn, $customer_id);
-$load = $funObj->loadProduct($conn,$product_id);
+$cart_id=$funObj->getCartId($con1, $customer_id);
+$load = $funObj->loadProduct($con1,$product_id);
 
 if (isset($_POST['varient_1'])){
   $varient_1=$_POST['varient_1'];
@@ -27,11 +27,11 @@ if (isset($_POST['varient_2'])){
   $varient_2=$_POST['varient_2'];
   }
 
-$result1 = mysqli_query($conn,"SELECT DISTINCT varient_1 FROM varient where product_id = $product_id");
+$result1 = mysqli_query($con1,"SELECT DISTINCT varient_1 FROM varient where product_id = $product_id");
 		while($row = mysqli_fetch_array($result1)) {
     
 
-$result2 = mysqli_query($conn,"SELECT DISTINCT varient_2 FROM varient where product_id = $product_id");
+$result2 = mysqli_query($con1,"SELECT DISTINCT varient_2 FROM varient where product_id = $product_id");
 		while($row = mysqli_fetch_array($result2)) {    
     
     if(isset($_POST['search'])){
@@ -41,7 +41,7 @@ $result2 = mysqli_query($conn,"SELECT DISTINCT varient_2 FROM varient where prod
       // $product_name=$_POST['product_name'];
      
       $query="SELECT quantity,price FROM `varient` where (product_id=$product_id and varient_1='$varient_1' and varient_2='$varient_2')";
-      $search_result=mysqli_query($conn,$query);
+      $search_result=mysqli_query($con1,$query);
       }else{
         echo"select both varient types";
       }
@@ -49,10 +49,10 @@ $result2 = mysqli_query($conn,"SELECT DISTINCT varient_2 FROM varient where prod
       //header("Location:product_details.php");
       //$search_result=filter($query);
     } 
-
+  }}
 
 if ($varient_1!='' && $varient_2!='') {
-  $varient_id=$funObj->getVarientId($conn, $product_id,$varient_1,$varient_2);
+  $varient_id=$funObj->getVarientId($con1, $product_id,$varient_1,$varient_2);
   $_SESSION['varient_id']=$varient_id;
   //echo $_SESSION['varient_id'];
 }else{
@@ -66,7 +66,7 @@ if ($varient_1!='' && $varient_2!='') {
      // $varient_id=$_SESSION['varient_id'];
       //$quantity=$_POST['quantity'];
      
-      mysqli_query($conn,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
+      mysqli_query($con1,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
      // header("Location:product_details.php");
     }
        
