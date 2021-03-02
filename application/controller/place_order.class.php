@@ -13,7 +13,6 @@ class Order
     {
         $address = mysqli_query($conn, "SELECT `zip_code`,`address_line_1`,`address_line_2`,`city`,`state` FROM address WHERE customer_id='" . $customer_id . "'") or die(mysqli_error($conn));
         $result = mysqli_fetch_assoc($address);
-        // return implode("<br>", $result);
         return $result;
     }
 
