@@ -50,15 +50,15 @@ class Order
 
 
 
-    public function updateVarient($conn, $order_id)
-    {
-        $updateVarientQry = mysqli_query($conn, "UPDATE varient SET quantity=quantity-(int)(SELECT quantity FROM order_product WHERE order_id = '" . $order_id . "')");
-    }
+    // public function updateVarient($conn, $order_id)
+    // {
+    //     $updateVarientQry = mysqli_query($conn, "UPDATE varient SET quantity=quantity-(int)(SELECT quantity FROM order_product WHERE order_id = '" . $order_id . "')");
+    // }
 
-    public function update_order_product($conn)
-    {
-        $query = mysqli_query($conn, "UPDATE order_product");
-    }
+    // public function update_order_product($conn)
+    // {
+    //     $query = mysqli_query($conn, "UPDATE order_product");
+    // }
 
     public function back($conn, $cart_id)
     {

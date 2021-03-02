@@ -131,7 +131,8 @@ if (isset($_POST['proceed'])) {
                                 $result = mysqli_query($con1, $query);
                                 if (mysqli_num_rows($result) == 0) {
                                     echo "Your cart is empty!!!";
-                                } else {
+                                }
+                                else{
                                     $cart_product_id = $funObj->getCartProdId($con1, $cus_id);
                                     $maxQty = $funObj->getMaxVarientQty($con1, $cus_id);
                                     while ($row = mysqli_fetch_array($result)) {
@@ -139,8 +140,8 @@ if (isset($_POST['proceed'])) {
                                         $username = $row['product_name'];
                                         $quantity = $row['quantity'];
                                         $price = $row['price'];
-                                        if ((int)$maxQty > 0 ) {
-                                ?>
+                                        // if ((int)$maxQty != 0) { 
+                                   ?>
                                             <tr id='tr_<?= $id ?>'>
                                                 <td><input type='checkbox' name='checkbox[]' value=<?php echo $row['cart_product_id'] ?>></td>
                                                 <td><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" width="120" height="120"/>' ?></td>
@@ -149,27 +150,18 @@ if (isset($_POST['proceed'])) {
                                                 <td>$ <span id="item_price"><input type=text value=<?php echo $row['price'] ?> readonly></td>
                                                 <!-- <td>$<span id="total" name="input[]" value=<--?php echo $row['cart_product_id'] ?>><input type="text" value=<?php echo $row['price'] * $row['quantity'] ?> readonly></span></td> -->
                                             </tr>
-                                        <?php
-                                        } else { ?>
-                                            <tr id='tr_<?= $id ?>'>
-                                                <td><input type='checkbox' name='checkbox[]' value=<?php echo $row['cart_product_id'] ?>></td>
-                                                <td><?php echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" width="120" height="120"/>' ?></td>
-                                                <td><?= $username ?></td>
-                                                <td><input type=number name='qty' value=<?php echo $row['quantity'] ?> id="num" oninput="calc()" required min=1 ></td>
-                                                <td>$ <span id="item_price"><input type=text value=<?php echo $row['price'] ?> readonly></td>
-                                                <!-- <td>$<span id="total" name="input[]" value=<--?php echo $row['cart_product_id'] ?>><input type="text" value=<?php echo $row['price'] * $row['quantity'] ?> readonly></span></td> -->
-                                            </tr>
-                                <?php   }
+                                    <?php
+                                        // }
                                     }
                                 }
-                                ?>
+                                    ?>
                                 <!-- } -->
                                 <!-- //$count = 1; -->
-
+                               
                             </table>
                             <br><br>
                             <input type='submit' id="delete" value='Delete' class="btn btn-primary" name='delete' style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
-                            <input type='submit' id="proceed" value='Place order' class="btn btn-primary" name='proceed' style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)" <?php if (mysqli_num_rows($result) == 0) { ?> disabled <?php   } ?>>
+                            <input type='submit' id="proceed" value='Place order' class="btn btn-primary" name='proceed' style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)" <?php if (mysqli_num_rows($result) == 0){ ?> disabled <?php   } ?> >
                             <!-- <input type='submit' id="total_bill" value='Total amount' name='total_bill'>
             $<input type="number" value=<--?php echo 1234 ?> name="tot_amt" readonly> -->
                             <!-- <p>Calculated Price: $<input type="text" name="price" id="price" disabled /></p> -->

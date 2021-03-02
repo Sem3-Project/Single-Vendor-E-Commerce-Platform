@@ -6,9 +6,9 @@ include '../../controller/place_order.class.php';
 // $conn = $connector->connect1();
 
 //begin transaction
-$con1->begin_transaction();
+// $con1->begin_transaction();
 
-try {
+// try {
     $funObj = new Order();
 
     $cust_id = $_SESSION['customer_id'];
@@ -43,13 +43,28 @@ try {
         //     echo "<script>alert('Please enter payment method')</script>";
         // } else {
 
-        $funObj->saveConfirmation($con1, $cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
+        // $funObj->saveConfirmation($con1, $cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
       
-        $order_id = $funObj->get_orderID($con1, $cust_id,$date);
-        //echo $order_id;
-        $del_method = $funObj->saveDelivery($con1, $order_id, $delivery_method);
-        $funObj->order_details($con1,$order_id,$cart_id);
-        $funObj->dltCartproduct($con1,$cart_id);
+        // $order_id = $funObj->get_orderID($con1, $cust_id,$date);
+        // $del_method = $funObj->saveDelivery($con1, $order_id, $delivery_method);
+
+        //begin 
+        $con1->begin_transaction();
+
+        try{
+            $funObj->saveConfirmation($con1, $cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
+            $order_id = $funObj->get_orderID($con1, $cust_id,$date);
+            $del_method = $funObj->saveDelivery($con1, $order_id, $delivery_method);
+            $funObj->order_details($con1,$order_id,$cart_id);
+            $funObj->dltCartproduct($con1,$cart_id);
+            $set_zero = $funObj->totalset_zero($con1, $cust_id);
+            $con1->commit();
+        
+    } catch (mysqli_sql_exception $exception) {
+        $con1->rollback();
+        throw $exception;
+    }
+
 
         header("location:../../view/customer/order_status.php");
         
@@ -60,12 +75,11 @@ try {
         $set_zero = $funObj->totalset_zero($con1, $cust_id);
         header("location:../../view/customer/cart.php");
     }
-    $con1->commit();
-} catch (mysqli_sql_exception $exception) {
-    $con1->rollback();
-    throw $exception;
-}
+    // $con1->commit();
+// } catch (mysqli_sql_exception $exception) {
+//     $con1->rollback();
+//     throw $exception;
+// }
 
 
 include '../../view/customer/order_place.php';
-?>
