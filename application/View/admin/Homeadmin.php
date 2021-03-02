@@ -62,7 +62,7 @@ include '../../model/Home-admin.model.php';
 
 		</form>
 <!-- // -->
-<form action="../../../removed_items/prduct_details.php" method="POST">
+<form action="admin_product_details.php" method="POST">
 <div class='element'><br><br><br><br>
 <h2 >Product</h1>
 		<?php
