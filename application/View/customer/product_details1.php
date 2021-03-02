@@ -6,18 +6,25 @@ include '../../controller/product_details.class.php';
 $connector = new DbConnection();
 $conn = $connector->connect();
 $funObj = new ProductDetails();
-$product_id=8;
+$product_id=$_SESSION['product_id'];
+
+echo $product_id;
 $customer_id=15;
 $varient_1='';
 $varient_2='';
+
 $quantity='';
 
-if (isset($_POST['varient1'])){
-  $varient1=$_POST['varient1'];
+if (isset($_POST['varient_1'])){
+  $varient_1=$_POST['varient_1'];
   }
-if (isset($_POST['varient2'])){
-  $varient2=$_POST['varient2'];
+if (isset($_POST['varient_2'])){
+  $varient_2=$_POST['varient_2'];
   }
+
+  // if (isset($_POST['varient_id'])){
+  //   $varient_id=$_POST['varient_id'];
+  //   }
 //$product_id=$_POST['Select'];
 
   
@@ -90,6 +97,12 @@ if (isset($_POST['varient2'])){
         <h2><?php echo $product_name?></h2>
         </div>
         <div class='element'>
+        <?php
+      $result= mysqli_query($con1,"SELECT DISTINCT `image` FROM varient where product_id = $product_id");
+      while($row = mysqli_fetch_array($result)) {
+      echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" style="width:40%;
+        height: 350px;"  class="img1" />'; }?>
+
       
    
 
@@ -105,8 +118,8 @@ if (isset($_POST['varient2'])){
         <tr><td><h5>Weight</h5></td><td><?php echo $weight?></td></tr>
         <tr><td><h5>Dimention</h5></td><td><?php echo $dimension?></td></tr>
 
-        <tr><td><h5>Variant Type 1</h5></td><td>
-        <select class="form-control" id="varient_1" name="varient_1">
+        <tr><td><h5>Variant Type 1</h5></td><td><?php echo $varient_1 ?>
+        <!-- <select class="form-control" id="varient_1" name="varient_1">
 		  <option value="">Select Variant Type 1</option>
 		    <?php
         $result1 = mysqli_query($conn,"SELECT DISTINCT varient_1 FROM varient where product_id = $product_id");
@@ -116,10 +129,10 @@ if (isset($_POST['varient2'])){
 			<?php
 			}
 			?>
-			 </select>
+			 </select> -->
         </td></tr>
-        <tr><td><h5>Variant Type 2</h5></td><td>
-        <select class="form-control" id="varient_2" name="varient_2">
+        <tr><td><h5>Variant Type 2</h5></td><td><?php echo $varient_2 ?>
+        <!-- <select class="form-control" id="varient_2" name="varient_2">
 		  <option value="">Select Variant Type 2</option>
 		    <?php
         $result2 = mysqli_query($conn,"SELECT DISTINCT varient_2 FROM varient where product_id = $product_id");
@@ -129,7 +142,7 @@ if (isset($_POST['varient2'])){
 			<?php
 			}
 			?>
-			 </select>
+			 </select> -->
         </td></tr></table>
         
         <!-- <br><center><input type="submit" class="link" name="search" style="margin-bottom: 50px; width:50%; height:40px;background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center> -->
@@ -170,8 +183,11 @@ if (isset($_POST['varient2'])){
        <?php 
       
         $varient_id=$funObj->getVarientId($conn, $product_id,$varient_1,$varient_2);
+        $_SESSION['varient_id']=$varient_id;
+
+        echo $_SESSION['varient_id'];
         if(isset($_POST['confirm'])){
-    
+         // $varient_id=$_SESSION['varient_id'];
           //$quantity=$_POST['quantity'];
          
           mysqli_query($conn,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
