@@ -24,7 +24,7 @@ if (isset($_POST['Update'])){
     $order_id = $_POST['order_id'];  
     $delivery_status = $_POST['delivery_status'];  
     $additional_notes = $_POST['additional_notes'];  
-    //$delivery_estimate=$funObj->getestiDate($conn, $order_id);
+    $delivery_estimate=$funObj->getestiDate($conn, $order_id);
     
     $update="UPDATE `delivery` SET `delivery_status`='$delivery_status',`additional_notes`='$additional_notes' WHERE order_id = $order_id";
    
