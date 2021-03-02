@@ -121,7 +121,7 @@ if (isset($_POST['varient_2'])){
 			 </select>
         </td></tr></table>
         
-        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="search" style="background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center>
+        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:white; color:black; border:rgb(236, 185, 17)border-color:black;">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="search" style="background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center>
         
 <br><br>
                           
