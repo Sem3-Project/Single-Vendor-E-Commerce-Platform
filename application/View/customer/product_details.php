@@ -43,49 +43,16 @@ if (isset($_POST['varient_2'])){
   <title>Product Details</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
-  <link rel="stylesheet" href="../../../public/css/login.css" />
-  
-  <style type="text/css">
-  .wrapper{
-      width: 80%;
-      margin: 0 auto;
-      background-color: #f2f2f2;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-  }
-  .page-header h2{
-      margin-top: 0;
-  }
-  table tr td:last-child a{
-      margin-right: 15px;
-  }
-  .input{
-      width:250%; 
-      border:2px solid #e8ebeb; 
-      border-radius:5px; 
-      padding:5px; 
-      padding-left:10px
-    
-  }
-  
-</style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
+   <link rel="stylesheet" href="../../../public/css/login2.css" /> 
+
   
 </head>
 <body>
-  <a href="HomeCustomer.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; position: relative;"></a>
-
-  <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px; margin-left:25px; position: absolute;"></a>
-
-
 <div class="container">
-<div class="wrapper" >
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+
 	<form action="product_details1.php" method="POST">
 		<div class="form-group">
         <br><br>
@@ -107,24 +74,23 @@ if (isset($_POST['varient_2'])){
     //header("Location:product_details.php");
   }?>
         
-        <center><h2><?php echo $product_name?></h2></center>
+        <h2><?php echo $product_name?></h2>
         </div>
-        <br>
-        <center>  
+        
       <?php
       $result= mysqli_query($con1,"SELECT DISTINCT `image` FROM varient where product_id = $product_id");
       while($row = mysqli_fetch_array($result)) {
       echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" style="width:40%;
         height: 350px;"  class="img1" />'; }?>
-      </center>
+
       
-      <br>
+      
 	
         <div class="form-group">
         
-        <table width="60%" class='table table-bordered table-striped'>
-        <!--link href="../../../public/css/table1.css" rel="stylesheet" /-->
-        <tr><td style="width:15%"><h5>Description</h5></td><td><?php echo $description?></td></tr>
+        <table width="60%">
+        <link href="../../../public/css/table1.css" rel="stylesheet" />
+        <tr><td><h5>Description</h5></td><td><?php echo $description?></td></tr>
         <tr><td><h5>Weight</h5></td><td><?php echo $weight?></td></tr>
         <tr><td><h5>Dimention</h5></td><td><?php echo $dimension?></td></tr>
 
@@ -155,27 +121,13 @@ if (isset($_POST['varient_2'])){
 			 </select>
         </td></tr></table>
         
-
-        <br><input type="submit"  name="search" class="btn btn-success pull-right" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17);margin-right:35%" value="Check Available Quantity and Price">
-        
-        <br><br><br><br>
-
         <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:white; color:black; border:rgb(236, 185, 17)border-color:black;">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="search" style="background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center>
         
 <br><br>
-
                           
         </div>
 
         </form>
-
-        </div>
-            </div>        
-        </div>
-    </div>
-        <!-- <form action="" method="POST">
-
-
        
 
 
