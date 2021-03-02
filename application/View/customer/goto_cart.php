@@ -2,8 +2,8 @@
 // include '../../controller/DbConnection.class.php';
 include '../../controller/product_details.class.php';
 
-$connector = new DbConnection();
-$conn = $connector->connect();
+// $connector = new DbConnection();
+// $conn = $connector->connect();
 
 $customer_id=$_SESSION['customer_id'];
 $product_id=$_SESSION['product_id'];
@@ -52,7 +52,7 @@ if ($load){
 <meta charset="UTF-8">
     <title>Added to Cart</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="../../../../public/css/login2.css" />
+    <link rel="stylesheet" href="../../../public/css/login.css" />
     <style type="text/css">
         .wrapper{
             width: 500px;
@@ -66,6 +66,10 @@ if ($load){
     </style>
 </head>
 <body>
+    <a href="HomeCustomer.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px;  position: relative;"></a>
+
+    <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px;margin-left:25px; position: absolute;"></a>
+
 <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -77,11 +81,11 @@ if ($load){
                         <div class="alert alert-danger fade in" style="background-color:#e8ebeb; color:black; border:1px solid #e8ebeb">
 
                             
-                            <p> <h4><?php echo $product_name?> has been successfully added to your cart.</h4></p><br>
+                            <p> <b><?php echo $product_name?></b> has been successfully added to your cart.</p><br>
                             
                             <p>
                             <a href="cart.php" class="btn btn-default" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">View Cart</a>
-                                <a href="HomeCustomer.php" class="btn btn-default">Continue Shopping</a>
+                                <a href="HomeCustomer.php" class="btn btn-default" >Continue Shopping</a>
                             </p>
                         </div>
                     </form>

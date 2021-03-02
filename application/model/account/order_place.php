@@ -12,7 +12,7 @@ try {
     $funObj = new Order();
 
     $cust_id = $_SESSION['customer_id'];
-
+    //$cust_id = 29;
     $cart_id = $funObj->getCartId($con1, $cust_id);
 
     //  $num = $funObj->num_of_rows($conn, $order_id);
@@ -29,7 +29,8 @@ try {
     $state = $address['state'];
 
     if (isset($_POST['confirm'])) {
-        $date = date("Y-m-d");
+        // $date = date("Y-m-d");
+        $date =date("Y-m-d H:i:s");
         $payment_method = $_POST['payment_method'];
         $zip_code = $_POST['zip_code'];
         $address_line_1 = $_POST['address_line_1'];
@@ -44,7 +45,8 @@ try {
 
         $funObj->saveConfirmation($con1, $cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
       
-        $order_id = $funObj->get_orderID($con1, $cust_id, $date);
+        $order_id = $funObj->get_orderID($con1, $cust_id,$date);
+        //echo $order_id;
         $del_method = $funObj->saveDelivery($con1, $order_id, $delivery_method);
         $funObj->order_details($con1,$order_id,$cart_id);
         $funObj->dltCartproduct($con1,$cart_id);
@@ -66,3 +68,4 @@ try {
 
 
 include '../../view/customer/order_place.php';
+?>

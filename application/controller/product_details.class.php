@@ -18,7 +18,7 @@ class ProductDetails{
         return $loadQr;
     }
     public function getCartId($conn,$customer_id){
-        $cart_id = mysqli_query($conn,"SELECT cart_id from cart_update where customer_id='".$customer_id."'");
+        $cart_id = mysqli_query($conn,"SELECT cart_id from cart where customer_id='".$customer_id."'");
         $result = $cart_id->fetch_assoc();
         return $result['cart_id'];
     }

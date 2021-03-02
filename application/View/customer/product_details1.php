@@ -49,12 +49,12 @@ $result2 = mysqli_query($con1,"SELECT DISTINCT varient_2 FROM varient where prod
       //header("Location:product_details.php");
       //$search_result=filter($query);
     } 
+  }}
 
-
-if ($varient_1!='' || $varient_2!='') {
+if ($varient_1!='' && $varient_2!='') {
   $varient_id=$funObj->getVarientId($con1, $product_id,$varient_1,$varient_2);
   $_SESSION['varient_id']=$varient_id;
-  echo $_SESSION['varient_id'];
+  //echo $_SESSION['varient_id'];
 }else{
   $varient_id= $_SESSION['varient_id'];
 }
@@ -92,16 +92,47 @@ if ($varient_1!='' || $varient_2!='') {
   <title>Product Details</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  
-   <link rel="stylesheet" href="../../../public/css/login2.css" /> 
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="../../../public/css/login.css" />
   
+  <style type="text/css">
+  .wrapper{
+      width: 80%;
+      margin: 0 auto;
+      background-color: #f2f2f2;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+  }
+  .page-header h2{
+      margin-top: 0;
+  }
+  table tr td:last-child a{
+      margin-right: 15px;
+  }
+  .input{
+      width:50%; 
+      border:2px solid #e8ebeb; 
+      border-radius:5px; 
+      padding:5px; 
+      padding-left:10px
+    
+  }
+  
+</style>
 </head>
 <body>
-<div class="container">
+<a href="HomeCustomer.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; position: relative;"></a>
 
+<a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px; margin-left:25px; position: absolute;"></a>
+
+<div class="container">
+<div class="wrapper" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
 	<form action="goto_cart.php" method="POST">
 		<div class="form-group">
         <br><br>
@@ -122,17 +153,18 @@ if ($varient_1!='' || $varient_2!='') {
     //header("Location:product_details.php");
   }?>
         
-        <h2><?php echo $product_name?></h2>
+        <center><h2><?php echo $product_name?></h2></center>
         </div>
+        <br>
         <div class='element'>
-        <?php
+        <center><?php
       $result= mysqli_query($con1,"SELECT DISTINCT `image` FROM varient where product_id = $product_id");
       while($row = mysqli_fetch_array($result)) {
       echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" style="width:40%;
         height: 350px;"  class="img1" />'; }?>
-
+      </center>
       
-   
+      <br>
 
 	
 		
@@ -140,9 +172,9 @@ if ($varient_1!='' || $varient_2!='') {
 	
         <div class="form-group">
         
-        <table width="60%">
-        <link href="../../../public/css/table1.css" rel="stylesheet" />
-        <tr><td><h5>Description</h5></td><td><?php echo $description?></td></tr>
+        <table width="60%" class='table table-bordered table-striped'>
+        <!--link href="../../../public/css/table1.css" rel="stylesheet" /-->
+        <tr><td style="width:15%"><h5>Description</h5></td><td><?php echo $description?></td></tr>
         <tr><td><h5>Weight</h5></td><td><?php echo $weight?></td></tr>
         <tr><td><h5>Dimention</h5></td><td><?php echo $dimension?></td></tr>
 
@@ -154,7 +186,7 @@ if ($varient_1!='' || $varient_2!='') {
 			?>
 				<option value="<?php echo $row["varient_1"];?>" <?php if ($row["varient_1"]==$varient_1){ echo 'selected';} ?>><?php echo $row["varient_1"];?></option>
 			<?php
-			}
+			//}
 			?>
 			 </select> -->
         </td></tr>
@@ -166,7 +198,7 @@ if ($varient_1!='' || $varient_2!='') {
 			?>
 				<option value="<?php echo $row["varient_2"];?>" <?php if ($row["varient_2"]==$varient_2){ echo 'selected';} ?>><?php echo $row["varient_2"];?></option>
 			<?php
-			}
+			//}
 			?>
 			 </select> -->
         </td></tr></table>
@@ -175,8 +207,8 @@ if ($varient_1!='' || $varient_2!='') {
         </div>
 
        
-        <table>
-        <tr><td><h5>Available Quantity</h5></td><td>
+        <table class='table table-bordered table-striped'>
+        <tr><td style="width:15%"><h5>Available Quantity</h5></td><td>
         <?php
          
         
@@ -191,19 +223,25 @@ if ($varient_1!='' || $varient_2!='') {
 			
 			?><?php endwhile;?>
       </td></tr>
-      <tr><td><h5>Quantity</h5></td><td><input type="number" name="quantity" value="1" min="1" max="<?=$product['quantity']?>" placeholder="Select Quantity" required>   </td></tr>
+      <tr><td><h5>Quantity</h5></td><td><input type="number" class="input" name="quantity" value="1" min="1" max="<?=$product['quantity']?>" placeholder="Select Quantity" required>   </td></tr>
         </table>
        <?php 
       
         ?>
                  
         
-        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:white; color:black; border:rgb(236, 185, 17)border-color:black;">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="confirm" style="background-color:  rgb(236, 185, 17);" value="Add to Cart"></center>
-        <br><br>
+        <br>
+        <br><input type="submit" name="confirm" class="btn btn-success pull-right" style="margin-right:47%; background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)" value="Add to Cart">
+
+        <!--input type="submit" class="btn btn-default" name="confirm" style="background-color:  rgb(236, 185, 17);" value="Add to Cart"></center-->
+        <br><br><br><br>
         </div>
 
 		</form>
-
+    </div>
+            </div>        
+        </div>
+    </div>
 
 </body>
 </html>

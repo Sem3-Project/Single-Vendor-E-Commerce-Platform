@@ -56,9 +56,9 @@
                 <tr>
                     <th>Order Date</th>
                     <th>Order ID</th>
-                    <th>Total Payment</th>
+                    <th>Total Payment ($)</th>
                     <th>Delivery Status</th>
-                    <th>Delivery Estimate</th>
+                    <th>Estimated Delivery Date</th>
                 </tr>
             </thead>
         
