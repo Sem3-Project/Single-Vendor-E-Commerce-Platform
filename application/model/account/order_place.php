@@ -42,7 +42,11 @@ try {
         // if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
         //     echo "<script>alert('Please enter payment method')</script>";
         // } else {
-        //$insert = $funObj->saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state);
+        //$insertQr = mysqli_query($con1, "INSERT INTO order (customer_id, date, payment_method, total_payment, zip_code, address_line_1,address_line_2,city,state) values('$cust_id','$date', '$payment_method', '$total_payment', '$zip_code', '$address_line_1','$address_line_2','$city','$state')");
+
+        $insert = $funObj->saveConfirmation($con1,$cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
+        //$insert = $funObj->saveConfirmation($con1,$_SESSION['customer_id'], date("Y-m-d"), $_POST['payment_method'], $row['total_value'], $_POST['zip_code'], $_POST['address_line_1'], $_POST['address_line_2'], $_POST['city'], $_POST['delivery_method']);
+
         //$del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
         //header("location:../view/customer/order_status.php");
         // }
@@ -51,7 +55,7 @@ try {
     if (isset($_POST['back'])) {
         $return = $funObj->back($con1, $cart_id);
         $set_zero = $funObj->totalset_zero($con1, $cust_id);
-        header("location:../view/customer/cart_view.php");
+        header("location:../../view/customer/cart.php");
     }
     $con1->commit();
 } catch (mysqli_sql_exception $exception) {

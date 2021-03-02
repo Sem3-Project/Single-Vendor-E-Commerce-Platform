@@ -1,10 +1,5 @@
 <?php
-<<<<<<< HEAD
 include 'controllerUserData.php';
-=======
-include 'DbConnection.class.php';
-//include 'controllerUserData.php';
->>>>>>> d24ffdb4de6cb38772abc132d96387a787723f98
 
 class Order
 {
@@ -45,7 +40,7 @@ class Order
     // }
     public function saveConfirmation($conn, $customer_id,$date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state)
     {
-        $insertQr = mysqli_query($conn, "INSERT INTO order(customer_id,date,payment_method,total_payment,zip_code,address_line_1,address_line_2,city,state) VALUES ('" . $customer_id . "','" . $date . "' ,'" . $payment_method . "','" . $total_payment . "','" . $zip_code . "','" . $address_line_1 . "','" . $address_line_2 . "','" . $city . "','" . $state . "'");
+        $insertQr = mysqli_query($conn, "INSERT INTO order(customer_id,date,payment_method,total_payment,zip_code,address_line_1,address_line_2,city,state) VALUES ('" . $customer_id . "','" . $date . "' ,'" . $payment_method . "','" . $total_payment . "','" . $zip_code . "','" . $address_line_1 . "','" . $address_line_2 . "','" . $city . "','" . $state . "')");
         return $insertQr;
     }
 

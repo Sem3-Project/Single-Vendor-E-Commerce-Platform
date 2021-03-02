@@ -95,9 +95,9 @@
                 </tr>
                
 </table>
-</form>
+
 <br><input type="submit" name="update" class="btn btn-primary" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)" style="margin-bottom: 50px; " value="Update">
-<br>
+<br></form>
 </div>
             </div>        
         </div><br>

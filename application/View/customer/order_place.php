@@ -128,8 +128,8 @@
             </td>
         </tr>
     </table>
-    <input type="submit" value="Back" name="back" readonly class="btn btn-primary" name='delete' style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
-    <input type="submit" value="Confirm" name="confirm" class="btn btn-primary" name='delete' style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
+    <input type="submit" value="Back" name="back" readonly class="btn btn-primary"  style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
+    <input type="submit" name='confirm' value='Confirm'  class="btn btn-primary"  style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">
 </form>
 </div>
     </div>
