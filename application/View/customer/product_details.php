@@ -6,10 +6,15 @@ include '../../controller/product_details.class.php';
 // $conn = $connector->connect();
 $funObj = new ProductDetails();
 
+
+$product_id=$_POST['Select'];
 //session_start();
-//$product_id=$_POST['Select'];
-$product_id=8;
+$_SESSION['product_id'] = $_POST['Select']; 
+
+  
+//$product_id=8;
 $customer_id=$_SESSION['customer_id'];
+
 $varient_1='';
 $varient_2='';
 $quantity='';
@@ -19,39 +24,14 @@ $quantity='';
 //   $get_id = $_GET['cat'];
   
 
-if (isset($_POST['varient1'])){
-  $varient1=$_POST['varient1'];
+if (isset($_POST['varient_1'])){
+  $varient1=$_POST['varient_1'];
   }
-if (isset($_POST['varient2'])){
-  $varient2=$_POST['varient2'];
+if (isset($_POST['varient_2'])){
+  $varient2=$_POST['varient_2'];
   }
-//$product_id=$_POST['Select'];
 
   
-// if ($load){
-//     if(mysqli_num_rows($load) > 0){
-//         while($row = mysqli_fetch_array($load)){
-//             $product_name = $row ['product_name'];
-//             $description = $row ['description'];
-//             $weight = $row ['weight'];
-//             $dimension = $row ['dimension'];
-            
-// 		}
-// 	}
-//   //header("Location:product_details.php");
-// }
-
-//$result1 = mysqli_query($conn,"SELECT DISTINCT varient_1 FROM varient where product_id = 8");        //need to change
-
-
-//$result = mysqli_query($conn,"SELECT price,`image`,quantity FROM varient where product_id = 8");
-
-
-       
-       
-        //   $query="CALL Selection()";
-        //   $search_result=filter($query);
-        // }
 
         
        
@@ -96,13 +76,15 @@ if (isset($_POST['varient2'])){
         
         <h2><?php echo $product_name?></h2>
         </div>
-        <div class='element'>
-      
-   
+        
+      <?php
+      $result= mysqli_query($con1,"SELECT DISTINCT `image` FROM varient where product_id = $product_id");
+      while($row = mysqli_fetch_array($result)) {
+      echo '<img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" style="width:40%;
+        height: 350px;"  class="img1" />'; }?>
 
-	
-		
-		 </div>
+      
+      
 	
         <div class="form-group">
         
@@ -140,6 +122,9 @@ if (isset($_POST['varient2'])){
         </td></tr></table>
         
         <br><center><input type="submit" class="link" name="search" style="margin-bottom: 50px; width:50%; height:40px;background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center>
+        
+
+                          
         </div>
 
         </form>
