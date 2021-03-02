@@ -35,22 +35,23 @@ $result2 = mysqli_query($conn,"SELECT DISTINCT varient_2 FROM varient where prod
 		while($row = mysqli_fetch_array($result2)) {    
     
     if(isset($_POST['search'])){
-      // $product_name=$_POST['product_name'];
       $varient_1=$_POST['varient_1'];
       $varient_2=$_POST['varient_2'];
-      
-      
-      
-      
+      if ($varient_1!='' && $varient_2!='') {
+      // $product_name=$_POST['product_name'];
+     
       $query="SELECT quantity,price FROM `varient` where (product_id=$product_id and varient_1='$varient_1' and varient_2='$varient_2')";
       $search_result=mysqli_query($conn,$query);
+      }else{
+        echo"select both varient types";
+      }
       
       //header("Location:product_details.php");
       //$search_result=filter($query);
     } 
 
 
-if ($varient_1!='' || $varient_2!='') {
+if ($varient_1!='' && $varient_2!='') {
   $varient_id=$funObj->getVarientId($conn, $product_id,$varient_1,$varient_2);
   $_SESSION['varient_id']=$varient_id;
   //echo $_SESSION['varient_id'];
@@ -61,6 +62,7 @@ if ($varient_1!='' || $varient_2!='') {
 
 
     if(isset($_POST['confirm'])){
+      
      // $varient_id=$_SESSION['varient_id'];
       //$quantity=$_POST['quantity'];
      
@@ -182,7 +184,7 @@ if ($varient_1!='' || $varient_2!='') {
         ?>
                  
         
-        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="confirm" style="background-color:  rgb(236, 185, 17);" value="Add to Cart"></center>
+        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:white; color:black; border:rgb(236, 185, 17)border-color:black;">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="confirm" style="background-color:  rgb(236, 185, 17);" value="Add to Cart"></center>
         <br><br>
         </div>
 
