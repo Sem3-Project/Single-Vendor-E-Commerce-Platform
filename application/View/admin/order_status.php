@@ -25,11 +25,11 @@ if (isset($_POST['Update'])){
     $delivery_status = $_POST['delivery_status'];  
     $additional_notes = $_POST['additional_notes'];  
     //$delivery_estimate=$funObj->getestiDate($conn, $order_id);
-
-    //$update = $funObj->updateStatus($conn,$_POST['order_id'],$_POST['delivery_status'],$_POST['additional_notes']);
-    $update="UPDATE delivery SET delivery_status='$delivery_status',additional_notes='$additional_notes' WHERE order_id = '$order_id'";
-    //$update="INSERT INTO delivery(order_id,delivery_status,additional_notes) VALUES('$order_id','$delivery_status','$additional_notes')";
-    echo $delivery_estimate;
+    
+    $update="UPDATE `delivery` SET `delivery_status`='$delivery_status',`additional_notes`='$additional_notes' WHERE order_id = $order_id";
+   
+    mysqli_query($conn, $update);
+    
 }
 //value="<?php echo $row['order_id'] 
 
