@@ -7,9 +7,12 @@ $conn = $connector->connect();
 
 $customer_id=$_SESSION['customer_id'];
 $product_id=$_SESSION['product_id'];
+$varient_id= $_SESSION['varient_id'];
+
 
 $funObj = new ProductDetails();
-$load = $funObj->loadProduct($conn,$product_id);
+$cart_id=$funObj->getCartId($con1, $customer_id);
+$load = $funObj->loadProduct($con1,$product_id);
 if ($load){
     if(mysqli_num_rows($load) > 0){
         while($row = mysqli_fetch_array($load)){
@@ -17,6 +20,29 @@ if ($load){
             //echo $product_name;
 
         }}}
+
+        if(isset($_POST['confirm'])){
+            //$varient_id=$_SESSION['varient_id'];
+            $quantity=$_POST['quantity'];
+            //$cartResult='';
+            $q="SELECT COUNT(varient_id) FROM cart_product WHERE varient_id='$varient_id'";
+            $r=mysqli_query($con1,$q);
+            $row=mysqli_fetch_row($r);
+            if($row[0] >= 1) {
+           
+            $cartResult = $funObj->getCartItemByProduct($con1,$varient_id);
+           // $result=mysqli_fetch_assoc($cartResult);
+
+            //echo $cartResult;
+            $newQuantity = (int)$cartResult + $quantity;
+            mysqli_query($con1,"UPDATE cart_product SET quantity='$newQuantity' WHERE varient_id = '" . $varient_id . "'");
+            }
+            else{
+					//$shoppingCart->updateCartQuantity($newQuantity, $cartResult[0]["id"]);
+					
+            mysqli_query($con1,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id','$quantity')");
+        }
+    }
         
 ?>
 
