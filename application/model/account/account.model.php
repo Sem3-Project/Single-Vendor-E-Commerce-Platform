@@ -9,15 +9,20 @@ $load = $funObj->loadProfile($con1,$_SESSION['customer_id']); ////set session to
 
 if (isset($_POST['update'])){
     $update = $funObj->editProfile($con1,$_SESSION['customer_id'],$_POST['email'],$_POST['payment_number'],$_POST['first_name'],$_POST['last_name'],$_POST['zip_code'],$_POST['address_line_1'],$_POST['address_line_2'],$_POST['city'],$_POST['state'],$_POST['mobile_num']);
+    header("Location:account.model.php");
 }
-
 if ($load){
     if(mysqli_num_rows($load) > 0){
         while($row = mysqli_fetch_array($load)){
             $customer_id = $row ['customer_id'];
             $email = $row ['email'];
             $first_name = $row ['first_name'];
-            $payment_number = $row ['payment_number'];
+          //  $dispnum = substr($row['cardnumber'], 0, 2) . str_repeat("*", strlen($row['cardnumber'])-2);
+
+            //$payment_number = $row ['payment_number'];
+            $payment_num = $row ['payment_number'];
+            $payment_number = substr($row['payment_number'], 0, 4) . str_repeat("*", strlen($row['payment_number'])-4);
+
             $last_name = $row ['last_name'];
             $zip_code = $row ['zip_code'];
             $address_line_1 = $row ['address_line_1'];
