@@ -80,10 +80,10 @@ class Order
         return $result['order_id'];
     }
 
-    public function order_details($conn, $order_id)
+    public function order_details($conn, $order_id,$cart_id)
     {
-
-        $query = mysqli_query($conn, "INSERT INTO order_product(product_id,varient_id,quantity,order_id) SELECT product_id,varient_id,quantity,$order_id FROM confirmed_order");
+       // INSERT INTO `order_product` (product_id,varient_id,quantity,order_id) SELECT product_id,varient_id,quantity,27 FROM cart_product WHERE selected = 1 AND cart_id = 17;
+        $query = mysqli_query($conn, "INSERT INTO `order_product` (product_id,varient_id,quantity,order_id) SELECT product_id,varient_id,quantity,$order_id FROM cart_product WHERE cart_id = '" . $cart_id . "' AND selected = 1");
         return $query;
         // $countQuery = mysqli_query($conn, "SELECT count(cart_id) FROM confirmed_order WHERE cart_id= '" . $cart_id . "'");
         // $count = mysqli_fetch_assoc($countQuery)[0];
