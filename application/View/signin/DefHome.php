@@ -1,5 +1,5 @@
 <?php
-include '../model/Home-Default.model.php';
+include '../../model/Home-Default.model.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ include '../model/Home-Default.model.php';
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="../../public/css/newhome.css" />
+  <link rel="stylesheet" href="../../../public/css/newhome.css" />
 
   
 
@@ -20,7 +20,7 @@ include '../model/Home-Default.model.php';
 <div class="container">
 
 	<form action="DefHome.php" method="POST">
-    <a href="../view/signin/loginRegister.php"><img class="login" src="../../public/images/login.gif"></a>
+    <a href="../../view/signin/loginRegister.php"><img class="login" src="../../../public/images/login.gif"></a>
 
     <div class="topnav">
   
@@ -56,7 +56,7 @@ include '../model/Home-Default.model.php';
         
        
 <!-- // -->
-<form action="../../removed_items/prduct_details.php" method="POST">
+<form action="product_details.php" method="POST">
 <div class='element'>
 <br><br>
 <h2>Products</h1>

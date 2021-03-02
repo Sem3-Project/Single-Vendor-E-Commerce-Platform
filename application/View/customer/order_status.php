@@ -3,18 +3,54 @@
         <title>Order Status</title>
         <meta charset ="UTF-8">
         <meta name="viewpoint" content="width-device-width initial-scale=1.0">
-       
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+        <link rel="stylesheet" href="../../../public/css/login.css" />
         
-        <link rel="stylesheet" href="../../../public/css/login2.css" />
-       
+        <style type="text/css">
+        .wrapper{
+            width: 80%;
+            margin: 0 auto;
+            background-color: #f2f2f2;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .page-header h2{
+            margin-top: 0;
+        }
+        table tr td:last-child a{
+            margin-right: 15px;
+        }
+        .input{
+            width:250%; 
+            border:2px solid #e8ebeb; 
+            border-radius:5px; 
+            padding:5px; 
+            padding-left:10px
+            
+        }
+        
+        </style>
     </head>
     <body>
-        
+    <a href="HomeCustomer.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; position: relative;"></a>
+
+    <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px; margin-left:25px; position: absolute;"></a>
+    <div class="wrapper" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header clearfix">
+                        <h2 class="pull-left" >Order Status</h2>
+                    </div>
+
        
-        <h1 align='left' margin="100px" ><i>Order Status</i></h1>
+        
            
-        <table width="80%">
-        <link href="../../../public/css/table1.css" rel="stylesheet" />
+        <table width="80%" class='table table-bordered table-striped'>
+        <!--link href="../../../public/css/table1.css" rel="stylesheet" /-->
            
             <thead>
                 <tr>
@@ -68,6 +104,10 @@ if ($load){
                 
             </tbody>
         </table>
-        
+        </div>
+            </div>        
+        </div><br>
+    </div>
+    <br>
     </body>
 </html>
