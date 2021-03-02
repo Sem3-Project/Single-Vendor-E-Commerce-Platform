@@ -21,7 +21,7 @@ include '../../model/Home-admin.model.php';
 <div class="container">
 	<form action="Homeadmin.php" method="POST">
     
-    <a href="../../view/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%"></a>
+    <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%"></a>
     <a href="report.php"><img class="report" src="../../../public/images/report.gif" style="width:13%; margin-top:70px"></a>
     <a href="RegisterAdmin.php"><img class="report" src="../../../public/images/register.gif" style="width:10%; margin-top:70px;margin-left:20%"></a>
     <a href="addProduct/index.php"><img class="report" src="../../../public/images/addproduct.gif" style="width:12.5%; margin-top:70px;margin-left:37%"></a>
@@ -62,7 +62,7 @@ include '../../model/Home-admin.model.php';
 
 		</form>
 <!-- // -->
-<form action="../../../removed_items/prduct_details.php" method="POST">
+<form action="admin_product_details.php" method="POST">
 <div class='element'><br><br><br><br>
 <h2 >Product</h1>
 		<?php

@@ -1,5 +1,5 @@
 <?php
-	include '../controller/DbConnection.class.php';
+	include '../../controller/DbConnection.class.php';
 	$connector = new DbConnection();
 	$conn = $connector->connect();
 	$category_id=$_POST["category_id"];

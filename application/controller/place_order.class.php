@@ -3,15 +3,6 @@ include 'controllerUserData.php';
 
 class Order
 {
-    // function __construct()
-    // {
-    //     $connector = new DbConnection();
-    //     $conn = $connector->connect1();
-    // }
-    // function __destruct()
-    // {
-    // }
-
     public function getTotalPayment($conn, $customer_id)
     {
         $load = mysqli_query($conn, "SELECT `total_value` FROM `cart` WHERE `customer_id`='$customer_id'") or die(mysqli_error($conn));
@@ -33,14 +24,9 @@ class Order
         return $result['cart_id'];
     }
 
-    // public function saveConfirmation($conn, $date, $payment_method, $order_id, $zip_code, $address_line_1, $address_line_2, $city, $state)
-    // {
-    //     $updateQr = mysqli_query($conn, "UPDATE `order` SET `date` = '$date' ,`payment_method`='$payment_method',`zip_code`='$zip_code',`address_line_1`='$address_line_1',`address_line_2`='$address_line_2',`city`='$city',`state`='$state' WHERE `order_id`='$order_id'");
-    //     return $updateQr;
-    // }
     public function saveConfirmation($conn, $customer_id,$date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state)
     {
-        $insertQr = mysqli_query($conn, "INSERT INTO order(customer_id,date,payment_method,total_payment,zip_code,address_line_1,address_line_2,city,state) VALUES ('" . $customer_id . "','" . $date . "' ,'" . $payment_method . "','" . $total_payment . "','" . $zip_code . "','" . $address_line_1 . "','" . $address_line_2 . "','" . $city . "','" . $state . "')");
+        $insertQr = mysqli_query($conn, "INSERT INTO `order` (`order_id`,`customer_id`,`date`,`payment_method`,`total_payment`,`zip_code`,`address_line_1`,`address_line_2`,`city`,`state`) VALUES (NULL,'".$customer_id."','".$date."' ,'".$payment_method."','".$total_payment."','".$zip_code."','".$address_line_1."','".$address_line_2."','".$city."','".$state."')");
         return $insertQr;
     }
 

@@ -6,14 +6,13 @@ include '../../controller/place_order.class.php';
 // $conn = $connector->connect1();
 
 //begin transaction
-$con1->begin_transaction();
+ $con1->begin_transaction();
 
-try {
+ try {
     $funObj = new Order();
 
     $cust_id = $_SESSION['customer_id'];
 
-    // $order_id = $funObj->get_orderID($conn, $cust_id);
     $cart_id = $funObj->getCartId($con1, $cust_id);
 
     //  $num = $funObj->num_of_rows($conn, $order_id);
@@ -42,12 +41,9 @@ try {
         // if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
         //     echo "<script>alert('Please enter payment method')</script>";
         // } else {
-        //$insertQr = mysqli_query($con1, "INSERT INTO order (customer_id, date, payment_method, total_payment, zip_code, address_line_1,address_line_2,city,state) values('$cust_id','$date', '$payment_method', '$total_payment', '$zip_code', '$address_line_1','$address_line_2','$city','$state')");
-
         $insert = $funObj->saveConfirmation($con1,$cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
-        //$insert = $funObj->saveConfirmation($con1,$_SESSION['customer_id'], date("Y-m-d"), $_POST['payment_method'], $row['total_value'], $_POST['zip_code'], $_POST['address_line_1'], $_POST['address_line_2'], $_POST['city'], $_POST['delivery_method']);
-
-        //$del_method = $funObj->saveDelivery($conn, $order_id, $delivery_method);
+        $order_id = $funObj->get_orderID($con1, $cust_id, $date);
+        $del_method = $funObj->saveDelivery($con1, $order_id, $delivery_method);
         //header("location:../view/customer/order_status.php");
         // }
     }

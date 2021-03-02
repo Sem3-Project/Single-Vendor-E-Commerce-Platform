@@ -22,11 +22,11 @@ include '../../model/Home-customer.model.php';
 <body>
   <div class="container">
     <form action="HomeCustomer.php" method="POST">
-      <a href="../../view/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%"></a>
+      <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%"></a>
       <a href="cart.php"><img class="report" src="../../../public/images/cart.gif" style="width:11.5%; margin-top:70px;"></a>
-      <a href="order_status.php"><img class="report" src="../../../public/images/order.gif" style="width:11%; margin-top:70px;margin-left:20%"></a>
+      <a href="order_status.php"><img class="report" src="../../../public/images/checkStatus.gif" style="width:16.5%; margin-top:70px;margin-left:18%"></a>
       <a href="../../model/account/account.model.php"><img class="report" src="../../../public/images/account.gif" style="width:11.5%; margin-top:70px;margin-left:40%"></a>
-      <a href="orderPDF.php"><img class="report" src="../../../public/images/orderReport.gif" style="width:15%; margin-top:70px;margin-left:60%"></a>
+      <a href="orderPDF.php"><img class="report" src="../../../public/images/orderReport.gif" style="width:15%; margin-top:70px;margin-left:58%"></a>
 
 
 
