@@ -6,9 +6,9 @@ include '../../controller/place_order.class.php';
 // $conn = $connector->connect1();
 
 //begin transaction
- $con1->begin_transaction();
+$con1->begin_transaction();
 
- try {
+try {
     $funObj = new Order();
 
     $cust_id = $_SESSION['customer_id'];
@@ -41,9 +41,14 @@ include '../../controller/place_order.class.php';
         // if (($_POST['payment_method'] != 'Cash on delivery') || ($_POST['payment_method'] != 'Visa')) {
         //     echo "<script>alert('Please enter payment method')</script>";
         // } else {
-        $insert = $funObj->saveConfirmation($con1,$cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
+            
+        $funObj->saveConfirmation($con1, $cust_id, $date, $payment_method, $total_payment, $zip_code, $address_line_1, $address_line_2, $city, $state);
         $order_id = $funObj->get_orderID($con1, $cust_id, $date);
         $del_method = $funObj->saveDelivery($con1, $order_id, $delivery_method);
+        $funObj->order_details($con1,$order_id,$cart_id);
+
+        //$funObj->dltCartproduct($con1,$cart_id);
+
         //header("location:../view/customer/order_status.php");
         // }
     }

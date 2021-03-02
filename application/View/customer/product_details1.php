@@ -8,12 +8,17 @@ include '../../controller/product_details.class.php';
 $funObj = new ProductDetails();
 $product_id=$_SESSION['product_id'];
 
+
 //echo $product_id;
 $customer_id=$_SESSION['customer_id'];
 $varient_1='';
 $varient_2='';
+//$varient_id= $_SESSION['varient_id'];
 
 $quantity='';
+
+$cart_id=$funObj->getCartId($conn, $customer_id);
+$load = $funObj->loadProduct($conn,$product_id);
 
 if (isset($_POST['varient_1'])){
   $varient_1=$_POST['varient_1'];
@@ -22,38 +27,48 @@ if (isset($_POST['varient_2'])){
   $varient_2=$_POST['varient_2'];
   }
 
-  // if (isset($_POST['varient_id'])){
-  //   $varient_id=$_POST['varient_id'];
-  //   }
-//$product_id=$_POST['Select'];
+$result1 = mysqli_query($conn,"SELECT DISTINCT varient_1 FROM varient where product_id = $product_id");
+		while($row = mysqli_fetch_array($result1)) {
+    
 
-  
-// if ($load){
-//     if(mysqli_num_rows($load) > 0){
-//         while($row = mysqli_fetch_array($load)){
-//             $product_name = $row ['product_name'];
-//             $description = $row ['description'];
-//             $weight = $row ['weight'];
-//             $dimension = $row ['dimension'];
-            
-// 		}
-// 	}
-//   //header("Location:product_details.php");
-// }
+$result2 = mysqli_query($conn,"SELECT DISTINCT varient_2 FROM varient where product_id = $product_id");
+		while($row = mysqli_fetch_array($result2)) {    
+    
+    if(isset($_POST['search'])){
+      $varient_1=$_POST['varient_1'];
+      $varient_2=$_POST['varient_2'];
+      if ($varient_1!='' && $varient_2!='') {
+      // $product_name=$_POST['product_name'];
+     
+      $query="SELECT quantity,price FROM `varient` where (product_id=$product_id and varient_1='$varient_1' and varient_2='$varient_2')";
+      $search_result=mysqli_query($conn,$query);
+      }else{
+        echo"select both varient types";
+      }
+      
+      //header("Location:product_details.php");
+      //$search_result=filter($query);
+    } 
 
-//$result1 = mysqli_query($conn,"SELECT DISTINCT varient_1 FROM varient where product_id = 8");        //need to change
+
+if ($varient_1!='' && $varient_2!='') {
+  $varient_id=$funObj->getVarientId($conn, $product_id,$varient_1,$varient_2);
+  $_SESSION['varient_id']=$varient_id;
+  //echo $_SESSION['varient_id'];
+}else{
+  $varient_id= $_SESSION['varient_id'];
+}
 
 
-//$result = mysqli_query($conn,"SELECT price,`image`,quantity FROM varient where product_id = 8");
 
-
-       
-       
-        //   $query="CALL Selection()";
-        //   $search_result=filter($query);
-        // }
-
-        
+    if(isset($_POST['confirm'])){
+      
+     // $varient_id=$_SESSION['varient_id'];
+      //$quantity=$_POST['quantity'];
+     
+      mysqli_query($conn,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
+     // header("Location:product_details.php");
+    }
        
 ?>
 
@@ -100,17 +115,20 @@ if (isset($_POST['varient_2'])){
 
   <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px; margin-left:25px; position: absolute;"></a>
 
+
 <div class="container">
 <div class="wrapper" >
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-	<form action="" method="POST">
+	
+
+	<form action="goto_cart.php" method="POST">
 		<div class="form-group">
         <br><br>
         <?php
-        $cart_id=$funObj->getCartId($con1, $customer_id);
-        $load = $funObj->loadProduct($con1,$product_id);
+        
+
 
 //if ($varient_1!='' || $varient_2!='') {
   if ($load){
@@ -155,8 +173,10 @@ if (isset($_POST['varient_2'])){
         <!-- <select class="form-control" id="varient_1" name="varient_1">
 		  <option value="">Select Variant Type 1</option>
 		    <?php
+
         $result1 = mysqli_query($con1,"SELECT DISTINCT varient_1 FROM varient where product_id = $product_id");
 			while($row = mysqli_fetch_array($result1)) {
+
 			?>
 				<option value="<?php echo $row["varient_1"];?>" <?php if ($row["varient_1"]==$varient_1){ echo 'selected';} ?>><?php echo $row["varient_1"];?></option>
 			<?php
@@ -168,8 +188,10 @@ if (isset($_POST['varient_2'])){
         <!-- <select class="form-control" id="varient_2" name="varient_2">
 		  <option value="">Select Variant Type 2</option>
 		    <?php
+
         $result2 = mysqli_query($con1,"SELECT DISTINCT varient_2 FROM varient where product_id = $product_id");
 			while($row = mysqli_fetch_array($result2)) {
+
 			?>
 				<option value="<?php echo $row["varient_2"];?>" <?php if ($row["varient_2"]==$varient_2){ echo 'selected';} ?>><?php echo $row["varient_2"];?></option>
 			<?php
@@ -185,6 +207,7 @@ if (isset($_POST['varient_2'])){
         <table class='table table-bordered table-striped'>
         <tr><td style="width:15%"><h5>Available Quantity</h5></td><td>
         <?php
+
          if(isset($_POST['search'])){
           // $product_name=$_POST['product_name'];
           $varient_1=$_POST['varient_1'];
@@ -199,6 +222,7 @@ if (isset($_POST['varient_2'])){
           //header("Location:product_details.php");
           //$search_result=filter($query);
         }
+
         
 			while($row=mysqli_fetch_array($search_result)):?>
 
@@ -215,6 +239,7 @@ if (isset($_POST['varient_2'])){
         </table>
        <?php 
       
+
         $varient_id=$funObj->getVarientId($con1, $product_id,$varient_1,$varient_2);
         $_SESSION['varient_id']=$varient_id;
 
@@ -230,6 +255,11 @@ if (isset($_POST['varient_2'])){
         
         <br><center><input type="submit"  name="confirm" class="btn btn-success pull-right" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17);margin-right:45%" value="Add to Cart"></center>
         <br><br><br><br>
+
+        
+        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:white; color:black; border:rgb(236, 185, 17)border-color:black;">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="confirm" style="background-color:  rgb(236, 185, 17);" value="Add to Cart"></center>
+        <br><br>
+
         </div>
 
 		</form>

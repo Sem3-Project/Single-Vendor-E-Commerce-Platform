@@ -155,66 +155,28 @@ if (isset($_POST['varient_2'])){
 			 </select>
         </td></tr></table>
         
+
         <br><input type="submit"  name="search" class="btn btn-success pull-right" style="background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17);margin-right:35%" value="Check Available Quantity and Price">
         
         <br><br><br><br>
+
+        <br><center><a href="HomeCustomer.php" class="btn btn-default" style="background-color:white; color:black; border:rgb(236, 185, 17)border-color:black;">Back to Home</a>&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-default" name="search" style="background-color:  rgb(236, 185, 17);" value="Check Available Quantity and Price"></center>
+        
+<br><br>
+
                           
         </div>
 
         </form>
+
         </div>
             </div>        
         </div>
     </div>
         <!-- <form action="" method="POST">
+
+
        
-        
-        <table>
-        <tr><td><h5>Available Quantity</h5></td><td>
-        <?php
-         if(isset($_POST['search'])){
-          // $product_name=$_POST['product_name'];
-          $varient_1=$_POST['varient_1'];
-          $varient_2=$_POST['varient_2'];
-          
-          
-          
-          
-          $query="SELECT quantity,price FROM `varient` where (product_id=$product_id and varient_1='$varient_1' and varient_2='$varient_2')";
-          $search_result=mysqli_query($con1,$query);
-          
-          //header("Location:product_details.php");
-          //$search_result=filter($query);
-        }
-        
-			while($row=mysqli_fetch_array($search_result)):?>
-				<?php echo $row ['quantity'];?><?php
-			
-			?></td></tr>
-        <tr><td><h5>Unit Price</h5></td><td>
-		
-        <?php echo $row ['price'];?><?php
-			
-			?><?php endwhile;?>
-      </td></tr>
-      <tr><td><h5>Quantity</h5></td><td><input type="number" name="quantity" value="1" min="1" max="<?=$product['quantity']?>" placeholder="Select Quantity" required>   </td></tr>
-        </table>
-       <?php 
-      
-        $varient_id=$funObj->getVarientId($con1, $product_id,$varient_1,$varient_2);
-        if(isset($_POST['confirm'])){
-    
-          //$quantity=$_POST['quantity'];
-         
-          mysqli_query($con1,"INSERT INTO cart_product(cart_id,varient_id,product_id,quantity) VALUES ('$cart_id','$varient_id','$product_id',".$_POST['quantity'].")");
-         // header("Location:product_details.php");
-        }?>
-                 
-        
-        <br><center><input type="submit" class="link" name="confirm" style="margin-bottom: 50px; width:50%; height:40px;background-color:  rgb(236, 185, 17);" value="Add to Cart"></center>
-        
-        </div>
-		</form> --> 
 
 
 </body>
