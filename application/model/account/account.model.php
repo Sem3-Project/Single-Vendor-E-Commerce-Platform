@@ -20,9 +20,6 @@ if ($load){
           //  $dispnum = substr($row['cardnumber'], 0, 2) . str_repeat("*", strlen($row['cardnumber'])-2);
 
             //$payment_number = $row ['payment_number'];
-            $payment_num = $row ['payment_number'];
-            $payment_number = substr($row['payment_number'], 0, 4) . str_repeat("*", strlen($row['payment_number'])-4);
-
             $last_name = $row ['last_name'];
             $zip_code = $row ['zip_code'];
             $address_line_1 = $row ['address_line_1'];
@@ -30,6 +27,16 @@ if ($load){
             $city = $row ['city'];
             $state = $row ['state'];
             $mobile_num = $row ['mobile_num'];
+            $payment_num = $row ['payment_number'];
+            if ($row['payment_number']!=""){
+                $payment_number = substr($row['payment_number'], 0, 4) . str_repeat("*", strlen($row['payment_number'])-4);
+
+            }
+            else{
+                $payment_number = $row['payment_number'];
+            }
+
+            
         }
     }
     // if (isset($_POST['update'])){

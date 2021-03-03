@@ -121,14 +121,12 @@ if (isset($_POST['Update'])){
         <br>
         <!--br><center><input type="submit" class="link" name="Update" style="margin-bottom: 50px; width:15%; height:40px;background-color:  rgb(236, 185, 17);" value="Update"></center-->
         <br><input type="submit" name="Update" class="btn btn-success " style="margin-left:45%; background-color:rgb(236, 185, 17); color:black; border:rgb(236, 185, 17)" value="Update">
-
+        <br><br>
         </form>
-        </div>
-            </div>        
-        </div><br>
-    </div>
-
-    <?php
+        <div class="page-header clearfix">
+                        <h2 class="pull-left" >Order Details</h2>
+                    </div>
+        <?php
                     // Include config file
                     //require_once "addProduct/addProduct.php";
                     
@@ -200,6 +198,12 @@ if (isset($_POST['Update'])){
                     // Close connection
                     mysqli_close($conn);
                     ?>
+        </div>
+            </div>        
+        </div><br>
+    </div>
+
+    
     </body>
    
 </html>

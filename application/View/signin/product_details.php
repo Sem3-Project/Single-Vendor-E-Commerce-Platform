@@ -75,7 +75,8 @@ if (isset($_POST['varient_2'])){
 </style>
 </head>
 <body>
-<a href="DefHome.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; margin-left:90%; position: relative;"></a>
+<a href="DefHome.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; margin-left:80%; position: relative;"></a>
+<a href="../../view/signin/loginRegister.php"><img class="login" src="../../../public/images/login.gif" style="width:10%; margin-top:13px; margin-left:25px; position: absolute;"></a>
 
                 
 <div class="container">

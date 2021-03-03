@@ -5,10 +5,13 @@ include '../../controller/controllerUserData.php';
 <!DOCTYPE html>
 <head>
 <title>Sign up & Sign in</title>
-</head>
-<link rel="stylesheet" href="../../../public/css/login2.css" />
+<link rel="stylesheet" href="../../../public/css/login.css" />
 <link rel="stylesheet" href="../../../public/css/bootstrap.min.css">
 <link rel="stylesheet" href="../../../public/css/register1.css" />
+<a href="DefHome.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px; margin-left:90%; position: relative;"></a>
+
+</head>
+<body>
 
 <div class="forms">
     <ul class="tab-group">
@@ -86,6 +89,6 @@ $(document).ready(function(){
     });
 });
 </script>
-
+</body>
 
 </html>
