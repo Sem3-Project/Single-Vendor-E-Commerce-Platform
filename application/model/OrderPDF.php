@@ -73,9 +73,9 @@ class myPDF extends FPDF{
 
     $pdf->SetFont("Arial","B",10);
     $pdf->Cell(125,15,"product name",1,0,"C");
-    $pdf->Cell(20,15,"order id",1,0,"C");
-    $pdf->Cell(25,15,"date",1,0,"C");
-    $pdf->Cell(20,15,"quantity",1,0,"C");
+    $pdf->Cell(17,15,"order id",1,0,"C");
+    $pdf->Cell(35,15,"date",1,0,"C");
+    $pdf->Cell(17,15,"quantity",1,0,"C");
     $pdf->Ln();
     
 
@@ -87,9 +87,9 @@ class myPDF extends FPDF{
     // while($data=$stmt->fetch(PDO::FETCH_OBJ)){
     while($data=mysqli_fetch_object($stmt)){
         $pdf->Cell(125,8,$data->product_name,1,0,"C");
-        $pdf->Cell(20,8,$data->order_id,1,0,"L");
-        $pdf->Cell(25,8,$data->date,1,0,"L");
-        $pdf->Cell(20,8,$data->quantity,1,0,"L");
+        $pdf->Cell(17,8,$data->order_id,1,0,"L");
+        $pdf->Cell(35,8,$data->date,1,0,"L");
+        $pdf->Cell(17,8,$data->quantity,1,0,"L");
         $pdf->Ln();
     }
     $pdf->Ln(10);

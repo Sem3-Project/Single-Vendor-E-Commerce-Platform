@@ -98,7 +98,7 @@ if (isset($_POST['proceed'])) {
 <body>
     <a href="HomeCustomer.php"><img class="login" src="../../../public/images/homeic.gif" style="width:6.5%; margin-top:13px;  position: relative;"></a>
 
-    <a href="../../view/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px;margin-left:25px; position: absolute;"></a>
+    <a href="../../view/signin/logout-user.php"><img class="login" src="../../../public/images/logout.gif" style="width:7%; margin-top:13px;margin-left:25px; position: absolute;"></a>
     <div class="wrapper" style="margin-left:100px">
         <div class='container'>
             <div class="container-fluid">
